@@ -8,6 +8,9 @@ class Player:
         self.prog = prog
         self.inv = inv
 
+    def __str__(self):
+        return f'{self.name}, {self.prog}, {self.inv}'
+
 player = Player('', 0, [])
 name = player.name
 
@@ -24,10 +27,14 @@ parts = {
     2: Section('You are in the dusty stacks of your favorite record store.', [1, 2, 3])
 }
 
+print(parts[0].desc)
+# PUT SOME STUFF OUT HERE
 
 
 while True:
     
+    # MAKE SOME OF THIS FUNCTIONS
+
     current = player.prog
     
     print()
@@ -49,6 +56,7 @@ while True:
         else: 
             player.name = str(cmd)
             player.prog = 1
+            print(player)
             
     elif current == 1:
         if cmd == "q" or cmd == "Q":
