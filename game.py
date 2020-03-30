@@ -22,14 +22,28 @@ class Section:
         self.opt = opt
 
 parts = {
-    0: Section('Please enter your name (or Q to quit).', []),
-    1: Section(f'Hello, {player.name}', ['1) Start your journey']),
-    2: Section('You are in the dusty stacks of your favorite record store.', [1, 2, 3])
+    0: Section('You are in the dusty stacks of your favorite record store.', ['1) Dig in some crates']),
+    1: Section('You\'ve narrowed it down to three titles.', ['1) Aja by Steely Dan', '2) Moving Pictures by Rush', '3) Bitches Brew by Miles Davis'])
 }
 
-print(parts[0].desc)
 # PUT SOME STUFF OUT HERE
 
+welcome = 'Welcome to AUDIOPHILIA, the game of hi-fi perfection. Please enter your name, or LOAD to load an existing game.'
+
+print(welcome)
+
+intro = input('-->')
+
+while player.name == '':
+    if intro == "LOAD":
+        print('Feature TK')
+        print()
+        print(welcome)
+        intro = input('-->')
+    else:
+        player.name = intro
+
+print(f'Welcome, {player.name}!')
 
 while True:
     
@@ -53,15 +67,15 @@ while True:
     if current == 0:
         if cmd == "q" or cmd == "Q":
             break
-        else: 
-            player.name = str(cmd)
+        elif cmd == parts[current].opt[0][0]:
             player.prog = 1
-            print(player)
+        else: 
+            print('I didn\'t understand that.')
             
     elif current == 1:
         if cmd == "q" or cmd == "Q":
             break
-        elif cmd == parts[current].opt[0][0]:
+        
             player.prog = 2
         else:
             print('I didn\'t understand that.')
