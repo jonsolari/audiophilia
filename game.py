@@ -17,19 +17,31 @@ name = player.name
 # Progression attribute will increment as you go on, and this will dictate what's shown as a prompt
 
 class Section: 
-    def __init__(self, desc, opt):
+    def __init__(self, desc, opt, path):
         self.desc = desc
         self.opt = opt
+        self.path = path
 
 parts = {
-    0: Section('You are in the dusty stacks of your favorite record store.', ['1) Dig in some crates']),
-    1: Section('You\'ve narrowed it down to three titles.', ['1) Aja by Steely Dan', '2) Moving Pictures by Rush', '3) Bitches Brew by Miles Davis'])
+    0: Section('You are in the dusty stacks of your favorite record store.', ['1) Dig in some crates'], [1]),
+    1: Section('You\'ve narrowed it down to three titles.', ['1) Aja by Steely Dan', '2) Moving Pictures by Rush', '3) Bitches Brew by Miles Davis'], [2, 3, 4]),
+    2: Section('Nice, a classic.', ['1) What pressing is it?'], [5]),
+    3: Section('Nice, a classic.', ['1) What pressing is it?'], [6]),
+    4: Section('Nice, a classic.', ['1) What pressing is it?'], [7]),
 }
 
 # PUT SOME STUFF OUT HERE
 
 welcome = 'Welcome to AUDIOPHILIA, the game of hi-fi perfection. Please enter your name, or LOAD to load an existing game.'
 
+print()
+print()
+print()
+print()
+print()
+print()
+print()
+print()
 print(welcome)
 
 intro = input('-->')
@@ -43,6 +55,7 @@ while player.name == '':
     else:
         player.name = intro
 
+print()
 print(f'Welcome, {player.name}!')
 
 while True:
@@ -51,6 +64,13 @@ while True:
 
     current = player.prog
     
+    print()
+    print()
+    print()
+    print()
+    print()
+    print()
+    print()
     print()
     
     print(parts[current].desc)
@@ -64,27 +84,42 @@ while True:
 
     cmd = input("-->")
 
-    if current == 0:
-        if cmd == "q" or cmd == "Q":
-            break
-        elif cmd == parts[current].opt[0][0]:
-            player.prog = 1
+    if cmd == "q" or cmd == "Q":
+        break
+
+    def choicehandler(choice):
+        adjust = int(choice) -1
+        if cmd == parts[current].opt[adjust][0]:
+            player.prog = parts[current].path[adjust]
         else: 
             print('I didn\'t understand that.')
+
+    choicehandler(cmd)
+
+
+
+
+    # if current == 0:
+    #     if cmd == "q" or cmd == "Q":
+    #         break
+    #     elif cmd == parts[current].opt[0][0]:
+    #         player.prog = 1
+    #     else: 
+    #         print('I didn\'t understand that.')
             
-    elif current == 1:
-        if cmd == "q" or cmd == "Q":
-            break
+    # elif current == 1:
+    #     if cmd == "q" or cmd == "Q":
+    #         break
         
-            player.prog = 2
-        else:
-            print('I didn\'t understand that.')
+    #         player.prog = 2
+    #     else:
+    #         print('I didn\'t understand that.')
     
-    elif current == 2:
-        if cmd == "q" or cmd == "Q":
-            break
-        else:
-            print('Yo')
+    # elif current == 2:
+    #     if cmd == "q" or cmd == "Q":
+    #         break
+    #     else:
+    #         print('Yo')
         
 
 
