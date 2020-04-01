@@ -25,9 +25,9 @@ class Section:
 parts = {
     0: Section('You are in the dusty stacks of your favorite record store.', ['1) Dig in some crates'], [1]),
     1: Section('You\'ve narrowed it down to three titles.', ['1) ' + '\033[31m' + 'Aja by Steely Dan'+'\033[0m', '2) ' + '\033[32m'+'Moving Pictures by Rush' + '\033[0m', '3) ' + '\033[34m'+'Bitches Brew by Miles Davis'+'\033[0m',], [2, 3, 4]),
-    2: Section('Nice, a classic.', ['1) What pressing is it?'], [5]),
-    3: Section('Nice, a classic.', ['1) What pressing is it?'], [6]),
-    4: Section('Nice, a classic.', ['1) What pressing is it?'], [7]),
+    2: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [5]),
+    3: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [6]),
+    4: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [7]),
 }
 
 # PUT SOME STUFF OUT HERE
@@ -86,10 +86,12 @@ while True:
 
     def choicehandler(choice):
         adjust = int(choice) -1
-        if cmd == parts[current].opt[adjust][0]:
-            player.prog = parts[current].path[adjust]
+        optnum = len(parts[current].opt)
+        if int(choice) <= optnum:
+            if cmd == parts[current].opt[adjust][0]:
+                player.prog = parts[current].path[adjust]
         else: 
-            print('I didn\'t understand that.')
+            print(f'Please choose a selection between 1 and {optnum}.')
 
     if cmd == "q" or cmd == "Q":
         break
