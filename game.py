@@ -24,7 +24,7 @@ class Section:
 
 parts = {
     0: Section('You are in the dusty stacks of your favorite record store.', ['1) Dig in some crates'], [1]),
-    1: Section('You\'ve narrowed it down to three titles.', ['1) ' + '\033[31m' + 'Aja by Steely Dan'+'\033[0m', '2) ' + '\033[32m'+'Moving Pictures by Rush' + '\033[0m', '3) ' + '\033[34m'+'Bitches Brew by Miles Davis'+'\033[0m',], [2, 3, 4]),
+    1: Section('You\'ve narrowed it down to three titles.', ['1) ' + '\033[31m' + 'Aja by Steely Dan'+'\033[0m', '2) ' + '\033[32m'+'Moving Pictures by Rush' + '\033[0m', '3) ' + '\033[34m'+'The Lamb Lies Down on Broadway by Genesis'+'\033[0m',], [2, 3, 4]),
     2: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [5]),
     3: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [6]),
     4: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [7]),
