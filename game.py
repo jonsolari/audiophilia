@@ -104,16 +104,6 @@ while True:
 
     choicehandler(cmd)
 
-    # if player.prog == 1:
-    #     if cmd == 1:
-    #         player.prog = 2
-    #     elif cmd == 2: 
-    #         player.prog = 3
-    #     elif cmd == 3:
-    #         player.prog = 4
-    # else:
-    #     choicehandler(cmd)
-
     def choicehandler(choice):
         adjust = int(choice) -1
         if cmd == parts[current].opt[adjust][0]:
@@ -121,37 +111,3 @@ while True:
         else: 
             print('I didn\'t understand that.')
 
-    
-
-
-
-
-    # if current == 0:
-    #     if cmd == "q" or cmd == "Q":
-    #         break
-    #     elif cmd == parts[current].opt[0][0]:
-    #         player.prog = 1
-    #     else: 
-    #         print('I didn\'t understand that.')
-            
-    # elif current == 1:
-    #     if cmd == "q" or cmd == "Q":
-    #         break
-        
-    #         player.prog = 2
-    #     else:
-    #         print('I didn\'t understand that.')
-    
-    # elif current == 2:
-    #     if cmd == "q" or cmd == "Q":
-    #         break
-    #     else:
-    #         print('Yo')
-        
-
-
-    # if cmd == "q" or cmd == "Q":
-    #     break
-    # else: 
-    #     print("I didn't understand that.")
-    #     print()
