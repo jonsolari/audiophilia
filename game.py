@@ -28,9 +28,12 @@ parts = {
     2: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [5]),
     3: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [6]),
     4: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [7]),
-    5: Section('There\'s a thread on the Steve Hoffman forums with over \n650 posts in it, but you\'re not about to traipse through \nall that bullshit in full, on your smartphone, here at \nthe store. People seem pretty over the moon about an \noriginal pressing with \033[31mAB-1006\033[0m carved into the deadwax.', ['1) Check the deadwax.'], []),
-    6: Section('\'The Rush Vinyl Pressing Thread\' on the Steve Hoffman \nforums says to check the deadwax to see if both sides \nhave an \033[32m\'RL\'\033[0m (for \033[32mRobert Ludwig\033[0m). A lot of people are \narguing for various CD masterings too but you\'re not \nabout the digital life anymore, not since dropping well \nover $600 on a turntable cartridge alone.', ['1) Check the deadwax.'], [8]),
-    7: Section('You discreetly (you think) pull out your phone and see \nwhat people are saying about it on the Steve Hoffman \nforums. They all seem to be fawning over the \033[34m200g \nClassic Records reissue\033[0m from 2001. Weird time for vinyl, \nyou almost never see stuff from that era in stores. \n\nCould this be..?', ['1) Could it?'], [9]),
+    5: Section('There\'s a thread on the Steve Hoffman forums with over \n650 posts in it, but you\'re not about to traipse through \nall that bullshit in full, on your smartphone, here at \nthe store. People seem pretty over the moon about an \noriginal pressing with \033[31mAB-1006\033[0m carved into the deadwax.', ['1) Check the deadwax.'], [8]),
+    6: Section('\'The Rush Vinyl Pressing Thread\' on the Steve Hoffman \nforums says to check the deadwax to see if both sides \nhave an \033[32m\'RL\'\033[0m (for \033[32mRobert Ludwig\033[0m). A lot of people are \narguing for various CD masterings too but you\'re not \nabout the digital life anymore, not since dropping well \nover $600 on a turntable cartridge alone.', ['1) Check the deadwax.'], [9]),
+    7: Section('You discreetly (you think) pull out your phone and see \nwhat people are saying about it on the Steve Hoffman \nforums. They all seem to be fawning over the \033[34m200g \nClassic Records reissue\033[0m from 2001. Weird time for vinyl, \nyou almost never see stuff from that era in stores. \n\nCould this be..?', ['1) Could it?'], [10]),
+    8: Section('Hell yeah, there it is! \033[31mAB-1006\033[0m!', ['1) Inspect the rest of the disc.'], [11]),
+    9: Section('Clear as day on both sides, \033[32m\'RL\'\033[0m! Dutch pressing, apparently.', ['1) Inspect the rest of the disc.'], [12]),
+    10: Section('It could! \033[34m\'Manufactured and Distributed under \nexclusive license to Classic Records\'\033[0m is there \non both the center labels and the back cover, \notherwise it looks like an Atco original. \n\nHell yeah!', ['1) Inspect the rest of the disc.'], [13]),
 }
 
 # PUT SOME STUFF OUT HERE
