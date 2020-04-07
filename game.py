@@ -71,8 +71,6 @@ print()
 print(f'Welcome, {player.name}!')
 
 while True:
-    
-    # MAKE SOME OF THIS FUNCTIONS
 
     current = player.prog
     
@@ -94,11 +92,23 @@ while True:
     
     print()
 
+    # print("inventory: ", player.inv)
+
     cmd = input("-->")
 
     def choicehandler(choice):
         adjust = int(choice) -1
         optnum = len(parts[current].opt)
+
+        if player.prog == 2:
+            player.inv = 'aja'
+
+        if player.prog == 3:
+            player.inv = 'rush'
+
+        if player.prog == 4:
+            player.inv = 'lamb'
+
         if int(choice) <= optnum:
             if cmd == parts[current].opt[adjust][0]:
                 player.prog = parts[current].path[adjust]
