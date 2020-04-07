@@ -38,9 +38,12 @@ parts = {
     12: Section('They look good! The Near Mint grading on the price sticker isn\'t far off.', ['1) Take this bad boy up to the counter!'], [13]),
     13: Section('You walk up to the counter with some excitement but also \nconsiderable dread that the clerk is going to want to \ntalk to you, a lot.', ['1) Who\'s working?'], [14]),
     14: Section('Phil is working the register today. An old hand for sure, \na hi-fi wizard with waist-length grey hair tied back in an \nintricate braid. He\'s friendly enough, but does not value \nanyone\'s time particularly highly.', ['1) "Hey man! How\'s it going?"', '2) Approach in silence.', '3) Mutter to yourself angrily in the hopes he\'ll be too scared to engage.'], [15, 16, 17]),
-    15: Section('"Hey, brotherman. How\'s it hangin\'. Balmy day out there, man. Balmy. Have people been using that word a lot more lately? I feel like I\'m hearing that shit all day everyday man. We don\'t have THAT many balmy days, but I gotta hand it to \'em today, it\'s a balmy one. Whatcha got there?"', ['1) Put your purchase on the counter.'], [18]),
-    16: Section('"Hello! What did ya find today?"', ['1) Put your purchase on the counter.'], [19]),
-    17: Section('"I can take who\'s next."', ['1) Put your purchase on the counter.'], [20]),
+    15: Section('"Hey, brotherman. How\'s it hangin\'. Balmy day out there, man. Balmy. Have people been using that word a lot more lately? I feel like I\'m hearing that shit all day everyday man. We don\'t have THAT many balmy days, but I gotta hand it to \'em today, it\'s a balmy one. Whatcha got there?"', ['1) Put your purchase on the counter.'], []),
+    16: Section('"Hello! What did ya find today?"', ['1) Put your purchase on the counter.'], [18, 19, 20]),
+    17: Section('"I can take who\'s next."', ['1) Put your purchase on the counter.'], [18, 19, 20]),
+    18: Section('aja', [], []),
+    19: Section('rush', [], []),
+    20: Section('lamb', [], []),
 }
 
 
@@ -110,7 +113,13 @@ while True:
             player.inv = 'lamb'
 
         if int(choice) <= optnum:
-            if cmd == parts[current].opt[adjust][0]:
+            if player.prog == 15 and 'aja' in player.inv and cmd == parts[current].opt[adjust][0]:
+                player.prog = 18
+            elif player.prog == 15 and 'rush' in player.inv and cmd == parts[current].opt[adjust][0]:
+                player.prog = 19
+            elif player.prog == 15 and 'lamb' in player.inv and cmd == parts[current].opt[adjust][0]:
+                player.prog = 20
+            elif cmd == parts[current].opt[adjust][0]:
                 player.prog = parts[current].path[adjust]
         else: 
             print(f'Please choose from the available selections.')
@@ -120,10 +129,10 @@ while True:
 
     choicehandler(cmd)
 
-    def choicehandler(choice):
-        adjust = int(choice) -1
-        if cmd == parts[current].opt[adjust][0]:
-            player.prog = parts[current].path[adjust]
-        else: 
-            print('I didn\'t understand that.')
+    # def choicehandler(choice):
+    #     adjust = int(choice) -1
+    #     if cmd == parts[current].opt[adjust][0]:
+    #         player.prog = parts[current].path[adjust]
+    #     else: 
+    #         print('I didn\'t understand that.')
 
