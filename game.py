@@ -38,9 +38,9 @@ parts = {
     12: Section('They look good! The Near Mint grading on the price sticker isn\'t far off.', ['1) Take this bad boy up to the counter!'], [13]),
     13: Section('You walk up to the counter with some excitement but also \nconsiderable dread that the clerk is going to want to \ntalk to you, a lot.', ['1) Who\'s working?'], [14]),
     14: Section('Phil is working the register today. An old hand for sure, \na hi-fi wizard with waist-length grey hair tied back in an \nintricate braid. He\'s friendly enough, but does not value \nanyone\'s time particularly highly.', ['1) "Hey man! How\'s it going?"', '2) Approach in silence.', '3) Mutter to yourself angrily in the hopes he\'ll be too scared to engage.'], [15, 16, 17]),
-    15: Section('"Hey, brotherman. How\'s it hangin\'. Balmy day out there, \nman. Balmy. Have people been using that word a lot more \nlately? I feel like I\'m hearing that shit all day \neveryday man. We don\'t have THAT many balmy days, but I \ngotta hand it to \'em today, it\'s a balmy one. \n\nWhatcha got there?"', ['1) Put your purchase on the counter.'], []),
-    16: Section('"Hello! What did ya find today?"', ['1) Put your purchase on the counter.'], []),
-    17: Section('"I can take who\'s next."', ['1) Put your purchase on the counter.'], []),
+    15: Section('"Hey, brotherman. How\'s it hangin\'. Balmy day out there, \nman. Balmy. Have people been using that word a lot more \nlately? I feel like I\'m hearing that shit all day \neveryday man. We don\'t have THAT many balmy days, but I \ngotta hand it to \'em today, it\'s a balmy one. \n\nWhatcha got there?"', ['1) Put your purchase on the counter.'], [18, 19, 20]),
+    16: Section('"Hello! What did ya find today?"', ['1) Put your purchase on the counter.'], [18, 19, 20]),
+    17: Section('"I can take who\'s next."', ['1) Put your purchase on the counter.'], [18, 19, 20]),
     18: Section('"Aja. Nice, man. Classic. Did you know they didn\'t want \nPurdie to do a shuffle on \'Home At Last\' but he managed \nto sneak it in anyway?? That guy was a trip, man. He\'d \nset up little signs next to his kit that said shit like \n"YOU DID IT, YOU HIRED THE HITMAKER." I love that shit \nman. Have you read \'Reeling in the Years\'? \'Major Dudes\' \nis okay but it\'s mostly old Rolling Stone reviews and \nshit. \'Eminent Hipsters\' is fun if you dig Fagen \nrambling on about jazz and being a crabby old bastard. \nThat 33 1/3 book is fine too but I\'d skip it and just \nwatch the \'Classic Albums\' documentary. It\'s on YouTube \nwith Japanese subtitles for some reason, but it hasn\'t \nbeen copyright flagged yet."', ['1) "Oh really? Nice. That\'s cool man."', '2) "Yes. I know all this."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 23]),
     19: Section('Moving Pictures, unimpeachable man, truly unimpeachable. \nHow do you get two songs like Tom Sawyer and Limelight \non the same record? It\'s almost unfair. I got so into \nthis band and then I\'m reading along with the lyrics on \n2112 and they thank Ayn Rand...? The GENIUS of Ayn \nRand....!?!? Broke my heart, man. How can ya be so \nprogressive musically and so back-asswards in the \npolitical realm.', ['1) "I dunno, man. That\'s rough."', '2) "Yeah."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 23]),
     20: Section('"And the Laaaaaaaamb.... Lies Dowwwwwwwn.... on \nBroo-OO-ooadway!! Hell yeah man. Gabriel\'s last stand. \nCarpet Crawlers is a stone classic, man. You ever see the \nlive show they did where he tells that trippy story before \ngoing into Supper\'s Ready? Is that on here (*looks at \nsleeve*) ah shit, that\'s right it\'s on Foxtrot. Another \nheavy one. Did you know Eno worked on this one? Makes sense \nif you look at the hair they were both sporting at the time."', ['1) "Oh really? Nice. That\'s cool man."', '2) "Yes. I know all this."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 23]),
@@ -49,6 +49,7 @@ parts = {
     23: Section('...\n\nOkay after tax, that\'ll be $34.98.', ['1) Pay the man.'], []),
 }
 
+anomalies = [15, 16, 17]
 
 welcome = 'Welcome to AUDIOPHILIA, the game of hi-fi perfection. Please enter your name, or LOAD to load an existing game.'
 
@@ -102,6 +103,17 @@ while True:
 
     cmd = input("-->")
 
+    def anomalyhandler(choice):
+        if player.prog in anomalies:
+            if 'aja' in player.inv and choice == 1:
+                 player.prog = parts[current].path[0]
+            elif 'rush' in player.inv and choice == 1:
+                 player.prog = parts[current].path[1]
+            elif 'lamb' in player.inv and choice == 1:
+                 player.prog = parts[current].path[2]
+        else:
+            pass
+
     def choicehandler(choice):
         adjust = int(choice) -1
         optnum = len(parts[current].opt)
@@ -115,26 +127,26 @@ while True:
         if player.prog == 4:
             player.inv = 'lamb'
 
-        if int(choice) <= optnum:
-            if player.prog == 15 and 'aja' in player.inv and cmd == parts[current].opt[adjust][0]:
-                player.prog = 18
-            elif player.prog == 15 and 'rush' in player.inv and cmd == parts[current].opt[adjust][0]:
-                player.prog = 19
-            elif player.prog == 15 and 'lamb' in player.inv and cmd == parts[current].opt[adjust][0]:
-                player.prog = 20
-            elif player.prog == 16 and 'aja' in player.inv and cmd == parts[current].opt[adjust][0]:
-                player.prog = 18
-            elif player.prog == 16 and 'rush' in player.inv and cmd == parts[current].opt[adjust][0]:
-                player.prog = 19
-            elif player.prog == 16 and 'lamb' in player.inv and cmd == parts[current].opt[adjust][0]:
-                player.prog = 20
-            elif player.prog == 17 and 'aja' in player.inv and cmd == parts[current].opt[adjust][0]:
-                player.prog = 18
-            elif player.prog == 17 and 'rush' in player.inv and cmd == parts[current].opt[adjust][0]:
-                player.prog = 19
-            elif player.prog == 17 and 'lamb' in player.inv and cmd == parts[current].opt[adjust][0]:
-                player.prog = 20
-            elif cmd == parts[current].opt[adjust][0]:
+        if int(choice) <= optnum and player.prog not in anomalies:
+            # if player.prog == 15 and 'aja' in player.inv and cmd == parts[current].opt[adjust][0]:
+            #     player.prog = 18
+            # elif player.prog == 15 and 'rush' in player.inv and cmd == parts[current].opt[adjust][0]:
+            #     player.prog = 19
+            # elif player.prog == 15 and 'lamb' in player.inv and cmd == parts[current].opt[adjust][0]:
+            #     player.prog = 20
+            # elif player.prog == 16 and 'aja' in player.inv and cmd == parts[current].opt[adjust][0]:
+            #     player.prog = 18
+            # elif player.prog == 16 and 'rush' in player.inv and cmd == parts[current].opt[adjust][0]:
+            #     player.prog = 19
+            # elif player.prog == 16 and 'lamb' in player.inv and cmd == parts[current].opt[adjust][0]:
+            #     player.prog = 20
+            # elif player.prog == 17 and 'aja' in player.inv and cmd == parts[current].opt[adjust][0]:
+            #     player.prog = 18
+            # elif player.prog == 17 and 'rush' in player.inv and cmd == parts[current].opt[adjust][0]:
+            #     player.prog = 19
+            # elif player.prog == 17 and 'lamb' in player.inv and cmd == parts[current].opt[adjust][0]:
+            #     player.prog = 20
+            if cmd == parts[current].opt[adjust][0]:
                 player.prog = parts[current].path[adjust]
         else: 
             print(f'Please choose from the available selections.')
@@ -142,6 +154,7 @@ while True:
     if cmd == "q" or cmd == "Q":
         break
 
+    anomalyhandler(cmd)
     choicehandler(cmd)
 
     # def choicehandler(choice):
