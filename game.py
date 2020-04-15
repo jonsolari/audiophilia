@@ -103,16 +103,13 @@ while True:
 
     cmd = input("-->")
 
-    def anomalyhandler(choice):
-        if player.prog in anomalies:
-            if 'aja' in player.inv and choice == 1:
-                 player.prog = parts[current].path[0]
-            elif 'rush' in player.inv and choice == 1:
-                 player.prog = parts[current].path[1]
-            elif 'lamb' in player.inv and choice == 1:
-                 player.prog = parts[current].path[2]
-        else:
-            pass
+    # def anomalyhandler(choice):
+    #     adjust = int(choice) -1
+    #     optnum = len(parts[current].opt)
+
+  
+    #     else:
+    #         pass
 
     def choicehandler(choice):
         adjust = int(choice) -1
@@ -127,7 +124,14 @@ while True:
         if player.prog == 4:
             player.inv = 'lamb'
 
-        if int(choice) <= optnum and player.prog not in anomalies:
+        if int(choice) <= optnum and player.prog in anomalies:
+            if 'aja' in player.inv and cmd == 1:
+                 player.prog = parts[current].path[0]
+            elif 'rush' in player.inv and cmd == 1:
+                 player.prog = parts[current].path[1]
+            elif 'lamb' in player.inv and cmd == 1:
+                 player.prog = parts[current].path[2]
+        elif int(choice) <= optnum and player.prog not in anomalies:
             # if player.prog == 15 and 'aja' in player.inv and cmd == parts[current].opt[adjust][0]:
             #     player.prog = 18
             # elif player.prog == 15 and 'rush' in player.inv and cmd == parts[current].opt[adjust][0]:
@@ -154,8 +158,9 @@ while True:
     if cmd == "q" or cmd == "Q":
         break
 
-    anomalyhandler(cmd)
+    
     choicehandler(cmd)
+    # anomalyhandler(cmd)
 
     # def choicehandler(choice):
     #     adjust = int(choice) -1
