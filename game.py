@@ -160,12 +160,6 @@ while True:
 
     
     choicehandler(cmd)
-    # anomalyhandler(cmd)
+    
 
-    # def choicehandler(choice):
-    #     adjust = int(choice) -1
-    #     if cmd == parts[current].opt[adjust][0]:
-    #         player.prog = parts[current].path[adjust]
-    #     else: 
-    #         print('I didn\'t understand that.')
 
