@@ -81,14 +81,14 @@ while True:
 
     current = player.prog
     
-    print()
-    print()
-    print()
-    print()
-    print()
-    print()
-    print()
-    print()
+    # print()
+    # print()
+    # print()
+    # print()
+    # print()
+    # print()
+    # print()
+    # print()
     
     print(parts[current].desc)
     
@@ -125,31 +125,13 @@ while True:
             player.inv = 'lamb'
 
         if int(choice) <= optnum and player.prog in anomalies:
-            if 'aja' in player.inv and cmd == 1:
-                 player.prog = parts[current].path[0]
-            elif 'rush' in player.inv and cmd == 1:
-                 player.prog = parts[current].path[1]
-            elif 'lamb' in player.inv and cmd == 1:
-                 player.prog = parts[current].path[2]
+            if 'aja' in player.inv and int(choice) == 1:
+                player.prog = parts[current].path[0]
+            elif 'rush' in player.inv and int(choice) == 1:
+                player.prog = parts[current].path[1]
+            elif 'lamb' in player.inv and int(choice) == 1:
+                player.prog = parts[current].path[2]
         elif int(choice) <= optnum and player.prog not in anomalies:
-            # if player.prog == 15 and 'aja' in player.inv and cmd == parts[current].opt[adjust][0]:
-            #     player.prog = 18
-            # elif player.prog == 15 and 'rush' in player.inv and cmd == parts[current].opt[adjust][0]:
-            #     player.prog = 19
-            # elif player.prog == 15 and 'lamb' in player.inv and cmd == parts[current].opt[adjust][0]:
-            #     player.prog = 20
-            # elif player.prog == 16 and 'aja' in player.inv and cmd == parts[current].opt[adjust][0]:
-            #     player.prog = 18
-            # elif player.prog == 16 and 'rush' in player.inv and cmd == parts[current].opt[adjust][0]:
-            #     player.prog = 19
-            # elif player.prog == 16 and 'lamb' in player.inv and cmd == parts[current].opt[adjust][0]:
-            #     player.prog = 20
-            # elif player.prog == 17 and 'aja' in player.inv and cmd == parts[current].opt[adjust][0]:
-            #     player.prog = 18
-            # elif player.prog == 17 and 'rush' in player.inv and cmd == parts[current].opt[adjust][0]:
-            #     player.prog = 19
-            # elif player.prog == 17 and 'lamb' in player.inv and cmd == parts[current].opt[adjust][0]:
-            #     player.prog = 20
             if cmd == parts[current].opt[adjust][0]:
                 player.prog = parts[current].path[adjust]
         else: 
