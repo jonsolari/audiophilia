@@ -52,22 +52,26 @@ parts = {
     26: Section('TK final screen about aja, and the total', ['1) Pay the man.'], [29]),
     27: Section('TK final screen about rush, and the total', ['1) Pay the man.'], [29]),
     28: Section('TK final screen about genesis, and the total', ['1) Pay the man.'], [29]),
-    29: Section('TK shopkeep bids you farewell!', ['1) Leave the shop.'], [28]),
-    30: Section('TK description of your sad car, what you\'re thinking about on the ride home', ['1) Leave the shop.'], [28]),
+    29: Section('TK shopkeep bids you farewell!', ['1) Leave the shop.'], [30]),
+    30: Section('TK description of your sad car, what you\'re thinking about on the ride home. you\'re on main street and your cat is almost out of food', ['1) Drive to the pet store.'], [31, 32, 33]),
+    31: Section('TK you go in and get the cat food. You have \'Limelight\' stuck in your head though-- you probably should have bought Moving Pictures instead.',['1) Goddamnit.'],[34]),
+    32: Section('TK you go in and get the cat food. You have \'Carpet Crawlers\' stuck in your head though-- you probably should have bought The Lamb Lies Down on Broadway instead.',['1) Goddamnit.'],[34]),
+    33: Section('TK you go in and get the cat food. You have \'Peg\' stuck in your head though-- you probably should have bought Aja instead.',['1) Goddamnit.'],[34]),
+    34: Section('TK you drive the rest of the way ohome.',['1) Pull into the driveway.'],[])
 }
 
-anomalies = [15, 16, 17]
+anomalies = [15, 16, 17, 30]
 
 welcome = 'Welcome to AUDIOPHILIA, the game of hi-fi perfection. Please enter your name, or LOAD to load an existing game.'
 
-print()
-print()
-print()
-print()
-print()
-print()
-print()
-print()
+# print()
+# print()
+# print()
+# print()
+# print()
+# print()
+# print()
+# print()
 print(welcome)
 
 intro = input('-->')
@@ -117,10 +121,10 @@ while True:
 
         if player.prog == 2:
             player.inv = 'aja'
-
+            
         if player.prog == 3:
             player.inv = 'rush'
-
+            
         if player.prog == 4:
             player.inv = 'lamb'
 
