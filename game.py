@@ -23,8 +23,8 @@ class Section:
         self.path = path
 
 parts = {
-    0: Section('You are in the dusty stacks of your favorite record store.', ['1) Dig in some crates'], [1]),
-    1: Section('You\'ve narrowed it down to three titles.', ['1) ' + '\033[31m' + 'Aja by Steely Dan'+'\033[0m', '2) ' + '\033[32m'+'Moving Pictures by Rush' + '\033[0m', '3) ' + '\033[34m'+'The Lamb Lies Down on Broadway by Genesis'+'\033[0m',], [2, 3, 4]),
+    0: Section('You are in the dusty stacks of your favorite record store. TK description of the store. sun-faded promo posters they refuse to sell, a bunch of issues of old zines & record review books, a weird amount of 90s porno mags in with all that', ['1) Dig in some crates'], [1]),
+    1: Section('You\'ve narrowed it down to three titles. TK Warning about your choice here heavily influencing your future! or something. TBD if this will be true', ['1) ' + '\033[31m' + 'Aja by Steely Dan'+'\033[0m', '2) ' + '\033[32m'+'Moving Pictures by Rush' + '\033[0m', '3) ' + '\033[34m'+'The Lamb Lies Down on Broadway by Genesis'+'\033[0m',], [2, 3, 4]),
     2: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [5]),
     3: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [6]),
     4: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [7]),
@@ -42,11 +42,18 @@ parts = {
     16: Section('"Hello! What did ya find today?"', ['1) Put your purchase on the counter.'], [18, 19, 20]),
     17: Section('"I can take who\'s next."', ['1) Put your purchase on the counter.'], [18, 19, 20]),
     18: Section('"Aja. Nice, man. Classic. Did you know they didn\'t want \nPurdie to do a shuffle on \'Home At Last\' but he managed \nto sneak it in anyway?? That guy was a trip, man. He\'d \nset up little signs next to his kit that said shit like \n"YOU DID IT, YOU HIRED THE HITMAKER." I love that shit \nman. Have you read \'Reeling in the Years\'? \'Major Dudes\' \nis okay but it\'s mostly old Rolling Stone reviews and \nshit. \'Eminent Hipsters\' is fun if you dig Fagen \nrambling on about jazz and being a crabby old bastard. \nThat 33 1/3 book is fine too but I\'d skip it and just \nwatch the \'Classic Albums\' documentary. It\'s on YouTube \nwith Japanese subtitles for some reason, but it hasn\'t \nbeen copyright flagged yet."', ['1) "Oh really? Nice. That\'s cool man."', '2) "Yes. I know all this."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 23]),
-    19: Section('Moving Pictures, unimpeachable man, truly unimpeachable. \nHow do you get two songs like Tom Sawyer and Limelight \non the same record? It\'s almost unfair. I got so into \nthis band and then I\'m reading along with the lyrics on \n2112 and they thank Ayn Rand...? The GENIUS of Ayn \nRand....!?!? Broke my heart, man. How can ya be so \nprogressive musically and so back-asswards in the \npolitical realm.', ['1) "I dunno, man. That\'s rough."', '2) "Yeah."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 23]),
-    20: Section('"And the Laaaaaaaamb.... Lies Dowwwwwwwn.... on \nBroo-OO-ooadway!! Hell yeah man. Gabriel\'s last stand. \nCarpet Crawlers is a stone classic, man. You ever see the \nlive show they did where he tells that trippy story before \ngoing into Supper\'s Ready? Is that on here (*looks at \nsleeve*) ah shit, that\'s right it\'s on Foxtrot. Another \nheavy one. Did you know Eno worked on this one? Makes sense \nif you look at the hair they were both sporting at the time."', ['1) "Oh really? Nice. That\'s cool man."', '2) "Yes. I know all this."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 23]),
-    21: Section('', [''], []),
-    22: Section('', [''], []),
-    23: Section('...\n\nOkay after tax, that\'ll be $34.98.', ['1) Pay the man.'], []),
+    19: Section('Moving Pictures, unimpeachable man, truly unimpeachable. \nHow do you get two songs like Tom Sawyer and Limelight \non the same record? It\'s almost unfair. I got so into \nthis band and then I\'m reading along with the lyrics on \n2112 and they thank Ayn Rand...? The GENIUS of Ayn \nRand....!?!? Broke my heart, man. How can ya be so \nprogressive musically and so back-asswards in the \npolitical realm.', ['1) "I dunno, man. That\'s rough."', '2) "Yeah."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 24]),
+    20: Section('"And the Laaaaaaaamb.... Lies Dowwwwwwwn.... on \nBroo-OO-ooadway!! Hell yeah man. Gabriel\'s last stand. \nCarpet Crawlers is a stone classic, man. You ever see the \nlive show they did where he tells that trippy story before \ngoing into Supper\'s Ready? Is that on here (*looks at \nsleeve*) ah shit, that\'s right it\'s on Foxtrot. Another \nheavy one. Did you know Eno worked on this one? Makes sense \nif you look at the hair they were both sporting at the time."', ['1) "Oh really? Nice. That\'s cool man."', '2) "Yes. I know all this."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 25]),
+    21: Section('TK one more screen of rambling and then he gives you the total', ['1) Pay the man.'], [29]),
+    22: Section('TK shopkeep looks a bit stung and gives you the total', ['1) Pay the man.'], [29]),
+    23: Section('TK another screen about aja', ['1) ...'], [26]),
+    24: Section('TK another screen about rush', ['1) ...'], [27]),
+    25: Section('TK another screen about genesis', ['1) ...'], [28]),
+    26: Section('TK final screen about aja, and the total', ['1) Pay the man.'], [29]),
+    27: Section('TK final screen about rush, and the total', ['1) Pay the man.'], [29]),
+    28: Section('TK final screen about genesis, and the total', ['1) Pay the man.'], [29]),
+    29: Section('TK shopkeep bids you farewell!', ['1) Leave the shop.'], [28]),
+    30: Section('TK description of your sad car, what you\'re thinking about on the ride home', ['1) Leave the shop.'], [28]),
 }
 
 anomalies = [15, 16, 17]
@@ -103,13 +110,6 @@ while True:
 
     cmd = input("-->")
 
-    # def anomalyhandler(choice):
-    #     adjust = int(choice) -1
-    #     optnum = len(parts[current].opt)
-
-  
-    #     else:
-    #         pass
 
     def choicehandler(choice):
         adjust = int(choice) -1
