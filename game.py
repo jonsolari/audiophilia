@@ -71,7 +71,16 @@ parts = {
     44: Section('TK very sad bachelor snack', ['1) Now you\'re ready to listen, to appreciate.'], [45]),
     45: Section('TK description of listening room', ['1) Turn everything on and let it warm up for a good half hour. Lot of tubes in there, lot of voltage that needs stabilizing.'], [46]),
     46: Section('TK this will be a while', ['1) Sit in silence.'], [47]),
-    47: Section('TK a half hour passes while you think about the day you\'ve had, about your ex-wife, what the weather might be tomorrow.', [], []),
+    47: Section('TK a half hour passes while you think about things.', ['1) Think about your hi-fi setup.', '2) Think about your ex-wife.', '3) Check tomorrow\'s weather.'], [48, 49, 50]),
+    48: Section('TK describe setup at length, whine about things you don\'t yet have', ['1) Everything should be warmed up by now.'], [56]),
+    49: Section('TK wax nostalgic about your wife', ['1) How did you two meet again?'], [51]),
+    50: Section('TK check your smartphone before remembering it might be adding unwanted electrical interference to your otherwise sealed-off listening room. (the weather will be fine tomorrow)', ['1) Put your phone in the other room.'], [54]),
+    51: Section('TK how you met your wife through friends and it was awkward at first but you fought through that and got to know each other quite intimately', ['1) Remember last summer at Cape Cod?'], [52]),
+    52: Section('TK last summer at cape cod', ['1) Where did it all go wrong?'], [53]),
+    53: Section('TK where it all went wrong. you stopped listening, dove into your interests too much, became a kind of shadow of yourself', ['1) Tubes are probably warm by now. Let\'s hear this new disc.'], [56]),
+    54: Section('TK put your phone down on the coffee table, airplane mode just to be extra safe.', ['1) Pet Miles'], [55]),
+    55: Section('TK you pet Miles. he\'ll always be there for you.', ['1) Head back in and listen to your new record!'], [56]),
+    56: Section('TK careful unsheathing of the LP', ['1) '], []),
 }
 
 anomalies = [15, 16, 17, 30]
