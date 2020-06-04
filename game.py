@@ -67,7 +67,7 @@ parts = {
     40: Section('TK chips tells you about his kids at length', ['1) Wrap it up here and go inside.'], [42]),
     41: Section('TK chips tells you about his wife, makes some uncomfortable comments', ['1) Wrap it up here and go inside'], [42]),
     42: Section('TK description of your deeply sad apartment', ['1) Feed your cat, Miles'], [43]),
-    43: Section('TK description of your cat and why you named him that', ['1) Move to the listening room.', '2) Have a nice snack first.'], []),
+    43: Section('TK description of your cat and why you named him that', ['1) Move to the listening room.', '2) Have a nice snack first.'], [45, 44]),
     44: Section('TK very sad bachelor snack', ['1) Now you\'re ready to listen, to appreciate.'], [45]),
     45: Section('TK description of listening room', ['1) Turn everything on and let it warm up for a good half hour. Lot of tubes in there, lot of voltage that needs stabilizing.'], [46]),
     46: Section('TK this will be a while', ['1) Sit in silence.'], [47]),
