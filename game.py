@@ -14,6 +14,7 @@ class Player:
 player = Player('', 0, [])
 name = player.name
 
+
 # Progression attribute will increment as you go on, and this will dictate what's shown as a prompt
 
 class Section: 
@@ -59,10 +60,18 @@ parts = {
     33: Section('TK you go in and get the cat food. You have \'Peg\' stuck in your head though-- you probably should have bought Aja instead.',['1) Goddamnit.'],[34]),
     34: Section('TK you drive the rest of the way home.',['1) Pull into your parking spot.'],[35]),
     35: Section('TK your neighbor Chip accosts you as you\'re about to put the key in the lock', ['1) engage pleasantly', '2) nod, mumble something, and go inside', '3) kind of in a hurry right now', '4) fuck off, Chip'], [36, 37, 38, 39]),
-    36: Section('', ['1) '], []),
-    37: Section('', ['1) '], []),
-    38: Section('', ['1) '], []),
-    39: Section('What did you just say to me you piece of shit? Nobody LIKES you here. Did you know that? I\'m glad I slept with your wife last year. Go the fuck inside and listen to your jazz fusion whatever-the-fuck. If I hear that shit through the walls again I\'m gonna knock down this door and break your goddamn legs. FUCK you', ['1) Go inside.'], []),
+    36: Section('TK nice chip', ['1) Ask about his kids', '2) Ask about his wife', '3) Wrap things up and go inside.'], [40, 41, 42]),
+    37: Section('TK chip calls after you', ['1) Close the door and lock it.'], [42]),
+    38: Section('TK chip seems sad', ['1) Close the door and lock it.'], [42]),
+    39: Section('What did you just say to me you piece of shit? Nobody LIKES you here. Did you know that? I\'m glad I slept with your wife last year. Go the fuck inside and listen to your jazz fusion whatever-the-fuck. If I hear that shit through the walls again I\'m gonna knock down this door and break your goddamn legs. FUCK you', ['1) Go inside.'], [42]),
+    40: Section('TK chips tells you about his kids at length', ['1) Wrap it up here and go inside.'], [42]),
+    41: Section('TK chips tells you about his wife, makes some uncomfortable comments', ['1) Wrap it up here and go inside'], [42]),
+    42: Section('TK description of your deeply sad apartment', ['1) Feed your cat, Miles'], [43]),
+    43: Section('TK description of your cat and why you named him that', ['1) Move to the listening room.', '2) Have a nice snack first.'], []),
+    44: Section('TK very sad bachelor snack', ['1) Now you\'re ready to listen, to appreciate.'], [45]),
+    45: Section('TK description of listening room', ['1) Turn everything on and let it warm up for a good half hour. Lot of tubes in there, lot of voltage that needs stabilizing.'], [46]),
+    46: Section('TK this will be a while', ['1) Sit in silence.'], [47]),
+    47: Section('TK a half hour passes while you think about the day you\'ve had, about your ex-wife, what the weather might be tomorrow.', [], []),
 }
 
 anomalies = [15, 16, 17, 30]
