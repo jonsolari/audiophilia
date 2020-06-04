@@ -57,7 +57,12 @@ parts = {
     31: Section('TK you go in and get the cat food. You have \'Limelight\' stuck in your head though-- you probably should have bought Moving Pictures instead.',['1) Goddamnit.'],[34]),
     32: Section('TK you go in and get the cat food. You have \'Carpet Crawlers\' stuck in your head though-- you probably should have bought The Lamb Lies Down on Broadway instead.',['1) Goddamnit.'],[34]),
     33: Section('TK you go in and get the cat food. You have \'Peg\' stuck in your head though-- you probably should have bought Aja instead.',['1) Goddamnit.'],[34]),
-    34: Section('TK you drive the rest of the way ohome.',['1) Pull into the driveway.'],[])
+    34: Section('TK you drive the rest of the way home.',['1) Pull into your parking spot.'],[35]),
+    35: Section('TK your neighbor Chip accosts you as you\'re about to put the key in the lock', ['1) engage pleasantly', '2) nod, mumble something, and go inside', '3) kind of in a hurry right now', '4) fuck off, Chip'], [36, 37, 38, 39]),
+    36: Section('', ['1) '], []),
+    37: Section('', ['1) '], []),
+    38: Section('', ['1) '], []),
+    39: Section('What did you just say to me you piece of shit? Nobody LIKES you here. Did you know that? I\'m glad I slept with your wife last year. Go the fuck inside and listen to your jazz fusion whatever-the-fuck. If I hear that shit through the walls again I\'m gonna knock down this door and break your goddamn legs. FUCK you', ['1) Go inside.'], []),
 }
 
 anomalies = [15, 16, 17, 30]
