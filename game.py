@@ -150,9 +150,17 @@ while True:
     print()
     
     # FOR MIDI PLAYER + CHOICE DELAY
-    if player.prog == 69 or player.prog == 70 or player.prog == 71:
+    if player.prog == 69:
         pygame.mixer.music.play()
-        time.sleep(30)
+        time.sleep(30) #TBD
+
+    if player.prog == 70:
+        pygame.mixer.music.play()
+        time.sleep(30) #TBD
+
+    if player.prog == 71:
+        pygame.mixer.music.play()
+        time.sleep(30) #TBD
 
     for i in parts[current].opt:
         print(i)
