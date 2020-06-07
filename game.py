@@ -85,10 +85,26 @@ parts = {
     53: Section('TK where it all went wrong. you stopped listening, dove into your interests too much, became a kind of shadow of yourself', ['1) Tubes are probably warm by now. Let\'s hear this new disc.'], [56]),
     54: Section('TK put your phone down on the coffee table, airplane mode just to be extra safe.', ['1) Pet Miles'], [55]),
     55: Section('TK you pet Miles. he\'ll always be there for you.', ['1) Head back in and listen to your new record!'], [56]),
-    56: Section('TK careful unsheathing of the LP', ['1) '], []),
+    56: Section('TK careful unsheathing of the LP', ['1) Let\'s get this cleaned up.'], [57]),
+    # 00: Section('TK ', ['1) '], []),
+    57: Section('TK meticulous vacuum process', ['1) Pop it on the turntable!'], [58]),
+    58: Section('TK looks squeaky clean!', ['1) Throw a nice heavy weight on the center label.'], [59]),
+    59: Section('TK nothing\'s gonna keep THIS disc from being perfectly aligned!', ['1) What about static though?'], [60]),
+    60: Section('TK anti-static brush', ['1) Is the needle clean?'], [61]),
+    61: Section('TK melamine trick for the needle, up and down a few times', ['1) Sit in your listening chair,'], [62]),
+    62: Section('TK you ease into your favorite listening chair, mid-range IKEA priced. Wait, what\'s that buzz?', ['1) Check the speaker wires', '2) Check the turntable ground wire', '3) Turn off all the lights in your apartment in case they\'re interfering somehow.'], [63, 64, 65]),
+    63: Section('TK speaker wires - they look ok! no spindly shits poking out.', ['1) turntable', '2) all the lights'], [64, 67]),
+    64: Section('TK it came loose!', ['1) Reattach that guy and sit down.'], [68]),
+    65: Section('TK turn off all the lights. that wasn\'t it', ['1) speaker wires', '2) turntable'], [66, 64]),
+    66: Section('TK speakers weren\'t it 2', ['1) '], [64]),
+    67: Section('TK light weren\'t it 2', ['1) '], [64]),
+    68: Section('TK time to listen!', ['1) Drop the needle!'], [69, 70, 71]),
+    69: Section('TK hell yeah, side 1 track 1 of AJA.... \'Black Cow\'', ['1) Take the needle off the record.'], []),
+    70: Section('TK TK hell yeah, side 1 track 1 of MOVING PICTURES.... \'Tom Sawyer\'', ['1) Take the needle off the record.'], []),
+    71: Section('TK TK hell yeah, side 1 track 1 of THE LAMB LIES DOWN ON BROADWAY.... title track\'\The Lamb Lies Down on Broadway''', ['1) Take the needle off the record.'], []),
 }
 
-anomalies = [15, 16, 17, 30]
+anomalies = [15, 16, 17, 30, 68]
 
 welcome = 'Welcome to AUDIOPHILIA, the game of hi-fi perfection. Please enter your name, or LOAD to load an existing game.'
 
@@ -134,8 +150,9 @@ while True:
     print()
     
     # FOR MIDI PLAYER + CHOICE DELAY
-    # if player.prog == 5(TK):
-    #     time.sleep(5)
+    if player.prog == 69 or player.prog == 70 or player.prog == 71:
+        pygame.mixer.music.play()
+        time.sleep(30)
 
     for i in parts[current].opt:
         print(i)
@@ -154,15 +171,18 @@ while True:
         if player.prog == 2:
             player.inv = 'aja'
             # THIS WORKS for playing a MIDI in the fucking command line, which, lol
-            # pygame.mixer.init()
-            # pygame.mixer.music.load('multimedia/cow.mid')
-            # pygame.mixer.music.play()
+            pygame.mixer.init()
+            pygame.mixer.music.load('multimedia/cow.mid')
             
         if player.prog == 3:
             player.inv = 'rush'
+            pygame.mixer.init()
+            pygame.mixer.music.load('multimedia/tom.mid')
             
         if player.prog == 4:
             player.inv = 'lamb'
+            pygame.mixer.init()
+            pygame.mixer.music.load('multimedia/lamb.mid')
 
         if int(choice) <= optnum and player.prog in anomalies:
             if 'aja' in player.inv and int(choice) == 1:
