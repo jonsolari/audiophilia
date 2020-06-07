@@ -1,3 +1,6 @@
+import time
+import pygame
+
 # STRUCTURE
 
 # Player is an object, but only to have inventory & progression through the story
@@ -128,6 +131,10 @@ while True:
     
     print()
     
+    # FOR MIDI PLAYER + CHOICE DELAY
+    # if player.prog == 5(TK):
+    #     time.sleep(5)
+
     for i in parts[current].opt:
         print(i)
     
@@ -144,6 +151,10 @@ while True:
 
         if player.prog == 2:
             player.inv = 'aja'
+            # THIS WORKS for playing a MIDI in the fucking command line, which, lol
+            # pygame.mixer.init()
+            # pygame.mixer.music.load('multimedia/cow.mid')
+            # pygame.mixer.music.play()
             
         if player.prog == 3:
             player.inv = 'rush'
