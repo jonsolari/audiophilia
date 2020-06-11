@@ -19,6 +19,29 @@ class Player:
 player = Player('', 0, [])
 name = player.name
 
+def linebreaks(string):
+
+    newstring = ''
+    counter = 0
+
+    for i in string:
+        if i == ' ':
+            counter += 1
+
+        if i == '-':
+            counter += 1
+
+        if i == '\n':
+            counter = 0
+
+        if counter == 9:
+            newstring += i + '\n'
+            counter = 0
+        else:
+            newstring += i
+    
+    return newstring
+
 
 # Progression attribute will increment as you go on, and this will dictate what's shown as a prompt
 
@@ -29,27 +52,27 @@ class Section:
         self.path = path
 
 parts = {
-    0: Section('You are in your favorite record store. It\'s a basement-level space, but somehow still has a ton of deeply sun-faded promo posters (which they refuse to sell you, no matter how many times you ask). There\'s  a \"book section\" with a bunch of old issues of Rolling Stone and Maximum Rocknroll, some fat little 20th-century-summarizing record review books, a couple Elvis biographies, and a weird amount of 90s porno mags. A box of Grateful Dead bootleg tapes (both audience and soundboard) sits near the counter. The $1 CD wall promises scuffed-up copies of BMG Music Club flotsam, and always more than a few Ani DiFranco selections (why?). There are also, naturally, a ton of used vinyl records for sale.', ['1) Dig in some crates'], [1]),
+    0: Section('You are in your favorite record store. It\'s a basement-level space, but somehow still has a ton of deeply sun-faded promo posters (which they refuse to sell you, no matter how many times you ask). There\'s  a \"book section\" with a bunch of old issues of Rolling Stone and Maximum Rocknroll, some fat little 20th-century-summarizing record review books, a couple Elvis biographies, and a weird amount of 90s porno mags. A box of Grateful Dead bootleg tapes (both audience and soundboard) sits near the counter. The $1 CD wall promises scuffed-up copies of BMG Music Club one-hit-wonder flotsam, and always more than a few Ani DiFranco selections (why?). There are also, naturally, a ton of used vinyl records for sale.', ['1) Dig in some crates'], [1]),
     1: Section('You\'ve narrowed it down to three titles.\n\n\033[33mWARNING:\033[0m Your decision will greatly determine your fate!', ['1) ' + '\033[31m' + 'Aja by Steely Dan'+'\033[0m', '2) ' + '\033[32m'+'Moving Pictures by Rush' + '\033[0m', '3) ' + '\033[34m'+'The Lamb Lies Down on Broadway by Genesis'+'\033[0m',], [2, 3, 4]),
     2: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [5]),
     3: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [6]),
     4: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [7]),
-    5: Section('There\'s a thread on the Steve Hoffman forums with over \n650 posts in it, but you\'re not about to traipse through \nall that bullshit in full, on your smartphone, here at \nthe store. People seem pretty over the moon about an \noriginal pressing with \033[31mAB-1006\033[0m carved into the deadwax.', ['1) Check the deadwax.'], [8]),
-    6: Section('\'The Rush Vinyl Pressing Thread\' on the Steve Hoffman \nforums says to check the deadwax to see if both sides \nhave an \033[32m\'RL\'\033[0m (for \033[32mRobert Ludwig\033[0m). A lot of people are \narguing for various CD masterings too but you\'re not \nabout the digital life anymore, not since dropping well \nover $600 on a turntable cartridge alone.', ['1) Check the deadwax.'], [9]),
-    7: Section('You discreetly (you think) pull out your phone and see \nwhat people are saying about it on the Steve Hoffman \nforums. They all seem to be fawning over the \033[34m200g \nClassic Records reissue\033[0m from 2001. Weird time for vinyl, \nyou almost never see stuff from that era second-hand. \n\nCould this be..?', ['1) Could it?'], [10]),
+    5: Section('There\'s a thread on the Steve Hoffman forums with over 650 posts in it, but you\'re not about to traipse through all that bullshit in full, on your smartphone, here at the store. People seem pretty over the moon about an original pressing with \033[31mAB-1006\033[0m carved into the deadwax.', ['1) Check the deadwax.'], [8]),
+    6: Section('\'The Rush Vinyl Pressing Thread\' on the Steve Hoffman forums says to check the deadwax to see if both sides have an \033[32m\'RL\'\033[0m (for \033[32mRobert Ludwig\033[0m). A lot of people are arguing for various CD masterings too but you\'re not about the digital life anymore, not since dropping well over $600 on a turntable cartridge alone.', ['1) Check the deadwax.'], [9]),
+    7: Section('You discreetly (you think) pull out your phone and see what people are saying about it on the Steve Hoffman forums. They all seem to be fawning over the \033[34m200g Classic Records reissue\033[0m from 2001. Weird time for vinyl, you almost never see stuff from that era second-hand. \n\nCould this be..?', ['1) Could it?'], [10]),
     8: Section('Hell yeah, there it is! \033[31mAB-1006\033[0m!', ['1) Inspect the rest of the disc.'], [11]),
     9: Section('Clear as day on both sides, \033[32m\'RL\'\033[0m! Dutch pressing, apparently.', ['1) Inspect the rest of the disc.'], [11]),
-    10: Section('It could! \033[34m\'Manufactured and Distributed under \nexclusive license to Classic Records\'\033[0m is there \non both the center labels and the back cover, \notherwise it looks like an Atco original. \n\nHell yeah!', ['1) Inspect the discs.'], [12]),
-    11: Section('Looks real clean! Aged for sure, but no big scuffs or \nscratches that you can see.', ['1) Take this bad boy up to the counter!'], [13]),
+    10: Section('It could! \033[34m\'Manufactured and Distributed under exclusive license to Classic Records\'\033[0m is there on both the center labels and the back cover, otherwise it looks like an Atco original. \n\nHell yeah!', ['1) Inspect the discs.'], [12]),
+    11: Section('Looks real clean! Aged for sure, but no big scuffs or scratches that you can see.', ['1) Take this bad boy up to the counter!'], [13]),
     12: Section('They look good! The Near Mint grading on the price sticker isn\'t far off.', ['1) Take this bad boy up to the counter!'], [13]),
-    13: Section('You walk up to the counter with some excitement but also \nconsiderable dread that the clerk is going to want to \ntalk to you, a lot.', ['1) Who\'s working?'], [14]),
-    14: Section('Phil is working the register today. An old hand for sure, \na hi-fi wizard with waist-length grey hair tied back in an \nintricate braid. He\'s friendly enough, but does not value \nanyone\'s time particularly highly.', ['1) "Hey man! How\'s it going?"', '2) Approach in silence.', '3) Mutter to yourself angrily in the hopes he\'ll be too scared to engage.'], [15, 16, 17]),
-    15: Section('"Hey, brotherman. How\'s it hangin\'. Balmy day out there, \nman. Balmy. Have people been using that word a lot more \nlately? I feel like I\'m hearing that shit all day \neveryday man. We don\'t have THAT many balmy days, but I \ngotta give it to \'em today, it\'s a balmy one. \n\nWhatcha got there?"', ['1) Put your purchase on the counter.'], [18, 19, 20]),
+    13: Section('You walk up to the counter with some excitement but also considerable dread that the clerk is going to want to talk to you, a lot.', ['1) Who\'s working?'], [14]),
+    14: Section('Phil is working the register today. An old hand for sure, a hi-fi wizard with waist-length grey hair tied back in an intricate braid. He\'s friendly enough, but does not value anyone\'s time particularly highly.', ['1) "Hey man! How\'s it going?"', '2) Approach in silence.', '3) Mutter to yourself angrily in the hopes he\'ll be too scared to engage.'], [15, 16, 17]),
+    15: Section('"Hey, brotherman. How\'s it hangin\'. Balmy day out there, man. Balmy. Have people been using that word a lot more lately? I feel like I\'m hearing that shit all day everyday man. We don\'t have THAT many balmy days, but I gotta give it to \'em today, it\'s a balmy one. \n\nWhatcha got there?"', ['1) Put your purchase on the counter.'], [18, 19, 20]),
     16: Section('"Hello! What did ya find today?"', ['1) Put your purchase on the counter.'], [18, 19, 20]),
     17: Section('"I can take who\'s next."', ['1) Put your purchase on the counter.'], [18, 19, 20]),
-    18: Section('"Aja. Nice, man. Classic. Did you know they didn\'t want \nPurdie to do a shuffle on \'Home At Last\' but he managed \nto sneak it in anyway?? That guy was a trip, man. He\'d \nset up little signs next to his kit that said shit like \n"YOU DID IT, YOU HIRED THE HITMAKER." I love that shit \nman. Have you read \'Reeling in the Years\'? \'Major Dudes\' \nis okay but it\'s mostly old Rolling Stone reviews and \nshit. \'Eminent Hipsters\' is fun if you dig Fagen \nrambling on about jazz and being a crabby old bastard. \nThat 33 1/3 book is fine too but I\'d skip it and just \nwatch the \'Classic Albums\' documentary. It\'s on YouTube \nwith Japanese subtitles for some reason, but it hasn\'t \nbeen copyright flagged yet."', ['1) "Oh really? Nice. That\'s cool man."', '2) "Yes. I know all this."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 23]),
-    19: Section('Moving Pictures, unimpeachable man, truly unimpeachable. \nHow do you get two songs like Tom Sawyer and Limelight \non the same record? It\'s almost unfair. I got so into \nthis band and then I\'m reading along with the lyrics on \n2112 and they thank Ayn Rand...? The GENIUS of Ayn \nRand....!?!? Broke my heart, man. How can ya be so \nprogressive musically and so back-asswards in the \npolitical realm.', ['1) "I dunno, man. That\'s rough."', '2) "Yeah."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 24]),
-    20: Section('"And the Laaaaaaaamb.... Lies Dowwwwwwwn.... on \nBroo-OO-ooadway!! Hell yeah man. Gabriel\'s last stand. \nCarpet Crawlers is a stone classic, man. You ever see the \nlive show they did where he tells that trippy story before \ngoing into Supper\'s Ready? Is that on here (*looks at \nsleeve*) ah shit, that\'s right it\'s on Foxtrot. Another \nheavy one. Did you know Eno worked on this one? Makes sense \nif you look at the hair they were both sporting at the time."', ['1) "Oh really? Nice. That\'s cool man."', '2) "Yes. I know all this."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 25]),
+    18: Section('"Aja. Nice, man. Classic. Did you know they didn\'t want Purdie to do a shuffle on \'Home At Last\' but he managed to sneak it in anyway?? That guy was a trip, man. He\'d set up little signs next to his kit that said shit like "YOU DID IT, YOU HIRED THE HITMAKER." I love that shit man. Have you read \'Reeling in the Years\'? \'Major Dudes\' is okay but it\'s mostly old Rolling Stone reviews and shit. \'Eminent Hipsters\' is fun if you dig Fagen rambling on about jazz and being a crabby old bastard. That 33 1/3 book is fine too but I\'d skip it and just watch the \'Classic Albums\' documentary. It\'s on YouTube with Japanese subtitles for some reason, but it hasn\'t been copyright flagged yet."', ['1) "Oh really? Nice. That\'s cool man."', '2) "Yes. I know all this."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 23]),
+    19: Section('Moving Pictures, unimpeachable man, truly unimpeachable. How do you get two songs like Tom Sawyer and Limelight on the same record? It\'s almost unfair. I got so into this band and then I\'m reading along with the lyrics on 2112 and they thank Ayn Rand...? The GENIUS of Ayn Rand....!?!? Broke my heart, man. How can ya be so progressive musically and so back-asswards in the political realm.', ['1) "I dunno, man. That\'s rough."', '2) "Yeah."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 24]),
+    20: Section('"And the Laaaaaaaamb.... Lies Dowwwwwwwn.... on Broo-OO-ooadway!! Hell yeah man. Gabriel\'s last stand. Carpet Crawlers is a stone classic, man. You ever see the live show they did where he tells that trippy story before going into Supper\'s Ready? Is that on here (*looks at sleeve*) ah shit, that\'s right it\'s on Foxtrot. Another heavy one. Did you know Eno worked on this one? Makes sense if you look at the hair they were both sporting at the time."', ['1) "Oh really? Nice. That\'s cool man."', '2) "Yes. I know all this."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 25]),
     21: Section('He holds up the sleeve and calls to Jeffery, the teen-aged stock boy. "JEFF! You heard this one yet? Stone classic." \n\nJeff gives a thumbs-up; he\'s either familiar with it or knows well enough to let sleeping tigers lie. \n\n"Kids today, man. The internet! I had to know somebody hip to get into any halfway decent records when I was that young. Pat Boone, Sing Along with Mitch type shit in my parents\' hi-fi all the time, man. Who needs it.\n\n"That\'ll be \033[32m$34.98\033[0m."', ['1) Pay the man.'], [29]),
     22: Section('Phil looks a bit stung; clearly he thought your acquaintance was on its way to proper friendship. He was maybe even going to invite you to the barbecue this weekend, held in the parking lot behind the store (you\'ve always thought that seemed like a cool, scofflaw kind of event). \n\n"Your total is \033[32m$34.98\033[0m."', ['1) Pay the man.'], [29]),
     23: Section('TK another screen about aja', ['1) ...'], [26]),
@@ -145,7 +168,7 @@ while True:
     # print()
     # print()
     
-    print(parts[current].desc)
+    print(linebreaks(parts[current].desc))
     
     print()
     
