@@ -167,7 +167,8 @@ while True:
     # print()
     # print()
     # print()
-    
+    os.system('clear')
+    print()
     print(linebreaks(parts[current].desc))
     
     print()
