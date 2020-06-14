@@ -8,15 +8,16 @@ import pygame
 # Player is an object, but only to have inventory & progression through the story
 
 class Player:
-    def __init__(self, name, prog, inv):
+    def __init__(self, name, prog, inv, err):
         self.name = name
         self.prog = prog
         self.inv = inv
+        self.err = err
 
     def __str__(self):
         return f'{self.name}, {self.prog}, {self.inv}'
 
-player = Player('', 0, [])
+player = Player('', 0, [], False)
 name = player.name
 
 def linebreaks(string):
@@ -159,15 +160,13 @@ while True:
 
     current = player.prog
     
-    # print()
-    # print()
-    # print()
-    # print()
-    # print()
-    # print()
-    # print()
-    # print()
     os.system('clear')
+
+    if player.err == True:
+        print()
+        print('\033[35mPlease choose from the available selections.\033[0m')
+        player.err = False
+
     print()
     print(linebreaks(parts[current].desc))
     
@@ -227,7 +226,7 @@ while True:
             if cmd == parts[current].opt[adjust][0]:
                 player.prog = parts[current].path[adjust]
         else: 
-            print(f'Please choose from the available selections.')
+            player.err = True
 
     if cmd == "q" or cmd == "Q":
         break
