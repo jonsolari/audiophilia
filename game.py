@@ -169,7 +169,7 @@ while True:
     
     os.system('clear')
 
-    print(f'\033[1;30;47mAUDIOPHILIA   Player: {player.name}   Points: {player.points}   Money: ${player.money:.2f}\033[0m')
+    print(f'\033[1;30;47mAUDIOPHILIA   Player: {player.name}   Points: {player.points}   Money: ${player.money:.2f}\033[0m          ')
 
     if player.err == True:
         print()
@@ -212,6 +212,9 @@ while True:
     if player.prog == 71:
         pygame.mixer.music.play()
         time.sleep(30) #TBD
+
+    if player.prog == 72:
+        pygame.mixer.music.stop()
 
     for i in parts[current].opt:
         print(i)
