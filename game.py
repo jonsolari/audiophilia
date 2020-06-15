@@ -55,7 +55,7 @@ class Section:
 parts = {
     # 00: Section('TK ', ['1) '], []),
     0: Section('You are in your favorite record store. It\'s a basement-level space, but somehow still has a ton of deeply sun-faded promo posters (which they refuse to sell you, no matter how many times you ask). There\'s  a \"book section\" with a bunch of old issues of Rolling Stone and Maximum Rocknroll, some fat little 20th-century-summarizing record review books, a couple Elvis biographies, and a weird amount of 90s porno mags. A box of Grateful Dead bootleg tapes (both audience and soundboard) sits near the counter. The $1 CD wall promises scuffed-up copies of BMG Music Club one-hit-wonder flotsam, and always more than a few Ani DiFranco selections (why?). There are also, naturally, a ton of used vinyl records for sale.', ['1) Dig in some crates'], [1]),
-    1: Section('There\'s a \"Beatles\" section only ever has solo George and Ringo albums, and cover compilations like the \'All This and World War II\' soundtrack.\n\nYou\'ve narrowed it down to three titles.\n\n\033[33mWARNING:\033[0m Your decision will greatly determine your fate!', ['1) ' + '\033[31m' + 'Aja by Steely Dan'+'\033[0m', '2) ' + '\033[32m'+'Moving Pictures by Rush' + '\033[0m', '3) ' + '\033[34m'+'The Lamb Lies Down on Broadway by Genesis'+'\033[0m',], [2, 3, 4]),
+    1: Section('There\'s a \"Beatles\" section only ever has solo George and Ringo albums, and cover compilations like the \'All This and World War II\' soundtrack. If you wanted to get down on your knees and crawl, a bunch of forgettable 78s (never any rock n\' roll, and definitely never any "race records") wait for you under the main bins. The few times you\'ve flipped through their decaying paper sleeves, you\'ve worried about potential asbestos content. There is a wall of cassettes but that\'s a 50-50 shot at buying something that\'s melted into a warbly hell in somebody\'s backseat.\n\nDespite all this, the store usually has a few gems. You\'ve narrowed it down to three titles.\n\n\033[33mWARNING:\033[0m Your decision will greatly determine your fate!', ['1) ' + '\033[31m' + 'Aja by Steely Dan'+'\033[0m', '2) ' + '\033[32m'+'Moving Pictures by Rush' + '\033[0m', '3) ' + '\033[34m'+'The Lamb Lies Down on Broadway by Genesis'+'\033[0m',], [2, 3, 4]),
     2: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [5]),
     3: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [6]),
     4: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [7]),
@@ -141,18 +141,12 @@ parts = {
 
 anomalies = [15, 16, 17, 30, 68]
 
-welcome = 'Welcome to AUDIOPHILIA, the game of hi-fi perfection. Please enter your name, or LOAD to load an existing game.'
+welcome = 'Welcome to AUDIOPHILIA, the game of hi-fi perfection.\n\nPlease enter your name, or LOAD to load an existing game.'
 
-# print()
-# print()
-# print()
-# print()
-# print()
-# print()
-# print()
-# print()
+os.system('clear')
+print()
 print(welcome)
-
+print()
 intro = input('-->')
 
 while player.name == '':
