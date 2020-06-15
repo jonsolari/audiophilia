@@ -53,8 +53,9 @@ class Section:
         self.path = path
 
 parts = {
+    # 00: Section('TK ', ['1) '], []),
     0: Section('You are in your favorite record store. It\'s a basement-level space, but somehow still has a ton of deeply sun-faded promo posters (which they refuse to sell you, no matter how many times you ask). There\'s  a \"book section\" with a bunch of old issues of Rolling Stone and Maximum Rocknroll, some fat little 20th-century-summarizing record review books, a couple Elvis biographies, and a weird amount of 90s porno mags. A box of Grateful Dead bootleg tapes (both audience and soundboard) sits near the counter. The $1 CD wall promises scuffed-up copies of BMG Music Club one-hit-wonder flotsam, and always more than a few Ani DiFranco selections (why?). There are also, naturally, a ton of used vinyl records for sale.', ['1) Dig in some crates'], [1]),
-    1: Section('You\'ve narrowed it down to three titles.\n\n\033[33mWARNING:\033[0m Your decision will greatly determine your fate!', ['1) ' + '\033[31m' + 'Aja by Steely Dan'+'\033[0m', '2) ' + '\033[32m'+'Moving Pictures by Rush' + '\033[0m', '3) ' + '\033[34m'+'The Lamb Lies Down on Broadway by Genesis'+'\033[0m',], [2, 3, 4]),
+    1: Section('There\'s a \"Beatles\" section only ever has solo George and Ringo albums, and cover compilations like the \'All This and World War II\' soundtrack.\n\nYou\'ve narrowed it down to three titles.\n\n\033[33mWARNING:\033[0m Your decision will greatly determine your fate!', ['1) ' + '\033[31m' + 'Aja by Steely Dan'+'\033[0m', '2) ' + '\033[32m'+'Moving Pictures by Rush' + '\033[0m', '3) ' + '\033[34m'+'The Lamb Lies Down on Broadway by Genesis'+'\033[0m',], [2, 3, 4]),
     2: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [5]),
     3: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [6]),
     4: Section('Nice, a classic. What pressing is it?', ['1) Let\'s check!'], [7]),
@@ -110,7 +111,6 @@ parts = {
     54: Section('TK put your phone down on the coffee table, airplane mode just to be extra safe.', ['1) Pet Miles'], [55]),
     55: Section('TK you pet Miles. he\'ll always be there for you.', ['1) Head back in and listen to your new record!'], [56]),
     56: Section('TK careful unsheathing of the LP', ['1) Let\'s get this cleaned up.'], [57]),
-    # 00: Section('TK ', ['1) '], []),
     57: Section('TK meticulous vacuum process', ['1) Pop it on the turntable!'], [58]),
     58: Section('TK looks squeaky clean!', ['1) Throw a nice heavy weight on the center label.'], [59]),
     59: Section('TK nothing\'s gonna keep THIS disc from being perfectly aligned!', ['1) What about static though?'], [60]),
@@ -123,9 +123,20 @@ parts = {
     66: Section('TK speakers weren\'t it 2', ['1) '], [64]),
     67: Section('TK light weren\'t it 2', ['1) '], [64]),
     68: Section('TK time to listen!', ['1) Drop the needle!'], [69, 70, 71]),
-    69: Section('TK hell yeah, side 1 track 1 of AJA.... \'Black Cow\'', ['1) Take the needle off the record.'], []),
-    70: Section('TK TK hell yeah, side 1 track 1 of MOVING PICTURES.... \'Tom Sawyer\'', ['1) Take the needle off the record.'], []),
-    71: Section('TK TK hell yeah, side 1 track 1 of THE LAMB LIES DOWN ON BROADWAY.... title track\'\The Lamb Lies Down on Broadway''', ['1) Take the needle off the record.'], []),
+    69: Section('TK hell yeah, side 1 track 1 of AJA.... \'Black Cow\'', ['1) Take the needle off the record.'], [72]),
+    70: Section('TK TK hell yeah, side 1 track 1 of MOVING PICTURES.... \'Tom Sawyer\'', ['1) Take the needle off the record.'], [72]),
+    71: Section('TK TK hell yeah, side 1 track 1 of THE LAMB LIES DOWN ON BROADWAY.... title track \'The Lamb Lies Down on Broadway\'', ['1) Take the needle off the record.'], [72]),
+    72: Section('TK what the fuck. Near Mint? and the first song has a skip? you could kill phil. what kinda mickey mouse goddamn moron operation is he running down there', ['1) Re-sleeve the LP.', '2) Eat your feelings.', '3) Go for a walk to try and calm down.'], [73, 74, 75]),
+    73: Section('TK put the record away, even a VG+ record should have played with no skips what the HELL', ['1) Take the record back to the store.'], [76, 77, 78]),
+    74: Section('TK sad bachelor snack pt. II but a couple of them. you feel a bit sick, which is a nice distraction.', ['1) Take the record back to the store.'], [76, 77, 78]),
+    75: Section('TK you walk around the apartment complex. description of where you live / thankfully you do not see chip. you don\'t feel any more calm though', ['1) Take the record back to the store.'], [76, 77, 78]),
+    76: Section('TK you get in the car, the end of Black Cow is on the radio as if to mock you.', ['1) Change the station.'], [79]),
+    77: Section('TK you get in the car, the end of Tom Sawyer is on the radio as if to mock you.', ['1) Change the station '], [79]),
+    78: Section('TK you get in the car, the end of The Lamb Lies Down on Broadway is on the radio as if to mock you.', ['1) Change the station.'], [79]),
+    79: Section('TK you scan around a bit, but everything scares you.', ['1) Drive in silence.'], [80]),
+    80: Section('TK ', ['1) '], []),
+
+
 }
 
 anomalies = [15, 16, 17, 30, 68]
