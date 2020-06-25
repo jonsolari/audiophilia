@@ -19,7 +19,7 @@ class Player:
     def __str__(self):
         return f'{self.name}, {self.prog}, {self.inv}'
 
-player = Player('', 0, [], 0, 40.00, False)
+player = Player('', 0, [], 0, 60.00, False)
 
 def linebreaks(string):
 
@@ -68,34 +68,34 @@ parts = {
     11: Section('Looks real clean! Aged for sure, but no big scuffs or scratches that you can see.', ['1) Take this bad boy up to the counter!'], [13]),
     12: Section('They look good! The Near Mint grading on the price sticker isn\'t far off.', ['1) Take this bad boy up to the counter!'], [13]),
     13: Section('You walk up to the counter with some excitement but also considerable dread that the clerk is going to want to talk to you, a lot.', ['1) Who\'s working?'], [14]),
-    14: Section('Phil is working the register today. An old hand for sure, a hi-fi wizard with waist-length grey hair tied back in an intricate braid. He\'s friendly enough, but does not value anyone\'s time particularly highly.', ['1) "Hey man! How\'s it going?"', '2) Approach in silence.', '3) Mutter to yourself angrily in the hopes he\'ll be too scared to engage.'], [15, 16, 17]),
+    14: Section('\033[31mPhil\033[0m is working the register today. An old hand for sure, a hi-fi wizard with waist-length grey hair tied back in an intricate braid. He\'s friendly enough, but does not value anyone\'s time particularly highly.', ['1) "Hey man! How\'s it going?"', '2) Approach in silence.', '3) Mutter to yourself angrily in the hopes he\'ll be too scared to engage.'], [15, 16, 17]),
     15: Section('"Hey, brotherman. How\'s it hangin\'. Balmy day out there, man. Balmy. Have people been using that word a lot more lately? I feel like I\'m hearing that shit all day everyday man. We don\'t have THAT many balmy days, but I gotta give it to \'em today, it\'s a balmy one. \n\nWhatcha got there?"', ['1) Put your purchase on the counter.'], [18, 19, 20]),
     16: Section('"Hello! What did ya find today?"', ['1) Put your purchase on the counter.'], [18, 19, 20]),
     17: Section('"I can take who\'s next."', ['1) Put your purchase on the counter.'], [18, 19, 20]),
     18: Section('"Aja. Nice, man. Classic. Did you know they didn\'t want Purdie to do a shuffle on \'Home At Last\' but he managed to sneak it in anyway?? That guy was a trip, man. He\'d set up little signs next to his kit that said shit like "YOU DID IT, YOU HIRED THE HITMAKER." I love that shit man. Have you read \'Reeling in the Years\'? \'Major Dudes\' is okay but it\'s mostly old Rolling Stone reviews and shit. \'Eminent Hipsters\' is fun if you dig Fagen rambling on about jazz and being a crabby old bastard. That 33 1/3 book is fine too but I\'d skip it and just watch the \'Classic Albums\' documentary. It\'s on YouTube with Japanese subtitles for some reason, but it hasn\'t been copyright flagged yet."', ['1) "Oh really? Nice. That\'s cool man."', '2) "Yes. I know all this."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 23]),
     19: Section('Moving Pictures, unimpeachable man, truly unimpeachable. How do you get two songs like Tom Sawyer and Limelight on the same record? It\'s almost unfair. I got so into this band and then I\'m reading along with the lyrics on 2112 and they thank Ayn Rand...? The GENIUS of Ayn Rand....!?!? Broke my heart, man. How can ya be so progressive musically and so back-asswards in the political realm.', ['1) "I dunno, man. That\'s rough."', '2) "Yeah."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 24]),
     20: Section('"And the Laaaaaaaamb.... Lies Dowwwwwwwn.... on Broo-OO-ooadway!! Hell yeah man. Gabriel\'s last stand. Carpet Crawlers is a stone classic, man. You ever see the live show they did where he tells that trippy story before going into Supper\'s Ready? Is that on here (*looks at sleeve*) ah shit, that\'s right it\'s on Foxtrot. Another heavy one. Did you know Eno worked on this one? Makes sense if you look at the hair they were both sporting at the time."', ['1) "Oh really? Nice. That\'s cool man."', '2) "Yes. I know all this."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 25]),
-    21: Section('He holds up the sleeve and calls to Jeffery, the teen-aged stock boy. "JEFF! You heard this one yet? Stone classic." \n\nJeff gives a thumbs-up; he\'s either familiar with it or knows well enough to let sleeping tigers lie. \n\n"Kids today, man. The internet! I had to know somebody hip to get into any halfway decent records when I was that young. Pat Boone, Sing Along with Mitch type shit in my parents\' hi-fi all the time, man. Who needs it.\n\n"That\'ll be \033[32m$34.98\033[0m."', ['1) Pay the man.'], [29]),
+    21: Section('He holds up the sleeve and calls to \033[31mJeffery\033[0m, the teen-aged stock boy. "JEFF! You heard this one yet? Stone classic." \n\nJeff gives a thumbs-up; he\'s either familiar with it or knows well enough to let sleeping tigers lie. \n\n"Kids today, man. The internet! I had to know somebody hip to get into any halfway decent records when I was that young. Pat Boone, Sing Along with Mitch type shit in my parents\' hi-fi all the time, man. Who needs it.\n\n"That\'ll be \033[32m$34.98\033[0m."', ['1) Pay the man.'], [29]),
     22: Section('Phil looks a bit stung; clearly he thought your acquaintance was on its way to proper friendship. He was maybe even going to invite you to the barbecue this weekend, held in the parking lot behind the store (you\'ve always thought that seemed like a cool, scofflaw kind of event). \n\n"Your total is \033[32m$34.98\033[0m."', ['1) Pay the man.'], [29]),
     23: Section('"Not a weak track on there, man. Can you imagine how many people are getting into the Dan just from hip hop samples? De La Soul using \'Peg\', Peter Gunz and Lord Tariq using \'Black Cow\'... not to mention Kanye using \'Kid Charlemagne\' but we\'re out in the weeds now, talking about \u001b[36mthe Royal Scam\033[0m. Underrated disc, if you ask me. \'Everyone\'s Gone to the Movies\' is such a sleeper creeper of a song!"', ['1) ...'], [26]),
     24: Section('"People like to rag on the Rush boys, but I never quite got that-- they\'re as legitimate as anybody, progressive or moderate. Whatever your stance is on weird time signatures and fretless double-necked guitars, they were layin\' down some heavy, ponderous shit! For my dollar anyway. Well they\'re Canadian, so I guess my seventy-three cents."', ['1) ...'], [27]),
-    25: Section('"A lot of people seem to jump ship around \u001b[36mTrick of the Tail\033[0m, but I followed these guys clear through to \033[35mInvisible Touch\033[0m. Is the production style really dated? Of course! Is the video for Land of Confusion terrifying? Absolutely! But I\'ll be damned if it isn\'t still top notch quality tuneage."', ['1) ...'], [28]),
-    26: Section('" \n\nThat\'ll be \033[32m$34.98\033[0m"', ['1) Pay the man.'], [29]),
-    27: Section('" \n\nThat\'ll be \033[32m$34.98\033[0m"', ['1) Pay the man.'], [29]),
+    25: Section('"Oh the purists like to jump ship around \u001b[36mTrick of the Tail\033[0m, but I followed these guys clear through to \033[35mInvisible Touch\033[0m. Is the production style really dated? Of course! Is the video for Land of Confusion terrifying? Absolutely! But I\'ll be damned if it isn\'t still top notch quality tuneage."', ['1) ...'], [28]),
+    26: Section('"TK singing a song \n\nThat\'ll be \033[32m$34.98\033[0m"', ['1) Pay the man.'], [29]),
+    27: Section('"TK singing a song \n\nThat\'ll be \033[32m$34.98\033[0m"', ['1) Pay the man.'], [29]),
     28: Section('"That\'ll be, \033[32m$34.98\033[0m- ah! \u266b\nPut the cash, \u266b\nright- down- here-on-the-thing! \u266b"', ['1) Pay the man.'], [29]),
-    29: Section('TK shopkeep bids you farewell!', ['1) Leave the shop.'], [30]),
-    30: Section('TK description of your sad car, what you\'re thinking about on the ride home. you\'re on main street and your cat is almost out of food', ['1) Drive to the pet store.'], [31, 32, 33]),
-    31: Section('TK you go in and get the cat food. You have \'Limelight\' stuck in your head though-- you probably should have bought Moving Pictures instead.',['1) Goddamnit.'],[34]),
-    32: Section('TK you go in and get the cat food. You have \'Carpet Crawlers\' stuck in your head though-- you probably should have bought The Lamb Lies Down on Broadway instead.',['1) Goddamnit.'],[34]),
-    33: Section('TK you go in and get the cat food. You have \'Peg\' stuck in your head though-- you probably should have bought Aja instead.',['1) Goddamnit.'],[34]),
-    34: Section('TK you drive the rest of the way home.',['1) Pull into your parking spot.'],[35]),
-    35: Section('TK your neighbor Chip accosts you as you\'re about to put the key in the lock', ['1) engage pleasantly', '2) nod, mumble something, and go inside', '3) kind of in a hurry right now', '4) fuck off, Chip'], [36, 37, 38, 39]),
-    36: Section('TK nice chip', ['1) Ask about his kids', '2) Ask about his wife', '3) Wrap things up and go inside.'], [40, 41, 42]),
-    37: Section('TK chip calls after you', ['1) Close the door and lock it.'], [42]),
-    38: Section('TK chip seems sad', ['1) Close the door and lock it.'], [42]),
+    29: Section('"Enjoy that thing, man! It\'ll sound boss on your setup, I just know it."', ['1) Leave the shop.'], [30]),
+    30: Section('You climb into your \'98 Tercel, taking extra care to set your new purchase down on the passenger seat, all but buckling it in. As you coast down Main St., you get a small frisson of hope about your afternoon to come. A great find! Reference quality! You can just imagine what the guys will say when you have them over for a demonstration. The low end always scares \033[31mMiles\033[0m, your faithful calico tomcat, but you know enough by now to gently usher him into the other room.\n\nOh shit! Miles! \nHis food was low when you checked.', ['1) Hang a left on Elm and head to the pet store.'], [31, 32, 33]),
+    31: Section('You navigate to the pet shop and get his cat food (sensitive stomach, senior blend, goddamn $18).\n\nYou have \033[32m\'Limelight\'\033[0m stuck in your head though-- you probably should have bought Moving Pictures instead.',['1) Goddamnit.'],[34]),
+    32: Section('You navigate to the pet shop and get his cat food (sensitive stomach, senior blend, goddamn $18).\n\nYou have \033[34m\'Carpet Crawlers\'\033[0m stuck in your head though-- you probably should have bought The Lamb Lies Down on Broadway instead.',['1) Goddamnit.'],[34]),
+    33: Section('You navigate to the pet shop and get his cat food (sensitive stomach, senior blend, goddamn $18).\n\nYou have \033[31m\'Peg\'\033[0m stuck in your head though-- you probably should have bought Aja instead.',['1) Goddamnit.'],[34]),
+    34: Section('You head home, damn near broke at this point (good thing you didn\'t need gas!). It\'ll be worth it though; how often do you actually find a decent record, used, in this good of shape? Phil was right, it\'s going to sound boss as hell.',['1) Pull into your parking spot.'],[35]),
+    35: Section('You\'re almost home free, but your neighbor \033[31mChip\033[0m accosts you as you\'re about to put the key in the lock.', ['1) "Hey, man! What\'s the haps?"', '2) Nod, mumble something vague and go inside.', '3) "Kind of in a hurry right now, Chip."', '4) "Fuck off, Chip"'], [36, 37, 38, 39]),
+    36: Section('"Can\'t complain! Can- not- complain, my man."', ['1) Ask about his kids', '2) Ask about his wife', '3) Wrap things up and go inside.'], [40, 41, 42]),
+    37: Section('"Next time! Man, sometime we gotta hit the pub and--"', ['1) Close the door and lock it.'], [42]),
+    38: Section('He seems a bit dejected, but generally unshakeable when in a good mood.\n\n"Fast times at Ridgewood Apartments, I get it. Keep your stick on the ice, man!"', ['1) Close the door and lock it.'], [42]),
     39: Section('What did you just say to me you piece of shit? Nobody LIKES you here. Did you know that? I\'m glad I slept with your wife last year. Go the fuck inside and listen to your jazz fusion whatever-the-fuck. If I hear that shit through the walls again I\'m gonna knock down this door and break your goddamn legs. FUCK you', ['1) Go inside.'], [42]),
-    40: Section('TK chips tells you about his kids at length', ['1) Wrap it up here and go inside.'], [42]),
-    41: Section('TK chips tells you about his wife, makes some uncomfortable comments', ['1) Wrap it up here and go inside'], [42]),
+    40: Section('"They\'re incredible! God, they\'re just the best.\n\nDean just started middle school, the little spaz. Always going on about some new bullshit I gotta buy him so he can fit in. Buncha weird shit. Made in China. I don\'t know man.\n\nErica, god bless her, she\'s still in diapers and I\'m in no hurry to see that change. I\'m gonna fucking murder the first boy who kisses her."', ['1) "Ah. Nice, that\'s just great. I gotta head in man, great seeing ya."'], [42]),
+    41: Section('"Debbie? Hot as ever, man. You know, we all know. It\'s ok, I know all the guys around here like to look. I don\'t mind a quick glance but you better keep it zipped up pal!! I\'m a generous enough guy but let\'s just say we can\'t share EVERYthing with our neighbors! Hahahaha. Tight knit community here at Ridgewood but get outta here, I don\'t think so nosiree."', ['1) "Ah. Nice, that\'s just great. I gotta head in man, great seeing ya."'], [42]),
     42: Section('TK description of your deeply sad apartment', ['1) Feed your cat, Miles'], [43]),
     43: Section('TK description of your cat and why you named him that', ['1) Move to the listening room.', '2) Have a nice snack first.'], [45, 44]),
     44: Section('TK very sad bachelor snack', ['1) Now you\'re ready to listen, to appreciate.'], [45]),
@@ -142,6 +142,7 @@ parts = {
 
 anomalies = [15, 16, 17, 30, 68]
 payments = [21, 22, 26, 27, 28]
+catfood = [31, 32, 33]
 
 welcome = 'Welcome to AUDIOPHILIA, the game of hi-fi perfection.\n\nPlease enter your name, or LOAD to load an existing game.'
 
@@ -199,6 +200,9 @@ while True:
 
     if player.prog in payments:
         player.money -= 34.98
+
+    if player.prog in catfood:
+        player.money -= 17.98
     
     # FOR MIDI PLAYER + CHOICE DELAY
     if player.prog == 69:
