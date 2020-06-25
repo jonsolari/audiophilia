@@ -5,7 +5,7 @@ import pygame
 
 # STRUCTURE
 
-# Player is an object, but only to have inventory & progression through the story
+# Player is an object with a Name, Progression Index, Inventory, Point Tally, Money Tally, and Error flag 
 
 class Player:
     def __init__(self, name, prog, inv, points, money, err):
@@ -77,7 +77,7 @@ parts = {
     20: Section('"And the Laaaaaaaamb.... Lies Dowwwwwwwn.... on Broo-OO-ooadway!! Hell yeah man. Gabriel\'s last stand. Carpet Crawlers is a stone classic, man. You ever see the live show they did where he tells that trippy story before going into Supper\'s Ready? Is that on here (*looks at sleeve*) ah shit, that\'s right it\'s on Foxtrot. Another heavy one. Did you know Eno worked on this one? Makes sense if you look at the hair they were both sporting at the time."', ['1) "Oh really? Nice. That\'s cool man."', '2) "Yes. I know all this."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 25]),
     21: Section('He holds up the sleeve and calls to Jeffery, the teen-aged stock boy. "JEFF! You heard this one yet? Stone classic." \n\nJeff gives a thumbs-up; he\'s either familiar with it or knows well enough to let sleeping tigers lie. \n\n"Kids today, man. The internet! I had to know somebody hip to get into any halfway decent records when I was that young. Pat Boone, Sing Along with Mitch type shit in my parents\' hi-fi all the time, man. Who needs it.\n\n"That\'ll be \033[32m$34.98\033[0m."', ['1) Pay the man.'], [29]),
     22: Section('Phil looks a bit stung; clearly he thought your acquaintance was on its way to proper friendship. He was maybe even going to invite you to the barbecue this weekend, held in the parking lot behind the store (you\'ve always thought that seemed like a cool, scofflaw kind of event). \n\n"Your total is \033[32m$34.98\033[0m."', ['1) Pay the man.'], [29]),
-    23: Section('TK another screen about aja', ['1) ...'], [26]),
+    23: Section('"Not a weak track on there, man. Can you imagine how many people are getting into the Dan just from hip hop samples? De La Soul using \'Peg\', Peter Gunz and Lord Tariq using \'Black Cow\'... not to mention Kanye using \'Kid Charlemagne\' but we\'re out in the weeds now, talking about \u001b[36mthe Royal Scam\033[0m. Underrated disc, if you ask me. \'Everyone\'s Gone to the Movies\' is such a sleeper creeper of a song!"', ['1) ...'], [26]),
     24: Section('TK another screen about rush', ['1) ...'], [27]),
     25: Section('TK another screen about genesis', ['1) ...'], [28]),
     26: Section('TK final screen about aja, and the total', ['1) Pay the man.'], [29]),
