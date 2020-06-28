@@ -207,7 +207,7 @@ while True:
     # FOR MIDI PLAYER + CHOICE DELAY
     if player.prog == 69:
         pygame.mixer.music.play()
-        time.sleep(30) #TBD
+        time.sleep(36) 
 
     if player.prog == 70:
         pygame.mixer.music.play()
@@ -215,7 +215,7 @@ while True:
 
     if player.prog == 71:
         pygame.mixer.music.play()
-        time.sleep(30) #TBD
+        time.sleep(53) 
 
     if player.prog == 72:
         pygame.mixer.music.stop()
