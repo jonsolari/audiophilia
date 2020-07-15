@@ -72,7 +72,7 @@ parts = {
     15: Section('"Hey, brotherman. How\'s it hangin\'. Balmy day out there, man. Balmy. Have people been using that word a lot more lately? I feel like I\'m hearing that shit all day everyday man. We don\'t have THAT many balmy days, but I gotta give it to \'em today, it\'s a balmy one. \n\nWhatcha got there?"', ['1) Put your purchase on the counter.'], [18, 19, 20]),
     16: Section('"Hello! What did ya find today?"', ['1) Put your purchase on the counter.'], [18, 19, 20]),
     17: Section('"I can take who\'s next."', ['1) Put your purchase on the counter.'], [18, 19, 20]),
-    18: Section('"Aja. Nice, man. Classic. Did you know they didn\'t want Purdie to do a shuffle on \'Home At Last\' but he managed to sneak it in anyway?? That guy was a trip, man. He\'d set up little signs next to his kit that said shit like "YOU DID IT, YOU HIRED THE HITMAKER." I love that shit man. Have you read \'Reeling in the Years\'? \'Major Dudes\' is okay but it\'s mostly old Rolling Stone reviews and shit. \'Eminent Hipsters\' is fun if you dig Fagen rambling on about jazz and being a crabby old bastard. That 33 1/3 book is fine too but I\'d skip it and just watch the \'Classic Albums\' documentary. It\'s on YouTube with Japanese subtitles for some reason, but it hasn\'t been copyright flagged yet."', ['1) "Oh really? Nice. That\'s cool man."', '2) "Yes. I know all this."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 23]),
+    18: Section('"Aja. Nice, man. Classic. Did you know they didn\'t want Purdie to do a shuffle on \'Home At Last\' but he managed to sneak it in anyway?? That guy was a trip, man. He\'d set up little signs next to his kit that said shit like "YOU DID IT, YOU HIRED THE HITMAKER." I love that shit man. Have you read \'Reeling in the Years\'? \'Major Dudes\' is okay but it\'s mostly old Rolling Stone reviews and shit. \'Eminent Hipsters\' is fun if you dig Fagen rambling on about jazz and being a crabby old bastard. That 33 1/3 book is fine too but I\'d skip it and just watch the \'Classic Albums\' documentary. It\'s on YouTube with Japanese subtitles for some reason, hasn\'t been copyright flagged yet."', ['1) "Oh really? Nice. That\'s cool man."', '2) "Yes. I know all this."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 23]),
     19: Section('Moving Pictures, unimpeachable man, truly unimpeachable. How do you get two songs like Tom Sawyer and Limelight on the same record? It\'s almost unfair. I got so into this band and then I\'m reading along with the lyrics on 2112 and they thank Ayn Rand...? The GENIUS of Ayn Rand....!?!? Broke my heart, man. How can ya be so progressive musically and so back-asswards in the political realm.', ['1) "I dunno, man. That\'s rough."', '2) "Yeah."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 24]),
     20: Section('"And the Laaaaaaaamb.... Lies Dowwwwwwwn.... on Broo-OO-ooadway!! Hell yeah man. Gabriel\'s last stand. Carpet Crawlers is a stone classic, man. You ever see the live show they did where he tells that trippy story before going into Supper\'s Ready? Is that on here (*looks at sleeve*) ah shit, that\'s right it\'s on Foxtrot. Another heavy one. Did you know Eno worked on this one? Makes sense if you look at the hair they were both sporting at the time."', ['1) "Oh really? Nice. That\'s cool man."', '2) "Yes. I know all this."', '3) Silence. Stonewall him until he runs out of gas.'], [21, 22, 25]),
     21: Section('He holds up the sleeve and calls to \033[31mJeffery\033[0m, the teen-aged stock boy. "JEFF! You heard this one yet? Stone classic." \n\nJeff gives a thumbs-up; he\'s either familiar with it or knows well enough to let sleeping tigers lie. \n\n"Kids today, man. The internet! I had to know somebody hip to get into any halfway decent records when I was that young. Pat Boone, Sing Along with Mitch type shit in my parents\' hi-fi all the time, man. Who needs it.\n\n"That\'ll be \033[32m$34.98\033[0m."', ['1) Pay the man.'], [29]),
@@ -136,7 +136,7 @@ parts = {
     79: Section('You scan around for a while, but everything scares you. You wish you hadn\'t left your \033[33mPono\033[0m at home.', ['1) Drive in silence.'], [80]),
     80: Section('There\'s a noticeable whining sound. Your fan belt probably needs to be replaced.', ['1) Pull into the record store parking lot.', '2) Pass the store and go to your mechanic.'], [81, 82]),
     81: Section('You pull into the parking lot of the record store, and take a few breaths to steady yourself before going in and confronting Phil about his slip-up, about his goddamn blind-ass useless moron eyes not noticing that this record was going to skip like all HELL', ['1) Take a few more breaths.'], [83]),
-    82: Section('TK ', ['1) '], []),
+    82: Section('You keep on driving. You can\'t tell if the whining noise is getting worse of if it\'s just your imagination, but it\'s probably a good idea to get it checked out sooner than later. \n\nYou pull into John\'s Garage.', ['1) Go see if John has some time today to look at it.'], [84]),
     83: Section('You take some deep breaths, "square breaths" as the counselor had called them.\n\nBreathe in for four seconds,\n hold it four seconds,\n let it out for four seconds,\n hold that for four more seconds.\n\nRepeat.\n\nIt\'s never worked particularly well for you, but you don\'t need an assault charge on your record today so you\'re trying real hard.', ['1) Go inside.'], []),
 
     # 00: Section('TK ', ['1) '], []),
@@ -145,6 +145,7 @@ parts = {
 anomalies = [15, 16, 17, 30, 68, 74]
 payments = [21, 22, 26, 27, 28]
 catfood = [31, 32, 33]
+goodcall = [21, 22, 26, 27, 28]
 
 welcome = 'Welcome to AUDIOPHILIA, the game of hi-fi perfection.\n\nPlease enter your name.'
 
@@ -205,6 +206,9 @@ while True:
 
     if player.prog in catfood:
         player.money -= 17.98
+
+    if player.prog in goodcall:
+        player.points += 1
     
     # FOR MIDI PLAYER + CHOICE DELAY
     if player.prog == 69:
