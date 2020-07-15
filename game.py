@@ -145,7 +145,7 @@ parts = {
 anomalies = [15, 16, 17, 30, 68, 74]
 payments = [21, 22, 26, 27, 28]
 catfood = [31, 32, 33]
-goodcall = [21, 22, 26, 27, 28]
+goodcall = [15, 21, 22, 26, 27, 28, 36]
 
 welcome = 'Welcome to AUDIOPHILIA, the game of hi-fi perfection.\n\nPlease enter your name.'
 
