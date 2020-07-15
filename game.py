@@ -36,7 +36,7 @@ def linebreaks(string):
         if i == '\n':
             counter = 0
 
-        if counter == 9:
+        if counter == 11:
             newstring += i + '\n'
             counter = 0
         else:
@@ -170,7 +170,7 @@ while True:
     
     os.system('clear')
 
-    print(f'\033[1;30;47mAUDIOPHILIA   Player: {player.name}   Points: {player.points}   Money: ${player.money:.2f}\033[0m          ')
+    print(f'\033[1;30;47mAUDIOPHILIA   Player: {player.name}   Points: {player.points}   Money: ${player.money:.2f}\033[0m')
 
     if player.err == True:
         print()
