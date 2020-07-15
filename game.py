@@ -108,27 +108,27 @@ parts = {
     51: Section('You met Sheila through some mutual friends. Fred was the one hosting the party, you think. It\'s so long ago now. It was awkward at first, feeling such an electric and mutual attraction to someone you just met, and trying hard to not show it too soon. You looked for openings all night, and at some point felt so bold as to claim an empty seat on the ottoman next to her when its occupant flitted over to different conversation circle in the kitchen. You managed to get past the clunkiness of the first few small-talk questions, finding shared interest in Fred\'s shelf of artist monographs (more specifically a shared distaste for Jackson Pollack and his CIA ties). You walked her home that night; you still don\'t know where you found the nerve to propose that. Or make that first phone call two afternoons later.', ['1) Remember last summer at Cape Cod?'], [52]),
     52: Section('God, the Cape Cod trip. A second honeymoon of sorts, an unexpected oasis in the middle of weeks of fighting. It was as if a change of scenery somehow put an unspoken truce into effect, but you overshot the tacit "tolerate one another" promise of most tired-marriage vacations, and ended up back in some kind of pleasantly naive teenage place, emotionally. You brought wine but drank none of it, intoxication would have felt redundant.', ['1) Where did it all go wrong?'], [53]),
     53: Section('TK where it all went wrong. you stopped listening, dove into your interests too much, became a kind of shadow of yourself', ['1) Tubes are probably warm by now. Let\'s hear this new disc.'], [56]),
-    54: Section('You go back into the living room and put your phone face-down on the coffee table, after putting it into Airplane Mode for additional security against unwanted vibrations. Jaco looks up from a nap he\'s drifting in and out of.', ['1) Pet Jaco'], [55]),
+    54: Section('You go back into the living room and put your phone face-down on the coffee table, after putting it into Airplane Mode for additional security against unwanted vibrations. Jaco looks up from a nap he\'s drifting in and out of.', ['1) Pet Jaco.'], [55]),
     55: Section('You give Jaco some behind-the-ear skritches. He\'ll always be there for you.', ['1) Head back in and listen to your new record!'], [56]),
     56: Section('Over the years, you\'ve developed a delicate technique for unsleeving a record and only touching the edges and the label. You all but lunge at anyone who tries to put something on at your parties, fearing they\'ll get their grubby fingerprints all in the grooves. You haven\'t held a party in six years', ['1) Let\'s get this cleaned up.'], [57]),
     57: Section('Even the cleanest-looking of records can still be filthy, so you turn to your trusted \033[32mRECORD DOCTOR V\033[0m, a vacuum-based machine. After applying the right amount of cleaning solution to Side 1, you place it face-down over its brush-lined vacuum slit. There\'s a hockey puck shaped handle thing you put on top of the label that has little grips so you can turn the disc manually (you can\'t yet afford a full-auto disc washer, and this has irked you for years). The machine whines like a full-size canister vacuum cleaner, and you let it do its thing for three slow revolutions of the LP. This is the part where Jaco usually hides under the couch.\n\nYour disc now shines magnificently.', ['1) Pop it on the turntable!'], [58]),
     58: Section('You place it on your turntable with the utmost care.', ['1) Throw a nice heavy weight on the center label.'], [59]),
     59: Section('You secure a big brass doorknob looking thing on top of the disc. No chance it will drift or wobble now.', ['1) What about static though?'], [60]),
     60: Section('The disc looks totally free of dust, but static is the invisible menace! You take your carbon fiber brush and let the LP spin three times underneath its light touch.', ['1) But is the needle itself clean?'], [61]),
-    61: Section('Just to be safe, you do the melamine trick you learned about, taking a \'Magic Eraser\' pad and delicately lowering the needle onto it a few times. (Strictly vertically! Horizontal motion could fuck the needle up but good, you\'re told.) It\'s a small blessing that your turntable has a cue lever for this.', ['1) Sit in your listening chair,'], [62]),
+    61: Section('Just to be safe, you do the melamine trick you learned about, taking a \'Magic Eraser\' pad and delicately lowering the needle onto it a few times. (Strictly vertically! Horizontal motion could fuck the needle up but good, you\'re told.) It\'s a small blessing that your turntable has a cue lever for this.', ['1) Sit in your listening chair.'], [62]),
     62: Section('You ease into your favorite listening chair, a mid-range IKEA job called \033[33mEKERÖ\033[0m that you picked up because it reminded you of the old Maxell commercials.\n\nWait, what in the hell is that buzz?', ['1) Check the speaker wires', '2) Check the turntable ground wire', '3) Turn off all the lights in your apartment in case they\'re interfering somehow.'], [63, 64, 65]),
-    63: Section('TK speaker wires - they look ok! no spindly shits poking out.', ['1) turntable', '2) all the lights'], [64, 67]),
-    64: Section('TK it came loose!', ['1) Reattach that guy and sit down.'], [68]),
-    65: Section('TK turn off all the lights. that wasn\'t it', ['1) speaker wires', '2) turntable'], [66, 64]),
-    66: Section('TK speakers weren\'t it 2', ['1) '], [64]),
-    67: Section('TK light weren\'t it 2', ['1) '], [64]),
-    68: Section('TK time to listen!', ['1) Drop the needle!'], [69, 70, 71]),
-    69: Section('TK hell yeah, side 1 track 1 of AJA.... \'Black Cow\'', ['1) Take the needle off the record.'], [72]),
-    70: Section('TK TK hell yeah, side 1 track 1 of MOVING PICTURES.... \'Tom Sawyer\'', ['1) Take the needle off the record.'], [72]),
-    71: Section('TK TK hell yeah, side 1 track 1 of THE LAMB LIES DOWN ON BROADWAY.... title track \'The Lamb Lies Down on Broadway\'', ['1) Take the needle off the record.'], [72]),
-    72: Section('TK what the fuck. Near Mint? and the first song has a skip? you could kill phil. what kinda mickey mouse goddamn moron operation is he running down there', ['1) Re-sleeve the LP.', '2) Eat your feelings.', '3) Go for a walk to try and calm down.'], [73, 74, 75]),
-    73: Section('TK put the record away, even a VG+ record should have played with no skips what the HELL', ['1) Take the record back to the store.'], [76, 77, 78]),
-    74: Section('TK sad bachelor snack pt. II but a couple of them. you feel a bit sick, which is a nice distraction.', ['1) Take the record back to the store.'], [76, 77, 78]),
+    63: Section('The speaker wires look ok! Nothing is loose, no spindly little shits poking out from your top-notch wire twisting job a few years back.', ['1) turntable', '2) all the lights'], [64, 67]),
+    64: Section('That\'s it! The ground wire on the turntable somehow came loose.', ['1) Reattach that guy!'], [68]),
+    65: Section('You turn off all the kitchen and living room lights, but when you return to the listening room the buzz is still there.', ['1) Check the speaker wires.', '2) Check the turntable ground wire.'], [66, 64]),
+    66: Section('The speaker wires look ok! Nothing is loose, no spindly little shits poking out from your top-notch wire twisting job a few years back.', ['1) '], [64]),
+    67: Section('You turn off all the kitchen and living room lights, but when you return to the listening room the buzz is still there.', ['1) '], [64]),
+    68: Section('The buzz is gone!\n\nIt\'s time at last to spin this record.', ['1) Drop the needle!'], [69, 70, 71]),
+    69: Section('Hell yeah. Side 1, Track 1 of AJA.... \033[31m\'Black Cow\'\033[0m', ['1) Take the needle off the record.'], [72]),
+    70: Section('Hell yeah. Side 1, Track 1 of MOVING PICTURES.... \033[32m\'Tom Sawyer\'\033[0m', ['1) Take the needle off the record.'], [72]),
+    71: Section('Hell yeah. Side 1, Track 1 of THE LAMB LIES DOWN ON BROADWAY.... title track \033[34m\'The Lamb Lies Down on Broadway\'\033[0m', ['1) Take the needle off the record.'], [72]),
+    72: Section('What the fuck. "Near Mint"!? And the first fucking SONG has a skip? You could kill Phil. What kinda mickey mouse goddamn moron operation is he running down there', ['1) Re-sleeve the LP.', '2) Eat your feelings.', '3) Go for a walk to try and calm down.'], [73, 74, 75]),
+    73: Section('You try to steady your hands to put the record away. Goddamnit, even a VG+ graded record should have played with no skips what the HELL', ['1) Take the record back to the store.'], [76, 77, 78]),
+    74: Section('You power through four more pieces of cheese-on-toast.\n\nYou feel a bit sick, which proves to be a welcome distraction.', ['1) Take the record back to the store.'], [76, 77, 78]),
     75: Section('TK you walk around the apartment complex. description of where you live / thankfully you do not see chip. you don\'t feel any more calm though', ['1) Take the record back to the store.'], [76, 77, 78]),
     76: Section('TK you get in the car, the end of Black Cow is on the radio as if to mock you.', ['1) Change the station.'], [79]),
     77: Section('TK you get in the car, the end of Tom Sawyer is on the radio as if to mock you.', ['1) Change the station '], [79]),
@@ -140,11 +140,11 @@ parts = {
     # 00: Section('TK ', ['1) '], []),
 }
 
-anomalies = [15, 16, 17, 30, 68]
+anomalies = [15, 16, 17, 30, 68, 74]
 payments = [21, 22, 26, 27, 28]
 catfood = [31, 32, 33]
 
-welcome = 'Welcome to AUDIOPHILIA, the game of hi-fi perfection.\n\nPlease enter your name, or LOAD to load an existing game.'
+welcome = 'Welcome to AUDIOPHILIA, the game of hi-fi perfection.\n\nPlease enter your name.'
 
 os.system('clear')
 print()
@@ -153,13 +153,13 @@ print()
 intro = input('-->')
 
 while player.name == '':
-    if intro == "LOAD":
-        print('Feature TK')
-        print()
-        print(welcome)
-        intro = input('-->')
-    else:
-        player.name = intro
+    # if intro == "LOAD":
+    #     print('Feature TK')
+    #     print()
+    #     print(welcome)
+    #     intro = input('-->')
+    # else:
+    player.name = intro
 
 print()
 print(f'Welcome, {player.name}!')
