@@ -26,6 +26,9 @@ def linebreaks(string):
     newstring = ''
     counter = 0
 
+# TK maybe add a thing that increments the counter 
+#    if a word is over a certain number of chars
+
     for i in string:
         if i == ' ':
             counter += 1
@@ -125,7 +128,7 @@ parts = {
     68: Section('The buzz is gone!\n\nIt\'s time at last to spin this record.', ['1) Drop the needle!'], [69, 70, 71]),
     69: Section('Hell yeah. Side 1, Track 1 of AJA.... \n\n\033[31m\'Black Cow\'\033[0m', ['1) Take the needle off the record.'], [72]),
     70: Section('Hell yeah. Side 1, Track 1 of MOVING PICTURES.... n\n\033[32m\'Tom Sawyer\'\033[0m', ['1) Take the needle off the record.'], [72]),
-    71: Section('Hell yeah. Side 1, Track 1 of THE LAMB LIES DOWN ON BROADWAY.... \n\ntitle track \033[34m\'The Lamb Lies Down on Broadway\'\033[0m', ['1) Take the needle off the record.'], [72]),
+    71: Section('Hell yeah. Side 1, Track 1 of THE LAMB LIES DOWN ON BROADWAY.... \n\n\033[34m\'The Lamb Lies Down on Broadway\'\033[0m', ['1) Take the needle off the record.'], [72]),
     72: Section('What the fuck. "Near Mint"!? And the first fucking SONG has a skip? You could kill Phil. What kinda mickey mouse goddamn moron operation is he running down there', ['1) Re-sleeve the LP.', '2) Eat your feelings.', '3) Go for a walk to try and calm down.'], [73, 74, 75]),
     73: Section('You try to steady your hands to put the record away. Goddamnit, even a VG+ graded record should have played with no skips what the HELL.', ['1) Take the record back to the store.'], [76, 77, 78]),
     74: Section('You power through four more pieces of cheese-on-toast.\n\nYou feel a bit sick, which proves to be a welcome distraction.', ['1) Take the record back to the store.'], [76, 77, 78]),
@@ -145,7 +148,7 @@ parts = {
     88: Section('You think so, yeah. It\'s all kinda redundant now, huh. You can go to those specialty candy stores, or god forbid the huge M&M store in Times Square, and just get whatever colors you want.', ['1) Do you think they have to swap out the blue ones for\nspecial-ordered tan ones in period movies?'], [89]),
     89: Section('They must! Well, any prop department worth a damn probably does, anyway.', ['1) There\'s probably a youtube video about it.'], [90]),
     90: Section('"Yo! Your car\'s all set."\n\nJohn is waving his hand in front of your face.', ['1) "Thanks, man! What do I owe ya?"'], [91]),
-    91: Section('"$110.\n\nShit. You don\'t have nearly enough cash on you."', ['1) "You guys take cards?"'], [92]),
+    91: Section('"$110."\n\nShit. You don\'t have nearly enough cash on you."', ['1) "You guys take cards?"'], [92]),
     92: Section('"Sure, sure. Give \'er here."\n\nHe runs your Discover card through one of those old carbon-copy machines that makes almost as satisfying a noise as the vending machine crank did.', ['1) Let\'s go return this record.'], [93]),
     93: Section('You\'re back on the road and everything\'s sounding normal under the hood. John always does a pretty stellar job with your Tercel.', ['1) '], []),
 
@@ -173,7 +176,14 @@ while player.name == '':
     #     print(welcome)
     #     intro = input('-->')
     # else:
-    player.name = intro
+    if intro != '':
+        player.name = intro
+    else:
+        os.system('clear')
+        print()
+        print("Please enter a name.")
+        print()
+        intro = input('-->')
 
 print()
 print(f'Welcome, {player.name}!')
