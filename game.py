@@ -141,7 +141,7 @@ parts = {
     84: Section('"Hey! What brings you here? Nope, stop right there, I\'ll tell ya what brings you here: fan belt. I could hear ya from the toilet when you pulled in. I can pop a new one on there once I\'m done this guy I got up on the lift here, if you can wait about half an hour."', ['1) Plop down in one of the waiting room chairs.'], [85]),
     85: Section('It smells like grease and gasoline, with an air freshener not pulling quite enough weight. It\'s a comforting smell; you used to like waiting for the old Monte Carlo to get tuned-up when you were a child. You would read whatever book you had on you, and if you were lucky your dad would give you a quarter for the M&M machine.\n\nDoes this garage have one of those, you wonder?', ['1) It does!'], [86]),
     86: Section('Oh hell yes.\n\nThe handle produces a strangely satisfying grinding noise as you turn it, and the way-past-expired candies fall down their chute and hit the metal retainer flap. You pop some of them in your mouth and wonder what the deal is with expired ones, why do the shells crack over time? You feel like you should be able to suss out the science of it, but you come up blank. There\'s probably a youtube video about this.\n\nThe specific taste and texture of the stale M&M\'s has completed the transformation: you are a kid again for these few minutes.', ['1) Remember tan M&M\'s?'], [87]),
-    87: Section('Yeah! They used to have brown AND tan...? What boring shit is that. Remember when they did the content to decide on the new color. You had to call some 1-800 number or something. What were the colors...it was Blue, Pink, and.... Purple? Was that it?', ['1) Was it?'], [88]),
+    87: Section('Yeah! They used to have brown AND tan...? What boring shit is that. Remember when they did the contest to decide on the new color. You had to call some 1-800 number or something. What were the colors...it was Blue, Pink, and.... Purple?\n\nWas that it?', ['1) Was it?'], [88]),
     88: Section('You think so, yeah. It\'s all kinda redundant now, huh. You can go to those specialty candy stores, or god forbid the huge M&M store in Times Square, and just get whatever colors you want.', ['1) Do you think they have to swap out the blue ones for\nspecial-ordered tan ones in period movies?'], [89]),
     89: Section('They must! Well, any prop department worth a damn probably does, anyway.', ['1) There\'s probably a youtube video about it.'], [90]),
     90: Section('"Yo! Your car\'s all set."\n\nJohn is waving his hand in front of your face.', ['1) "Thanks, man! What do I owe ya?"'], [91]),
@@ -154,12 +154,9 @@ parts = {
 
 anomalies = [15, 16, 17, 30, 68, 74]
 
-# TK change these once loop is reordered
-payments = [21, 22, 26, 27, 28]
-catfood = [31, 32, 33]
+payments = {29: 34.98, 34: 17.98, 86: 0.25, 93: 110.00}
+
 goodcall = [15, 21, 22, 26, 27, 28, 36]
-candies = [85]
-fanbelt = [92]
 
 welcome = 'Welcome to AUDIOPHILIA, the game of hi-fi perfection.\n\nPlease enter your name.'
 
@@ -184,6 +181,14 @@ print(f'Welcome, {player.name}!')
 while True:
 
     current = player.prog
+
+    for key, value in payments.items():
+        if key == player.prog:
+            player.money -= value
+
+# implement this so that you keep track of every player.prog and search for ones you DIDN'T do. aka bad choices
+    if player.prog in goodcall:
+        player.points += 1
     
     os.system('clear')
 
@@ -215,23 +220,6 @@ while True:
         pygame.mixer.init()
         pygame.mixer.music.load('multimedia/lamb.mid')
 
-
-#TK put these before the header ribbon print function
-
-    if player.prog in payments:
-        player.money -= 34.98
-
-    if player.prog in catfood:
-        player.money -= 17.98
-
-    if player.prog in candies:
-        player.money -= 0.25
-
-    if player.prog in fanbelt:
-        player.money -= 110.00
-
-    if player.prog in goodcall:
-        player.points += 1
     
     # FOR MIDI PLAYER + CHOICE DELAY
     if player.prog == 69:
@@ -275,7 +263,10 @@ while True:
         elif int(choice) <= optnum and player.prog not in anomalies:
             if cmd == parts[current].opt[adjust][0]:
                 player.prog = parts[current].path[adjust]
-        else: 
+        # TK FIX THIS
+        # elif choice == '': 
+        #     player.err = True
+        else:
             player.err = True
 
     if cmd == "q" or cmd == "Q":
