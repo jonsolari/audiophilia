@@ -164,7 +164,7 @@ goodcall = [15, 21, 22, 26, 27, 28, 36]
 
 welcome = 'Welcome to AUDIOPHILIA, the game of hi-fi perfection.\n\nPlease enter your name.'
 
-if os.platform.system() == 'Windows':
+if sys.platform.system() == 'Windows':
     os.system('cls')
 else:
     os.system('clear')
