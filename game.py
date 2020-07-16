@@ -142,6 +142,7 @@ parts = {
     # 00: Section('TK ', ['1) '], []),
 }
 
+# TK change these once loop is reordered
 anomalies = [15, 16, 17, 30, 68, 74]
 payments = [21, 22, 26, 27, 28]
 catfood = [31, 32, 33]
@@ -200,6 +201,9 @@ while True:
         player.inv = 'lamb'
         pygame.mixer.init()
         pygame.mixer.music.load('multimedia/lamb.mid')
+
+
+#TK put these before the header ribbon print function
 
     if player.prog in payments:
         player.money -= 34.98
