@@ -155,7 +155,7 @@ parts = {
     # 00: Section('TK ', ['1) '], []),
 }
 
-anomalies = [15, 16, 17, 30, 68, 74]
+anomalies = [15, 16, 17, 30, 68, 73, 74, 75]
 
 payments = {29: 34.98, 34: 17.98, 86: 0.25, 93: 110.00}
 
@@ -170,14 +170,8 @@ print()
 intro = input('-->')
 
 while player.name == '':
-    # if intro == "LOAD":
-    #     print('Feature TK')
-    #     print()
-    #     print(welcome)
-    #     intro = input('-->')
-    # else:
     if intro != '':
-        player.name = intro
+        player.name = intro.capitalize()
     else:
         os.system('clear')
         print()
@@ -256,12 +250,12 @@ while True:
 
     cmd = input("-->")
 
+    # TK fix the empty input issue
 
     def choicehandler(choice):
+
         adjust = int(choice) -1
         optnum = len(parts[current].opt)
-
-
 
         if int(choice) <= optnum and player.prog in anomalies:
             if 'aja' in player.inv and int(choice) == 1:
@@ -273,17 +267,10 @@ while True:
         elif int(choice) <= optnum and player.prog not in anomalies:
             if cmd == parts[current].opt[adjust][0]:
                 player.prog = parts[current].path[adjust]
-        # TK FIX THIS
-        # elif choice == '': 
-        #     player.err = True
         else:
             player.err = True
 
     if cmd == "q" or cmd == "Q":
         break
-
     
     choicehandler(cmd)
-    
-
-
