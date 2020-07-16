@@ -1,5 +1,5 @@
 import time
-import sys
+import platform
 import os
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 import pygame
@@ -164,7 +164,7 @@ goodcall = [15, 21, 22, 26, 27, 28, 36]
 
 welcome = 'Welcome to AUDIOPHILIA, the game of hi-fi perfection.\n\nPlease enter your name.'
 
-if sys.platform.system() == 'Windows':
+if platform.system() == 'Windows':
     os.system('cls')
 else:
     os.system('clear')
