@@ -32,11 +32,10 @@ def linebreaks(string):
 
     newstring = ''
     counter = 0
-
-# TK maybe add a thing that increments the counter 
-#    if a word is over a certain number of chars
+    charcounter = 0
 
     for i in string:
+            
         if i == ' ':
             counter += 1
 
@@ -279,6 +278,7 @@ while True:
             player.err = True
 
     if cmd == "q" or cmd == "Q":
+        clear()
         break
     
     choicehandler(cmd)
