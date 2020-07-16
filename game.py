@@ -22,6 +22,12 @@ class Player:
 
 player = Player('', 0, [], 0, 60.00, False)
 
+def clear():
+    if platform.system() == 'Windows':
+        os.system('cls')
+    else:
+        os.system('clear')
+
 def linebreaks(string):
 
     newstring = ''
@@ -164,10 +170,7 @@ goodcall = [15, 21, 22, 26, 27, 28, 36]
 
 welcome = 'Welcome to AUDIOPHILIA, the game of hi-fi perfection.\n\nPlease enter your name.'
 
-# if platform.system() == 'Windows':
-os.system('cls')
-# else:
-#     os.system('clear')
+clear()
 
 print()
 print(welcome)
@@ -178,7 +181,7 @@ while player.name == '':
     if intro != '':
         player.name = intro.capitalize()
     else:
-        os.system('clear')
+        clear()
         print()
         print("Please enter a name.")
         print()
@@ -199,7 +202,7 @@ while True:
     if player.prog in goodcall:
         player.points += 1
     
-    os.system('clear')
+    clear()
 
     print(f'\033[1;30;47mAUDIOPHILIA   Player: {player.name}   Points: {player.points}   Money: ${player.money:.2f}\033[0m')
 
