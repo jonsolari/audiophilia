@@ -182,7 +182,7 @@ anomalies = [15, 16, 17, 30, 68, 73, 74, 75]
 
 payments = {29: 34.98, 34: 17.98, 86: 0.25, 93: 110.00}
 
-goodcall = [15, 21, 22, 26, 27, 28, 36]
+goodcall = [2, 3, 4, 15, 21, 36, 44, 64, 87, 105]
 
 welcome = 'Welcome to AUDIOPHILIA, the game of hi-fi perfection.\n\nPlease enter your name.'
 
@@ -234,7 +234,6 @@ while True:
 
     if player.prog == 2:
         player.inv = 'aja'
-        # THIS WORKS for playing a MIDI in the fucking command line, which, lol
         pygame.mixer.init()
         pygame.mixer.music.load('multimedia/cow.mid')
         
