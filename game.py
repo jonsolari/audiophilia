@@ -146,7 +146,7 @@ parts = {
     80: Section('There\'s a noticeable whining sound. Your fan belt probably needs to be replaced.', ['1) Pull into the record store parking lot.', '2) Pass the store and go to your mechanic.'], [81, 82]),
     81: Section('You pull into the parking lot of the record store, and take a few breaths to steady yourself before going in and confronting Phil about his slip-up, about his goddamn blind-ass useless moron eyes not noticing that this record was going to skip like all HELL', ['1) Take a few more breaths.'], [83]),
     82: Section('You keep on driving. You can\'t tell if the whining noise is getting worse of if it\'s just your imagination, but it\'s probably a good idea to get it checked out sooner than later. \n\nYou pull into John\'s Garage.', ['1) Go see if John has some time today to look at it.'], [84]),
-    83: Section('You take some deep breaths, "square breaths" as the counselor had called them.\n\nBreathe in for four seconds,\n hold it four seconds,\n let it out for four seconds,\n hold that for four more seconds.\n\nRepeat.\n\nIt\'s never worked particularly well for you, but you don\'t need an assault charge on your record today so you\'re trying real hard.', ['1) Go inside.'], []),
+    83: Section('You take some deep breaths, "square breaths" as the counselor had called them.\n\nBreathe in for four seconds,\n hold it four seconds,\n let it out for four seconds,\n hold that for four more seconds.\n\nRepeat.\n\nIt\'s never worked particularly well for you, but you don\'t need an assault charge on your record today so you\'re trying real hard.', ['1) Go inside.'], [94]),
     84: Section('"Hey! What brings you here? Nope, stop right there, I\'ll tell ya what brings you here: fan belt. I could hear ya from the toilet when you pulled in. I can pop a new one on there once I\'m done this guy I got up on the lift here, if you can wait about half an hour."', ['1) Plop down in one of the waiting room chairs.'], [85]),
     85: Section('It smells like grease and gasoline, with an air freshener not pulling quite enough weight. It\'s a comforting smell; you used to like waiting for the old Monte Carlo to get tuned-up when you were a child. You would read whatever book you had on you, and if you were lucky your dad would give you a quarter for the M&M machine.\n\nDoes this garage have one of those, you wonder?', ['1) It does!'], [86]),
     86: Section('Oh hell yes.\n\nThe handle produces a strangely satisfying grinding noise as you turn it, and the way-past-expired candies fall down their chute and hit the metal retainer flap. You pop some of them in your mouth and wonder what the deal is with expired ones, why do the shells crack over time? You feel like you should be able to suss out the science of it, but you come up blank. There\'s probably a youtube video about this.\n\nThe specific taste and texture of the stale M&M\'s has completed the transformation: you are a kid again for these few minutes.', ['1) Remember the tan-colored M&M\'s?'], [87]),
@@ -156,7 +156,20 @@ parts = {
     90: Section('"Yo! Your car\'s all set."\n\nJohn is waving his hand in front of your face.', ['1) "Thanks, man! What do I owe ya?"'], [91]),
     91: Section('"$110."\n\nShit. You don\'t have nearly enough cash on you."', ['1) "You guys take cards?"'], [92]),
     92: Section('"Sure, sure. Give \'er here."\n\nHe runs your Discover card through one of those old carbon-copy machines that makes almost as satisfying a noise as the vending machine crank did.', ['1) Let\'s go return this record.'], [93]),
-    93: Section('You\'re back on the road and everything\'s sounding normal under the hood. John always does a pretty stellar job with your Tercel.', ['1) '], []),
+    93: Section('You\'re back on the road and everything\'s sounding normal under the hood. John always does a pretty stellar job with your Tercel.', ['1) Park in front of the record shop.'], [104]),
+    94: Section('TK go into store, phil isn\'t there', ['1) "Well do you know when he\'ll be back?"'], [95]),
+    95: Section('TK he went home to grab something, lives across the river so it\'ll be a while', ['1) Wait for him.', '2) Go get your car looked at.'], [96, 97]),
+    96: Section('TK you hang out awkwardly, look through some old promotional flats', ['1) '], []),
+    97: Section('TK sorry asshole your car won\'t start now', ['1) Go back inside.'], [98]),
+    98: Section('TK you\'re trying your best to center yourself but you\'re real mad. oh shit when did they get a laserdisc section, you didn\'t even see that. ', ['1) Makes sense, they\'re identical to LPs when shelved.'], [99]),
+    99: Section('TK there\'s even some CEDs!', ['1) Look through those.', '2) What is a CED?'], [101, 100]),
+    100: Section('TK oh man Let It Be! this is basically unaffordable in any other format. ', ['1) I should grab it.'], [102]),
+    101: Section('TK explain what CEDs are', ['1) Are there any good titles?'], [100]),
+    102: Section('TK no time for that, Phil is back', ['1) Go confront him.'], [103]),
+    103: Section('TK "Hey! Back so soon?"', ['1) "Hey man, got a little problem here.', '2) "Shut the hell up. Just shut up. What the fuck is the idea!?', '3) Take a swing at Phil.'], [105, 106, 107]),
+    104: Section('TK you park your car and head inside. Phil is there, setting down a food container.', ['1) Go confront him.'], [103]),
+
+
 
     # 00: Section('TK ', ['1) '], []),
 }
