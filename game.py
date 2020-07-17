@@ -159,17 +159,21 @@ parts = {
     93: Section('You\'re back on the road and everything\'s sounding normal under the hood. John always does a pretty stellar job with your Tercel.', ['1) Park in front of the record shop.'], [104]),
     94: Section('TK go into store, phil isn\'t there', ['1) "Well do you know when he\'ll be back?"'], [95]),
     95: Section('TK he went home to grab something, lives across the river so it\'ll be a while', ['1) Wait for him.', '2) Go get your car looked at.'], [96, 97]),
-    96: Section('TK you hang out awkwardly, look through some old promotional flats', ['1) '], []),
+    96: Section('TK you hang out awkwardly, look through some old promotional flats. you try to make conversation with Jeff but it\'s unsustainably awkward', ['1) Just look through some more merchandise, then.'], [98]),
     97: Section('TK sorry asshole your car won\'t start now', ['1) Go back inside.'], [98]),
     98: Section('TK you\'re trying your best to center yourself but you\'re real mad. oh shit when did they get a laserdisc section, you didn\'t even see that. ', ['1) Makes sense, they\'re identical to LPs when shelved.'], [99]),
-    99: Section('TK there\'s even some CEDs!', ['1) Look through those.', '2) What is a CED?'], [101, 100]),
+    99: Section('TK there\'s even some CEDs!', ['1) Look through those.', '2) What is a CED?'], [100, 101]),
     100: Section('TK oh man Let It Be! this is basically unaffordable in any other format. ', ['1) I should grab it.'], [102]),
     101: Section('TK explain what CEDs are', ['1) Are there any good titles?'], [100]),
     102: Section('TK no time for that, Phil is back', ['1) Go confront him.'], [103]),
     103: Section('TK "Hey! Back so soon?"', ['1) "Hey man, got a little problem here.', '2) "Shut the hell up. Just shut up. What the fuck is the idea!?', '3) Take a swing at Phil.'], [105, 106, 107]),
     104: Section('TK you park your car and head inside. Phil is there, setting down a food container.', ['1) Go confront him.'], [103]),
-
-
+    105: Section('"What\'s the issue, friend?"', ['1) Explain what happened, including every step of your cleaning ritual.'], []),
+    106: Section('He looks legitimately scared of you; this is not a person who seeks out or relishes conflict in the first place, and your raised voice has the whole store\'s attention.\n\n"... W-What\'s the matter?"', ['1) Explain what happened, including every step of your cleaning ritual.'], [109]),
+    107: Section('You attempt to suckerpunch Phil but he\'s fast, too fast. He dodges it, and with improbable speed Jeffery gets you into a halfnelson from behind. Before you know it he has pulled some kind of Brazilian Jiu-Jitsu move on you and the last thing you hear before losing consciousness is Phil remarking that ya know, before they were Sparks, they were called Halfnelson.', ['1) Wake up in the hospital.'], [108]),
+    108: Section('You wake up in some kind of low-urgency part of the city hospital, whatever the opposite of an ICU is.\n\nYour bill is exorbitant and you still have a scratched record.\n\n\033[31mBAD ENDING\033[0m', ['Press \'Q\' to exit the game.'], []),
+    109: Section('"Okay man, well you can return it for store credit if you see something you like. I\'m usually pretty diligent about grading the merchandise, I\'m sorry you had to come all the way back here."\n\nHe\'s such a goddamn nice and patient guy. You feel terrible.', ['1) "Uh. Thanks, I\'ll take a look around."'], [110]),
+    110: Section('You look around for a while and end up buying your fifth copy of \033[94mThe Nightfly\033[0m by Donald Fagen, and a couple old Motown cassettes.\n\n\033[33mMEDIOCRE ENDING\033[0m', ['Press \'Q\' to exit the game.'], []),
 
     # 00: Section('TK ', ['1) '], []),
 }
