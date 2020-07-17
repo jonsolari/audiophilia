@@ -133,7 +133,7 @@ parts = {
     67: Section('You turn off all the kitchen and living room lights, but when you return to the listening room the buzz is still there.', ['1) '], [64]),
     68: Section('The buzz is gone!\n\nIt\'s time at last to spin this record.', ['1) Drop the needle!'], [69, 70, 71]),
     69: Section('Hell yeah. Side 1, Track 1 of AJA.... \n\n\033[31m\'Black Cow\'\033[0m', ['1) Take the needle off the record.'], [72]),
-    70: Section('Hell yeah. Side 1, Track 1 of MOVING PICTURES.... n\n\033[32m\'Tom Sawyer\'\033[0m', ['1) Take the needle off the record.'], [72]),
+    70: Section('Hell yeah. Side 1, Track 1 of MOVING PICTURES.... \n\n\033[32m\'Tom Sawyer\'\033[0m', ['1) Take the needle off the record.'], [72]),
     71: Section('Hell yeah. Side 1, Track 1 of THE LAMB LIES DOWN ON BROADWAY.... \n\n\033[34m\'The Lamb Lies Down on Broadway\'\033[0m', ['1) Take the needle off the record.'], [72]),
     72: Section('What the fuck. "Near Mint"!? And the first fucking SONG has a skip? You could kill Phil. What kinda mickey mouse goddamn moron operation is he running down there', ['1) Re-sleeve the LP.', '2) Eat your feelings.', '3) Go for a walk to try and calm down.'], [73, 74, 75]),
     73: Section('You try to steady your hands to put the record away. Goddamnit, even a VG+ graded record should have played with no skips what the HELL.', ['1) Take the record back to the store.'], [76, 77, 78]),
@@ -239,7 +239,7 @@ while True:
 
     if player.prog == 70:
         pygame.mixer.music.play()
-        time.sleep(2) 
+        time.sleep(22) 
 
     if player.prog == 71:
         pygame.mixer.music.play()
