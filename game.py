@@ -277,7 +277,7 @@ while True:
     # TK fix the empty input issue
 
     def choicehandler(choice):
-
+        
         adjust = int(choice) -1
         optnum = len(parts[current].opt)
 
@@ -298,4 +298,9 @@ while True:
         clear()
         break
     
-    choicehandler(cmd)
+    valid = ["q", "Q", "1", "2", "3", "4"]
+
+    if cmd not in valid:
+        player.err = True
+    else:
+        choicehandler(cmd)
