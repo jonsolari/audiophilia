@@ -239,7 +239,7 @@ while True:
 
     if player.prog == 70:
         pygame.mixer.music.play()
-        time.sleep(30) #TBD
+        time.sleep(2) 
 
     if player.prog == 71:
         pygame.mixer.music.play()
