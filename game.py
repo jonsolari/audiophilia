@@ -89,9 +89,9 @@ parts = {
     23: Section('"Not a weak track on there, man. Can you imagine how many people are getting into the Dan just from hip hop samples? De La Soul using \'Peg\', Peter Gunz and Lord Tariq using \'Black Cow\'... not to mention Kanye using \'Kid Charlemagne\' but we\'re out in the weeds now, talking about \u001b[36mthe Royal Scam\033[0m. Underrated disc, if you ask me. \'Everyone\'s Gone to the Movies\' is such a sleeper creeper of a song!"', ['1) ...'], [26]),
     24: Section('"People like to rag on the Rush boys, but I never quite got that-- they\'re as legitimate as anybody, progressive or moderate. Whatever your stance is on weird time signatures and fretless double-necked guitars, they were layin\' down some heavy, ponderous shit! For my dollar anyway. Well they\'re Canadian, so I guess my seventy-three cents."', ['1) ...'], [27]),
     25: Section('"Oh the purists like to jump ship around \u001b[36mTrick of the Tail\033[0m, but I followed these guys clear through to \033[35mInvisible Touch\033[0m. Is the production style really dated? Of course! Is the video for Land of Confusion terrifying? Absolutely! But I\'ll be damned if it isn\'t still top notch quality tuneage."', ['1) ...'], [28]),
-    26: Section('"TK singing a song \n\nThat\'ll be \033[32m$34.98\033[0m"', ['1) Pay the man.'], [29]),
-    27: Section('"TK singing a song \n\nThat\'ll be \033[32m$34.98\033[0m"', ['1) Pay the man.'], [29]),
-    28: Section('"That\'ll be, \033[32m$34.98\033[0m- ah! \u266b\nPut the cash, \u266b\nright- down- here-on-the-thing! \u266b"', ['1) Pay the man.'], [29]),
+    26: Section('(to the tune of Rikki Don\'t Lose That Number)\n\n"\033[32m$34.98\033[0m-ah!, \nYou can leave the money on the thing-\nGet your change in a minute, da-daah-dinnnng"', ['1) Pay the man.'], [29]),
+    27: Section('(to the tune of Limelight)\n\n"\033[32m$34.98\033[0m,\nis how much you must pay,\nfor this re-cord-to-play!\nHm hm, daaaa, da dada dum, ga THMP THMP da daah daaaaaahhhh"', ['1) Pay the man.'], [29]),
+    28: Section('(to the tune of Invisible Touch)\n\n"That\'ll be, \033[32m$34.98\033[0m- ah! \u266b\nPut the cash, \u266b\nright- down- here-on-the-thing! \u266b"', ['1) Pay the man.'], [29]),
     29: Section('"Enjoy that thing, man! It\'ll sound boss on your setup, I just know it."', ['1) Leave the shop.'], [30]),
     30: Section('You climb into your \'98 Tercel, taking extra care to set your new purchase down on the passenger seat, all but buckling it in. As you coast down Main St., you get a small frisson of hope about your afternoon to come. A great find! Reference quality! You can just imagine what the guys will say when you have them over for a demonstration. The low end always scares \033[31mJaco\033[0m, your faithful calico tomcat, but you know enough by now to gently usher him into the other room.\n\nOh shit! Jaco! \nHis food was low when you checked.', ['1) Hang a left on Elm and head to the pet store.'], [31, 32, 33]),
     31: Section('You navigate to the pet shop and get his cat food (sensitive stomach, senior blend, goddamn $18).\n\nYou have \033[32m\'Limelight\'\033[0m stuck in your head though-- you probably should have bought Moving Pictures instead.',['1) Goddamnit.'],[34]),
@@ -187,7 +187,7 @@ payments = {29: 34.98, 34: 17.98, 86: 0.25, 93: 110.00}
 
 goodcall = [2, 3, 4, 15, 21, 36, 44, 64, 87, 105]
 
-welcome = 'Welcome to AUDIOPHILIA, the game of hi-fi perfection.\n\nPlease enter your name.'
+welcome = 'Welcome to AUDIOPHILIA, the game of hi-fi perfection!\n\nPlease enter your name.'
 
 clear()
 
@@ -272,11 +272,7 @@ while True:
     
     print()
 
-    # print("inventory: ", player.inv)
-
     cmd = input("-->")
-
-    # TK fix the empty input issue
 
     def choicehandler(choice):
         
