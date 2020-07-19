@@ -4,8 +4,6 @@ import os
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 import pygame
 
-# STRUCTURE
-
 # Player is an object with a Name, Progression Index, Inventory, Point Tally, Money Tally, and Error flag 
 
 class Player:
@@ -22,11 +20,15 @@ class Player:
 
 player = Player('', 0, [], 0, 60.00, False)
 
+# to clear terminal screen on windows and mac osx
+
 def clear():
     if platform.system() == 'Windows':
         os.system('cls')
     else:
         os.system('clear')
+
+# basic word wrap algorithm
 
 def linebreaks(string):
 
@@ -53,14 +55,15 @@ def linebreaks(string):
     
     return newstring
 
-
-# Progression attribute will increment as you go on, and this will dictate what's shown as a prompt
+# progression attribute will change depending on choices player makes, and this will dictate what's shown for a description and next set of choices
 
 class Section: 
     def __init__(self, desc, opt, path):
         self.desc = desc
         self.opt = opt
         self.path = path
+
+# script of the game itself
 
 parts = {
     0: Section('You are in your favorite record store. It\'s a basement-level space, but somehow still has a ton of deeply sun-faded promo posters (which they refuse to sell you, no matter how many times you ask). There\'s  a \"book section\" with a bunch of old issues of Rolling Stone and Maximum Rocknroll, some fat little 20th-century-summarizing record review books, a couple Elvis biographies, and a weird amount of 90s porno mags. A box of Grateful Dead bootleg tapes (both audience and soundboard) sits near the counter. The $1 CD wall promises scuffed-up copies of BMG Music Club one-hit-wonder flotsam, and always more than a few Ani DiFranco selections (why?). There are also, naturally, a ton of used vinyl records for sale.', ['1) Dig in some crates'], [1]),
@@ -177,15 +180,24 @@ parts = {
     111: Section('"Damn, I\'m really sorry to hear that! We usually only do store credit, but you\'re in here all the time, so let\'s just go ahead and get you your cash back.', ['1) "Aw man, really? Thanks!"'], [112]),
     112: Section('You no longer possess a scratched record!\n\nYou decide to look around a bit more, and end up finding a copy of \033[34mSync\033[31mhroni\033[33mcity\033[0m by The Police that has the rare bronze/silver/gold cover variant! You can flip this on eBay even if the disc ends up being scratched, but you\'re pretty sure you\'ll just keep it since you almost never see these.', ['1) Whoa, and it\'s only priced at $20..?'], [113]),
     113: Section('This is a pretty excellent find! You decide to buy this as well as your fifth copy of \033[94mThe Nightfly\033[0m by Donald Fagen and call it a day.\n\n\033[32mGOOD ENDING\033[0m', ['Press \'Q\' to exit the game.'], []),
-
-    # 00: Section('TK ', ['1) '], []),
 }
+
+# places where the record purchased will affect player's outcomes
 
 anomalies = [15, 16, 17, 30, 68, 73, 74, 75]
 
+
+# places where things cost the player money, and how much
+
 payments = {29: 34.98, 34: 17.98, 86: 0.25, 93: 110.00}
 
+
+# places the player can gain points
+
 goodcall = [2, 3, 4, 15, 21, 36, 44, 64, 87, 105]
+
+
+# initial welcome screen & name prompt
 
 welcome = 'Welcome to AUDIOPHILIA, the game of hi-fi perfection!\n\nPlease enter your name.'
 
@@ -209,31 +221,51 @@ while player.name == '':
 print()
 print(f'Welcome, {player.name}!')
 
+
+# main game loop
+
 while True:
 
     current = player.prog
+
+
+    # did the player buy something by taking this path?
 
     for key, value in payments.items():
         if key == player.prog:
             player.money -= value
 
-# implement this so that you keep track of every player.prog and search for ones you DIDN'T do. aka bad choices
+
+    # did they player gain a point?
+
     if player.prog in goodcall:
         player.points += 1
     
     clear()
 
+
+    # player status ribbon at the top of each screen
+
     print(f'\033[1;30;47mAUDIOPHILIA   Player: {player.name}   Points: {player.points}   Money: ${player.money:.2f}\033[0m')
+
+
+    # prompt to choose a valid option, should the player not do this
 
     if player.err == True:
         print()
         print('\033[35mPlease choose from the available selections.\033[0m')
         player.err = False
 
+
+    # description of where the player currently is
+
     print()
     print(linebreaks(parts[current].desc))
     
     print()
+
+
+    # specific audio playback preparation cases
 
     if player.prog == 2:
         player.inv = 'aja'
@@ -251,7 +283,8 @@ while True:
         pygame.mixer.music.load('multimedia/lamb.mid')
 
     
-    # FOR MIDI PLAYER + CHOICE DELAY
+    # for audio playback and delay of next-choices set in these specific places
+
     if player.prog == 69:
         pygame.mixer.music.play()
         time.sleep(36) 
@@ -264,13 +297,22 @@ while True:
         pygame.mixer.music.play()
         time.sleep(53) 
 
+
+    # to stop the music in one specific place
+
     if player.prog == 72:
         pygame.mixer.music.stop()
+
+
+    # display of player's choices after each description
 
     for i in parts[current].opt:
         print('\033[90m'+i+'\033[0m')
     
     print()
+
+
+    # player input
 
     cmd = input("-->")
 
@@ -279,6 +321,7 @@ while True:
         adjust = int(choice) -1
         optnum = len(parts[current].opt)
 
+        # for places in the 'anomalies' list
         if int(choice) <= optnum and player.prog in anomalies:
             if 'aja' in player.inv and int(choice) == 1:
                 player.prog = parts[current].path[0]
@@ -286,18 +329,25 @@ while True:
                 player.prog = parts[current].path[1]
             elif 'lamb' in player.inv and int(choice) == 1:
                 player.prog = parts[current].path[2]
+
+        #for normal inputs
         elif int(choice) <= optnum and player.prog not in anomalies:
             if cmd == parts[current].opt[adjust][0]:
                 player.prog = parts[current].path[adjust]
+        
+        #for choice outside the number listed
         else:
             player.err = True
 
+    # to quit the game
     if cmd == "q" or cmd == "Q":
         clear()
         break
     
+    # list of valid inputs in the game (after name screen)
     valid = ["q", "Q", "1", "2", "3", "4"]
 
+    # in case player hits anything but a choice or the 'Quit' command
     if cmd not in valid:
         player.err = True
     else:
