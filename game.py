@@ -236,7 +236,7 @@ while True:
             player.money -= value
 
 
-    # did they player gain a point?
+    # did the player gain a point?
 
     if player.prog in goodcall:
         player.points += 1
