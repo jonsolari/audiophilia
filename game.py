@@ -206,7 +206,7 @@ clear()
 print()
 print(welcome)
 print()
-intro = input('-->')
+intro = input('--> ')
 
 while player.name == '':
     if intro != '':
