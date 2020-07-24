@@ -3,7 +3,7 @@
 
 Requires installation of:
 - Python3
-- PyGame
+- PyGame (confirmed working version listed in requirements.txt)
 
 Runs in the terminal. Just clone this repo, cd into it, and run game.py. 
 
