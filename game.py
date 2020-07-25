@@ -132,7 +132,7 @@ parts = {
     63: Section('The speaker wires look ok! Nothing is loose, no spindly little shits poking out from your top-notch wire twisting job a few years back.', ['1) Check the turntable ground wire.', '2) Turn off all the lights in your apartment in case they\'re interfering somehow.'], [64, 67]),
     64: Section('That\'s it! The ground wire on the turntable somehow came loose.', ['1) Reattach that guy!'], [68]),
     65: Section('You turn off all the kitchen and living room lights, but when you return to the listening room the buzz is still there.', ['1) Check the speaker wires.', '2) Check the turntable ground wire.'], [66, 64]),
-    66: Section('The speaker wires look ok! Nothing is loose, no spindly little shits poking out from your top-notch wire twisting job a few years back.', ['1) '], [64]),
+    66: Section('The speaker wires look ok! Nothing is loose, no spindly little shits poking out from your top-notch wire twisting job a few years back.', ['1) Check the turntable ground wire.'], [64]),
     67: Section('You turn off all the kitchen and living room lights, but when you return to the listening room the buzz is still there.', ['1) Check the turntable ground wire.'], [64]),
     68: Section('The buzz is gone!\n\nIt\'s time at last to spin this record.', ['1) Drop the needle!'], [69, 70, 71]),
     69: Section('Hell yeah. Side 1, Track 1 of AJA.... \n\n\033[31m\'Black Cow\'\033[0m', ['1) Take the needle off the record.'], [72]),
