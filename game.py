@@ -280,16 +280,25 @@ while True:
     # for audio playback and delay of next-choices set in these specific places
 
     if player.prog == 69:
-        pygame.mixer.music.play()
-        time.sleep(36) 
+        if player.err == False:
+            pygame.mixer.music.play()
+            time.sleep(36) 
+        else:
+            pass
 
     if player.prog == 70:
-        pygame.mixer.music.play()
-        time.sleep(22) 
+        if player.err == False:
+            pygame.mixer.music.play()
+            time.sleep(22) 
+        else:
+            pass
 
     if player.prog == 71:
-        pygame.mixer.music.play()
-        time.sleep(53) 
+        if player.err == False:
+            pygame.mixer.music.play()
+            time.sleep(53) 
+        else:
+            pass
 
 
     # to stop the music in one specific place
