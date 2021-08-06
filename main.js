@@ -1575,8 +1575,6 @@
   ]);
   // }}}
 
-  let currentSceneIndex = 0;
-
   class Player {
     constructor(name, points, inventory, money) {
       if (!window.localStorage.getItem('name')) {
@@ -1618,35 +1616,85 @@
     }
   }
 
+  class PlayerInformation extends HTMLElement {
+    constructor() {
+      super();
+      const shadow = this.attachShadow({mode: 'open'});
+      shadow.innerHTML = `
+        <div class="points-wrapper">Points: <span id="points">${this.getAttribute('points')}</span></div>
+        <div class="money-wrapper">Money: $<span id="money">${this.getAttribute('money')}</span></div>
+        <div class="inventory-wrapper">Inventory: <span id="inventory">${this.getAttribute('inventory')}</span></div>
+      `;
+    }
+    static get observedAttributes() {
+      return [
+        'points',
+        'inventory',
+        'money',
+      ];
+    }
+    attributeChangedCallback(name, oldValue, newValue) {
+      if (!newValue) { return; }
+      this.shadowRoot.getElementById(name).textContent = newValue;
+    }
+  }
+  customElements.define('player-information', PlayerInformation);
+
   class PlayerChoices extends HTMLElement {
     constructor() {
       super();
-      this.shadow = this.attachShadow({mode: 'open'});
-      this.shadow.host.addEventListener('pointerup', event => {
-        console.log(event);
+      const shadow = this.attachShadow({mode: 'open'});
+      shadow.addEventListener('pointerup', event => {
+        const choice = event.target.closest('button');
+        console.log(choice.dataset.sceneIndex);
       }, {passive: true});
     }
     static get observedAttributes() { return ['choices']; }
     attributeChangedCallback(name, oldValue, newValue) {
       if (!newValue) {
-        this.shadow.innerHTML = '';
+        this.shadowRoot.innerHTML = '';
         return;
       }
-      this.shadow.innerHTML = JSON.parse(newValue).map(choice => {
-        return `<button
+      this.shadowRoot.innerHTML = JSON.parse(newValue).reduce((acc, choice) => {
+        return acc + `<button
           id="choice-${choice.moveTo}"
           data-scene-index="${choice.moveTo}">
           ${choice.description}
         </button>`;
-      });
+      }, '');
     }
   }
   customElements.define('player-choices', PlayerChoices);
 
-  const playButton = document.getElementById('play');
   const stage = document.getElementById('stage');
+  const playButton = document.getElementById('play');
+  const playerInformation = document.getElementsByTagName('player-information')[0];
+  const playerChoices = document.getElementsByTagName('player-choices')[0];
 
   const player = new Player('', '0', '', '60');
+
+  playerChoices.setAttribute('choices', JSON.stringify(
+    [
+      {
+        description: "Aja by Steely Dan",
+        item: "aja",
+        getPoints: true,
+        moveTo: 2
+      },
+      {
+        description: "Moving Pictures by Rush",
+        item: "rush",
+        getPoints: true,
+        moveTo: 3
+      },
+      {
+        description: "The Lamb Lies Down on Broadway by Genesis",
+        item: "lamb",
+        getPoints: true,
+        moveTo: 4
+      }
+    ]
+  ));
 
   if (!window.localStorage.getItem('name')) {
     playButton.addEventListener('pointerup', function playEvent(event) {
