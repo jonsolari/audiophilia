@@ -1605,16 +1605,25 @@
     setName(name) {
       return window.localStorage.setItem('name', name);
     }
-    setPoints(points) {
-      return window.localStorage.setItem('points', points);
+    addPoints() {
+      playerInformation.setAttribute('points', this.points + 1);
+      return window.localStorage.setItem('points', this.points + 1);
     }
     setInventory(inventory) {
+      if (!inventory) return false;
       return window.localStorage.setItem('inventory', inventory);
     }
     setMoney(money) {
+      if (!money) return false;
+      playerInformation.setAttribute('money', money);
       return window.localStorage.setItem('money', money);
     }
   }
+
+  const stage = document.getElementById('stage');
+  const playButton = document.getElementById('play');
+  const playerInformation = document.getElementsByTagName('player-information')[0];
+  const playerChoices = document.getElementsByTagName('player-choices')[0];
 
   class PlayerInformation extends HTMLElement {
     constructor() {
@@ -1623,13 +1632,11 @@
       shadow.innerHTML = `
         <div class="points-wrapper">Points: <span id="points">${this.getAttribute('points')}</span></div>
         <div class="money-wrapper">Money: $<span id="money">${this.getAttribute('money')}</span></div>
-        <div class="inventory-wrapper">Inventory: <span id="inventory">${this.getAttribute('inventory')}</span></div>
       `;
     }
     static get observedAttributes() {
       return [
         'points',
-        'inventory',
         'money',
       ];
     }
@@ -1646,7 +1653,18 @@
       const shadow = this.attachShadow({mode: 'open'});
       shadow.addEventListener('pointerup', event => {
         const choice = event.target.closest('button');
-        console.log(choice.dataset.sceneIndex);
+        if (JSON.parse(choice.dataset.getPoints)) {
+          player.addPoints();
+        }
+        player.setInventory(choice.dataset.item);
+        player.setMoney(choice.dataset.money);
+        const moveTo = JSON.parse(choice.dataset.moveTo);
+        if (typeof moveTo === 'object') {
+          renderScene(moveTo[player.inventory])
+        }
+        else {
+          renderScene(moveTo);
+        }
       }, {passive: true});
     }
     static get observedAttributes() { return ['choices']; }
@@ -1657,8 +1675,11 @@
       }
       this.shadowRoot.innerHTML = JSON.parse(newValue).reduce((acc, choice) => {
         return acc + `<button
-          id="choice-${choice.moveTo}"
-          data-scene-index="${choice.moveTo}">
+          data-move-to='${JSON.stringify(choice.moveTo)}'
+          data-item="${choice.item ? choice.item : ''}"
+          data-get-points="${choice.getPoints ? 'true' : 'false'}"
+          data-money="${choice.money ? choice.money : ''}"
+        >
           ${choice.description}
         </button>`;
       }, '');
@@ -1666,35 +1687,18 @@
   }
   customElements.define('player-choices', PlayerChoices);
 
-  const stage = document.getElementById('stage');
-  const playButton = document.getElementById('play');
-  const playerInformation = document.getElementsByTagName('player-information')[0];
-  const playerChoices = document.getElementsByTagName('player-choices')[0];
+  const player = new Player('', 0, '', 60);
 
-  const player = new Player('', '0', '', '60');
-
-  playerChoices.setAttribute('choices', JSON.stringify(
-    [
-      {
-        description: "Aja by Steely Dan",
-        item: "aja",
-        getPoints: true,
-        moveTo: 2
-      },
-      {
-        description: "Moving Pictures by Rush",
-        item: "rush",
-        getPoints: true,
-        moveTo: 3
-      },
-      {
-        description: "The Lamb Lies Down on Broadway by Genesis",
-        item: "lamb",
-        getPoints: true,
-        moveTo: 4
-      }
-    ]
-  ));
+  function renderScene(index) {
+    const wrapper = document.createElement('div');
+    const contents = data.get(index);
+    wrapper.innerHTML = contents.description;
+    stage.appendChild(wrapper);
+    playerChoices.setAttribute('choices', JSON.stringify(contents.choices));
+    // const playedScenes = JSON.parse(window.localStorage.getItem('playedScenes'));
+    // playedScenes.push(moveTo);
+    // window.localStorage.setItem('playedScenes', JSON.stringify(playedScenes));
+  }
 
   if (!window.localStorage.getItem('name')) {
     playButton.addEventListener('pointerup', function playEvent(event) {
@@ -1711,6 +1715,8 @@
   if (!window.localStorage.getItem('playedScenes')) {
     window.localStorage.setItem('playedScenes', JSON.stringify([]));
   }
+
+  renderScene(0);
 
 })();
 // vim: foldmethod=marker
