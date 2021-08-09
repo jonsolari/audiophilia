@@ -1575,66 +1575,57 @@
   ]);
   // }}}
 
-  class Player {
-    constructor(name, points, inventory, money) {
-      if (!window.localStorage.getItem('name')) {
-        window.localStorage.setItem('name', name);
-      }
-      if (!window.localStorage.getItem('points')) {
-        window.localStorage.setItem('points', points);
-      }
-      if (!window.localStorage.getItem('inventory')) {
-        window.localStorage.setItem('inventory', inventory);
-      }
-      if (!window.localStorage.getItem('money')) {
-        window.localStorage.setItem('money', money);
-      }
-    }
+  const DEFAULT_POINTS = 0;
+  const DEFAULT_MONEY = 60;
+
+  const Player = {
     get name() {
-      const name = window.localStorage.getItem('name');
-      return name.charAt(0).toUpperCase() + name.slice(1, name.length);
-    }
+      return window.localStorage.getItem('name');
+    },
     get points() {
+      if (!window.localStorage.getItem('points')) return DEFAULT_POINTS;
       return parseInt(window.localStorage.getItem('points'), 10);
-    }
+    },
     get inventory() {
-      return window.localStorage.getItem('inventory') + '';
-    }
+      return window.localStorage.getItem('inventory');
+    },
     get money() {
+      if (!window.localStorage.getItem('money')) return DEFAULT_MONEY;
       return JSON.parse(window.localStorage.getItem('money'));
-    }
+    },
     setName(name) {
-      return window.localStorage.setItem('name', name);
-    }
+      return window.localStorage.setItem(
+        'name',
+        name.charAt(0).toUpperCase() + name.slice(1, name.length)
+      );
+    },
     addPoints() {
       playerInformation.setAttribute('points', this.points + 1);
       return window.localStorage.setItem('points', this.points + 1);
-    }
+    },
     setInventory(inventory) {
       if (!inventory) return false;
       return window.localStorage.setItem('inventory', inventory);
-    }
+    },
     adjustMoney(cost) {
       if (!cost) return false;
       const newAmount = Number.parseFloat(this.money + cost).toPrecision(4);
       playerInformation.setAttribute('money', newAmount);
       return window.localStorage.setItem('money', newAmount);
-    }
-  }
+    },
+  };
 
   const stage = document.getElementById('stage');
   const playButton = document.getElementById('play');
   const playerInformation = document.getElementsByTagName('player-information')[0];
   const playerChoices = document.getElementsByTagName('player-choices')[0];
 
-  const player = new Player('', 0, '', 60);
-
   class PlayerInformation extends HTMLElement {
     constructor() {
       super();
       const shadow = this.attachShadow({mode: 'open'});
-      const points = player.points ? player.points : this.getAttribute('points');
-      const money = player.money ? player.money : this.getAttribute('money');
+      const points = Player.points ? Player.points : this.getAttribute('points');
+      const money = Player.money ? Player.money : this.getAttribute('money');
       shadow.innerHTML = `
         <div class="points-wrapper">Points: <span id="points">${points}</span></div>
         <div class="money-wrapper">Money: $<span id="money">${money}</span></div>
@@ -1659,11 +1650,11 @@
       const shadow = this.attachShadow({mode: 'open'});
       shadow.addEventListener('pointerup', event => {
         const choice = event.target.closest('button');
-        if (JSON.parse(choice.dataset.getPoints)) player.addPoints();
-        player.setInventory(choice.dataset.item);
-        player.adjustMoney(choice.dataset.cost ? JSON.parse(choice.dataset.cost) : null);
+        if (JSON.parse(choice.dataset.getPoints)) Player.addPoints();
+        Player.setInventory(choice.dataset.item);
+        Player.adjustMoney(choice.dataset.cost ? JSON.parse(choice.dataset.cost) : null);
         const moveTo = JSON.parse(choice.dataset.moveTo);
-        if (typeof moveTo === 'object')  renderScene(moveTo[player.inventory]);
+        if (typeof moveTo === 'object')  renderScene(moveTo[Player.inventory]);
         else renderScene(moveTo);
       }, {passive: true});
     }
@@ -1700,16 +1691,16 @@
 
   if (!window.localStorage.getItem('name')) {
     playButton.addEventListener('pointerup', function playEvent(event) {
-      player.setName(window.prompt('Please enter your name'));
+      Player.setName(window.prompt('Please enter your name'));
       playButton.hidden = true;
       playButton.removeEventListener('pointerup', playEvent);
-      stage.innerHTML = `<div><strong>Welcome, ${player.name}!</strong></div>`;
+      stage.innerHTML = `<div><strong>Welcome, ${Player.name}!</strong></div>`;
       renderScene(0);
     });
   }
   else {
     playButton.hidden = true;
-    stage.innerHTML = `<div><strong>Welcome, ${player.name}!</strong></div>`;
+    stage.innerHTML = `<div><strong>Welcome, ${Player.name}!</strong></div>`;
     renderScene(0);
   }
 
