@@ -1591,7 +1591,8 @@
       }
     }
     get name() {
-      return window.localStorage.getItem('name') + '';
+      const name = window.localStorage.getItem('name');
+      return name.charAt(0).toUpperCase() + name.slice(1, name.length);
     }
     get points() {
       return parseInt(window.localStorage.getItem('points'), 10);
