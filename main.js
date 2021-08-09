@@ -1600,7 +1600,7 @@
       return window.localStorage.getItem('inventory') + '';
     }
     get money() {
-      return parseInt(window.localStorage.getItem('money'), 10);
+      return JSON.parse(window.localStorage.getItem('money'));
     }
     setName(name) {
       return window.localStorage.setItem('name', name);
@@ -1613,10 +1613,11 @@
       if (!inventory) return false;
       return window.localStorage.setItem('inventory', inventory);
     }
-    setMoney(money) {
-      if (!money) return false;
-      playerInformation.setAttribute('money', money);
-      return window.localStorage.setItem('money', money);
+    adjustMoney(cost) {
+      if (!cost) return false;
+      const newAmount = Number.parseFloat(this.money + cost).toPrecision(4);
+      playerInformation.setAttribute('money', newAmount);
+      return window.localStorage.setItem('money', newAmount);
     }
   }
 
@@ -1625,13 +1626,17 @@
   const playerInformation = document.getElementsByTagName('player-information')[0];
   const playerChoices = document.getElementsByTagName('player-choices')[0];
 
+  const player = new Player('', 0, '', 60);
+
   class PlayerInformation extends HTMLElement {
     constructor() {
       super();
       const shadow = this.attachShadow({mode: 'open'});
+      const points = player.points ? player.points : this.getAttribute('points');
+      const money = player.money ? player.money : this.getAttribute('money');
       shadow.innerHTML = `
-        <div class="points-wrapper">Points: <span id="points">${this.getAttribute('points')}</span></div>
-        <div class="money-wrapper">Money: $<span id="money">${this.getAttribute('money')}</span></div>
+        <div class="points-wrapper">Points: <span id="points">${points}</span></div>
+        <div class="money-wrapper">Money: $<span id="money">${money}</span></div>
       `;
     }
     static get observedAttributes() {
@@ -1657,7 +1662,7 @@
           player.addPoints();
         }
         player.setInventory(choice.dataset.item);
-        player.setMoney(choice.dataset.money);
+        player.adjustMoney(choice.dataset.cost ? JSON.parse(choice.dataset.cost) : null);
         const moveTo = JSON.parse(choice.dataset.moveTo);
         if (typeof moveTo === 'object') {
           renderScene(moveTo[player.inventory])
@@ -1678,7 +1683,7 @@
           data-move-to='${JSON.stringify(choice.moveTo)}'
           data-item="${choice.item ? choice.item : ''}"
           data-get-points="${choice.getPoints ? 'true' : 'false'}"
-          data-money="${choice.money ? choice.money : ''}"
+          data-cost="${choice.cost ? choice.cost : ''}"
         >
           ${choice.description}
         </button>`;
@@ -1686,8 +1691,6 @@
     }
   }
   customElements.define('player-choices', PlayerChoices);
-
-  const player = new Player('', 0, '', 60);
 
   function renderScene(index) {
     const wrapper = document.createElement('div');
@@ -1705,18 +1708,19 @@
       player.setName(window.prompt('Please enter your name'));
       playButton.hidden = true;
       playButton.removeEventListener('pointerup', playEvent);
+      stage.innerHTML = `<div><strong>Welcome, ${player.name}!</strong></div>`;
+      renderScene(0);
     });
   }
   else {
     playButton.hidden = true;
     stage.innerHTML = `<div><strong>Welcome, ${player.name}!</strong></div>`;
+    renderScene(0);
   }
 
   if (!window.localStorage.getItem('playedScenes')) {
     window.localStorage.setItem('playedScenes', JSON.stringify([]));
   }
-
-  renderScene(0);
 
 })();
 // vim: foldmethod=marker
