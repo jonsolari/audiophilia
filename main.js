@@ -1659,18 +1659,12 @@
       const shadow = this.attachShadow({mode: 'open'});
       shadow.addEventListener('pointerup', event => {
         const choice = event.target.closest('button');
-        if (JSON.parse(choice.dataset.getPoints)) {
-          player.addPoints();
-        }
+        if (JSON.parse(choice.dataset.getPoints)) player.addPoints();
         player.setInventory(choice.dataset.item);
         player.adjustMoney(choice.dataset.cost ? JSON.parse(choice.dataset.cost) : null);
         const moveTo = JSON.parse(choice.dataset.moveTo);
-        if (typeof moveTo === 'object') {
-          renderScene(moveTo[player.inventory])
-        }
-        else {
-          renderScene(moveTo);
-        }
+        if (typeof moveTo === 'object')  renderScene(moveTo[player.inventory]);
+        else renderScene(moveTo);
       }, {passive: true});
     }
     static get observedAttributes() { return ['choices']; }
