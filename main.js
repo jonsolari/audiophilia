@@ -1660,11 +1660,14 @@
    * @return {void}
    */
   choicesElement.addEventListener('pointerup', event => { // {{{
-    const choice = event.target.closest('button');
-    if (JSON.parse(choice.dataset.getPoints)) Player.incrementPoints();
-    Player.inventory = choice.dataset.item;
-    Player.money = choice.dataset.cost;
-    const moveTo = JSON.parse(choice.dataset.moveTo);
+    const choiceElement = event.target.closest('button');
+    // Set special actions for the player.
+    if (JSON.parse(choiceElement.dataset.getPoints)) Player.incrementPoints();
+    // Each of these methods handles false values, so it's safe to always assign.
+    Player.inventory = choiceElement.dataset.item;
+    Player.money = choiceElement.dataset.cost;
+    // Decide which scene to render.
+    const moveTo = JSON.parse(choiceElement.dataset.moveTo);
     let index = moveTo;
     if (typeof moveTo === 'object') index = moveTo[Player.inventory];
     renderScene(index);
