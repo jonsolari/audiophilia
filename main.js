@@ -1665,12 +1665,13 @@
     Player.inventory = choice.dataset.item;
     Player.money = choice.dataset.cost ? JSON.parse(choice.dataset.cost) : null;
     const moveTo = JSON.parse(choice.dataset.moveTo);
-    if (typeof moveTo === 'object')  renderScene(moveTo[Player.inventory]);
-    else renderScene(moveTo);
+    let index = moveTo;
+    if (typeof moveTo === 'object') index = moveTo[Player.inventory];
+    renderScene(index);
     // Store the previous scene index. This allows us to re-create game-state
     // on a browser refresh.
     const playedScenes = JSON.parse(window.localStorage.getItem('playedScenes'));
-    playedScenes.push(moveTo);
+    playedScenes.push(index);
     window.localStorage.setItem('playedScenes', JSON.stringify(playedScenes));
   }, {passive: true});
   // }}}
