@@ -4,11 +4,13 @@
 - [ ] Functional styles.
 - [ ] Inline comments.
 - [ ] Other sound effects.
+- [ ] Re-factor set methods false guards.
 - [ ] Reference songs in data.
 - [ ] Replay songs at appropriate events.
 - [ ] Reset data on restart game.
 - [ ] Slick styles.
 - [x] Add folds.
+- [x] Bug: Points and money display don't survive page refresh.
 - [x] Bug: the whole moveTo object is saved on a complex move, not the index chosen.
 - [x] Document functions.
 - [x] Migrate player set functions to set properties.

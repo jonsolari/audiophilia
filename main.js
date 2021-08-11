@@ -1575,6 +1575,9 @@
   ]);
   // }}}
 
+  const pointsElement = document.getElementById('points');
+  const moneyElement = document.getElementById('money');
+
   /**
    * Layer over get and set operations for the Player's state.
    * @namespace
@@ -1600,7 +1603,7 @@
     },
     incrementPoints() {
       window.localStorage.setItem('points', this.points + 1);
-      document.getElementById('points').textContent = this.points;
+      pointsElement.textContent = this.points;
       return this.points;
     },
     get inventory() {
@@ -1621,7 +1624,7 @@
           'en-US', { maximumFractionDigits: 2 }
         ).format(Number.parseFloat(this.money + JSON.parse(cost)));
         window.localStorage.setItem('money', newAmount);
-        document.getElementById('money').textContent = newAmount;
+        moneyElement.textContent = newAmount;
       }
     },
   };
@@ -1699,6 +1702,8 @@
     const playedScenes = JSON.parse(window.localStorage.getItem('playedScenes'));
     if (playedScenes.length) playedScenes.forEach(index => renderScene(index));
     else renderScene(0);
+    pointsElement.textContent = Player.points;
+    moneyElement.textContent = Player.money;
   }
 
   // Initialize storage for which scenes the player has experienced.
