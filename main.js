@@ -1621,9 +1621,6 @@
     },
   };
 
-  const stage = document.getElementById('stage');
-  const playButton = document.getElementById('play');
-
   const choicesElement = document.getElementById('choices');
 
   choicesElement.addEventListener('pointerup', event => {
@@ -1636,11 +1633,13 @@
     else renderScene(moveTo);
   }, {passive: true});
 
+  const stageElement = document.getElementById('stage');
+
   function renderScene(index) {
     const wrapper = document.createElement('div');
     const contents = data.get(index);
     wrapper.innerHTML = contents.description;
-    stage.appendChild(wrapper);
+    stageElement.appendChild(wrapper);
     choicesElement.innerHTML = contents.choices.reduce((acc, choice) => {
       return acc + `<button
           data-move-to='${JSON.stringify(choice.moveTo)}'
@@ -1657,18 +1656,19 @@
     // window.localStorage.setItem('playedScenes', JSON.stringify(playedScenes));
   }
 
-  if (!window.localStorage.getItem('name')) {
-    playButton.addEventListener('pointerup', function playEvent() {
+  const playButtonElement = document.getElementById('play');
+  if (!Player.name) {
+    playButtonElement.addEventListener('pointerup', function playEvent() {
       Player.name = window.prompt('Please enter your name');
-      playButton.hidden = true;
-      playButton.removeEventListener('pointerup', playEvent);
-      stage.innerHTML = `<div><strong>Welcome, ${Player.name}!</strong></div>`;
+      playButtonElement.hidden = true;
+      playButtonElement.removeEventListener('pointerup', playEvent);
+      stageElement.innerHTML = `<div><strong>Welcome, ${Player.name}!</strong></div>`;
       renderScene(0);
     });
   }
   else {
-    playButton.hidden = true;
-    stage.innerHTML = `<div><strong>Welcome, ${Player.name}!</strong></div>`;
+    playButtonElement.hidden = true;
+    stageElement.innerHTML = `<div><strong>Welcome, ${Player.name}!</strong></div>`;
     renderScene(0);
   }
 
