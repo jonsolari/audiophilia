@@ -1382,7 +1382,7 @@
             moveTo: 100,
           },
           {
-            description: '2) What is a CED?',
+            description: 'What is a CED?',
             moveTo: 101,
           },
         ],
