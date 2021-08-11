@@ -10,7 +10,7 @@
 - [ ] Replay all choices on reload.
 - [ ] Add folds.
 - [ ] Reset data on restart game.
-- [ ] Migrate player set functions to set properties.
+- [x] Migrate player set functions to set properties.
 
 ## CSS
 

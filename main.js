@@ -1585,40 +1585,39 @@
     get name() {
       return window.localStorage.getItem('name');
     },
+    set name(name) {
+      window.localStorage.setItem(
+        'name',
+        name.charAt(0).toUpperCase() + name.slice(1, name.length)
+      );
+    },
     get points() {
       if (!window.localStorage.getItem('points')) return DEFAULT_POINTS;
       return parseInt(window.localStorage.getItem('points'), 10);
     },
+    incrementPoints() {
+      window.localStorage.setItem('points', this.points + 1);
+      pointsElement.textContent = this.points;
+      return this.points;
+    },
     get inventory() {
       return window.localStorage.getItem('inventory');
+    },
+    set inventory(inventory) {
+      if (inventory) {
+        window.localStorage.setItem('inventory', inventory);
+      }
     },
     get money() {
       if (!window.localStorage.getItem('money')) return DEFAULT_MONEY;
       return JSON.parse(window.localStorage.getItem('money'));
     },
-    setName(name) {
-      window.localStorage.setItem(
-        'name',
-        name.charAt(0).toUpperCase() + name.slice(1, name.length)
-      );
-      return this.name;
-    },
-    addPoints() {
-      window.localStorage.setItem('points', this.points + 1);
-      pointsElement.textContent = this.points;
-      return this.points;
-    },
-    setInventory(inventory) {
-      if (!inventory) return false;
-      window.localStorage.setItem('inventory', inventory);
-      return this.inventory;
-    },
-    adjustMoney(cost) {
-      if (!cost) return false;
-      const newAmount = Number.parseFloat(this.money + cost).toPrecision(4);
-      window.localStorage.setItem('money', newAmount);
-      moneyElement.textContent = newAmount;
-      return newAmount;
+    set money(cost) {
+      if (cost) {
+        const newAmount = Number.parseFloat(this.money + cost).toPrecision(4);
+        window.localStorage.setItem('money', newAmount);
+        moneyElement.textContent = newAmount;
+      }
     },
   };
 
@@ -1629,9 +1628,9 @@
 
   choicesElement.addEventListener('pointerup', event => {
     const choice = event.target.closest('button');
-    if (JSON.parse(choice.dataset.getPoints)) Player.addPoints();
-    Player.setInventory(choice.dataset.item);
-    Player.adjustMoney(choice.dataset.cost ? JSON.parse(choice.dataset.cost) : null);
+    if (JSON.parse(choice.dataset.getPoints)) Player.incrementPoints();
+    Player.inventory = choice.dataset.item;
+    Player.money = choice.dataset.cost ? JSON.parse(choice.dataset.cost) : null;
     const moveTo = JSON.parse(choice.dataset.moveTo);
     if (typeof moveTo === 'object')  renderScene(moveTo[Player.inventory]);
     else renderScene(moveTo);
@@ -1660,7 +1659,7 @@
 
   if (!window.localStorage.getItem('name')) {
     playButton.addEventListener('pointerup', function playEvent() {
-      Player.setName(window.prompt('Please enter your name'));
+      Player.name = window.prompt('Please enter your name');
       playButton.hidden = true;
       playButton.removeEventListener('pointerup', playEvent);
       stage.innerHTML = `<div><strong>Welcome, ${Player.name}!</strong></div>`;
