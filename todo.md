@@ -1,5 +1,6 @@
 # TODO
 
+- [ ] Bug: Error on restart choice - `Uncaught TypeError: choiceElement is null`
 - [ ] Convert songs to mp3.
 - [ ] Functional styles.
 - [ ] Inline comments.
