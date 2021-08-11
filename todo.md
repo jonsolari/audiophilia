@@ -4,10 +4,8 @@
 - [ ] Functional styles.
 - [ ] Inline comments.
 - [ ] Other sound effects.
-- [ ] Re-factor set methods false guards.
 - [ ] Reference songs in data.
 - [ ] Replay songs at appropriate events.
-- [ ] Reset data on restart game.
 - [ ] Slick styles.
 - [x] Add folds.
 - [x] Bug: Points and money display don't survive page refresh.
@@ -17,5 +15,7 @@
 - [x] No script message.
 - [x] Re-factor custom element updates to listen on `localStorage` changes.
 - [x] Re-factor player to simple object.
+- [x] Re-factor set methods false guards.
 - [x] Replay all choices on reload.
+- [x] Reset data on restart game.
 - [x] Save all chosen choices.

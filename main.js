@@ -1572,11 +1572,19 @@
         ],
       },
     ],
+    [
+      'restart',
+      {
+        description: `<p>Give it another spin!</p><hr>`
+      }
+    ]
   ]);
   // }}}
 
   const pointsElement = document.getElementById('points');
   const moneyElement = document.getElementById('money');
+  const startingPoints = '0';
+  const startingMoney = '60';
 
   /**
    * Layer over get and set operations for the Player's state.
@@ -1598,7 +1606,6 @@
       );
     },
     get points() {
-      if (!window.localStorage.getItem('points')) return 0;
       return parseInt(window.localStorage.getItem('points'), 10);
     },
     incrementPoints() {
@@ -1610,25 +1617,22 @@
       return window.localStorage.getItem('inventory');
     },
     set inventory(inventory) {
-      if (inventory) {
-        window.localStorage.setItem('inventory', inventory);
-      }
+      window.localStorage.setItem('inventory', inventory);
     },
     get money() {
-      if (!window.localStorage.getItem('money')) window.localStorage.setItem('money', '60');
       return JSON.parse(window.localStorage.getItem('money'));
     },
     set money(cost) {
-      if (cost) {
-        const newAmount = Intl.NumberFormat(
-          'en-US', { maximumFractionDigits: 2 }
-        ).format(Number.parseFloat(this.money + JSON.parse(cost)));
-        window.localStorage.setItem('money', newAmount);
-        moneyElement.textContent = newAmount;
-      }
+      const newAmount = Intl.NumberFormat(
+        'en-US', { maximumFractionDigits: 2 }
+      ).format(Number.parseFloat(this.money + JSON.parse(cost)));
+      window.localStorage.setItem('money', newAmount);
+      moneyElement.textContent = newAmount;
     },
   };
   // }}}
+
+  const choicesElement = document.getElementById('choices');
 
   /**
    * Add scene content to the DOM.
@@ -1642,6 +1646,7 @@
     wrapper.innerHTML = contents.description;
     stageElement.appendChild(wrapper);
     // Replace the previous player choices with the new ones.
+    if (!contents.choices) return;
     choicesElement.innerHTML = contents.choices.reduce((acc, choice) => {
       return acc + `<button
           data-move-to='${JSON.stringify(choice.moveTo)}'
@@ -1655,8 +1660,6 @@
   }
   // }}}
 
-  const choicesElement = document.getElementById('choices');
-
   /**
    * Listen for game choices from the player.
    * @param {object} event - The pointerup event.
@@ -1666,21 +1669,39 @@
     const choiceElement = event.target.closest('button');
     // Set special actions for the player.
     if (JSON.parse(choiceElement.dataset.getPoints)) Player.incrementPoints();
-    // Each of these methods handles false values, so it's safe to always assign.
-    Player.inventory = choiceElement.dataset.item;
-    Player.money = choiceElement.dataset.cost;
+    if (choiceElement.dataset.item) Player.inventory = choiceElement.dataset.item;
+    if (choiceElement.dataset.cost) Player.money = choiceElement.dataset.cost;
     // Decide which scene to render.
     const moveTo = JSON.parse(choiceElement.dataset.moveTo);
     let index = moveTo;
     if (typeof moveTo === 'object') index = moveTo[Player.inventory];
+    const playedScenes = JSON.parse(window.localStorage.getItem('playedScenes'));
+    if (index === 0) {
+      // If we're specifying that the index is back to the initial scene,
+      // assume we are restarting the game.
+      // Reset points, money and inventory,
+      // and add a visible dividing line to show the new game.
+      window.localStorage.setItem('inventory', '');
+      window.localStorage.setItem('money', startingMoney);
+      window.localStorage.setItem('points', startingPoints);
+      renderScene('restart');
+      playedScenes.push('restart');
+    }
     renderScene(index);
     // Store the previous scene index. This allows us to re-create game-state
     // on a browser refresh.
-    const playedScenes = JSON.parse(window.localStorage.getItem('playedScenes'));
     playedScenes.push(index);
     window.localStorage.setItem('playedScenes', JSON.stringify(playedScenes));
   }, {passive: true});
   // }}}
+
+  // Initialize storage for which scenes the player has experienced.
+  if (!window.localStorage.getItem('playedScenes')) {
+    window.localStorage.setItem('playedScenes', JSON.stringify([0]));
+  }
+  // Initialize default values for player metrics.
+  if (!Player.points) window.localStorage.setItem('points', startingPoints);
+  if (!Player.money) Player.money = startingMoney;
 
   const stageElement = document.getElementById('stage');
 
@@ -1704,11 +1725,6 @@
     else renderScene(0);
     pointsElement.textContent = Player.points;
     moneyElement.textContent = Player.money;
-  }
-
-  // Initialize storage for which scenes the player has experienced.
-  if (!window.localStorage.getItem('playedScenes')) {
-    window.localStorage.setItem('playedScenes', JSON.stringify([0]));
   }
 
 })();
