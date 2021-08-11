@@ -1575,12 +1575,6 @@
   ]);
   // }}}
 
-  const DEFAULT_POINTS = 0;
-  const DEFAULT_MONEY = 60;
-
-  const pointsElement = document.getElementById('points');
-  const moneyElement = document.getElementById('money');
-
   const Player = {
     get name() {
       return window.localStorage.getItem('name');
@@ -1592,12 +1586,12 @@
       );
     },
     get points() {
-      if (!window.localStorage.getItem('points')) return DEFAULT_POINTS;
+      if (!window.localStorage.getItem('points')) return 0;
       return parseInt(window.localStorage.getItem('points'), 10);
     },
     incrementPoints() {
       window.localStorage.setItem('points', this.points + 1);
-      pointsElement.textContent = this.points;
+      document.getElementById('points').textContent = this.points;
       return this.points;
     },
     get inventory() {
@@ -1609,14 +1603,14 @@
       }
     },
     get money() {
-      if (!window.localStorage.getItem('money')) return DEFAULT_MONEY;
+      if (!window.localStorage.getItem('money')) return 60;
       return JSON.parse(window.localStorage.getItem('money'));
     },
     set money(cost) {
       if (cost) {
         const newAmount = Number.parseFloat(this.money + cost).toPrecision(4);
         window.localStorage.setItem('money', newAmount);
-        moneyElement.textContent = newAmount;
+        document.getElementById('money').textContent = newAmount;
       }
     },
   };
