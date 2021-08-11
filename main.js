@@ -1621,25 +1621,13 @@
     },
   };
 
-  const choicesElement = document.getElementById('choices');
-
-  choicesElement.addEventListener('pointerup', event => {
-    const choice = event.target.closest('button');
-    if (JSON.parse(choice.dataset.getPoints)) Player.incrementPoints();
-    Player.inventory = choice.dataset.item;
-    Player.money = choice.dataset.cost ? JSON.parse(choice.dataset.cost) : null;
-    const moveTo = JSON.parse(choice.dataset.moveTo);
-    if (typeof moveTo === 'object')  renderScene(moveTo[Player.inventory]);
-    else renderScene(moveTo);
-  }, {passive: true});
-
-  const stageElement = document.getElementById('stage');
-
   function renderScene(index) {
+    // Append the scene text to the DOM.
     const wrapper = document.createElement('div');
     const contents = data.get(index);
     wrapper.innerHTML = contents.description;
     stageElement.appendChild(wrapper);
+    // Replace the previous player choices with the new ones.
     choicesElement.innerHTML = contents.choices.reduce((acc, choice) => {
       return acc + `<button
           data-move-to='${JSON.stringify(choice.moveTo)}'
@@ -1650,11 +1638,26 @@
           ${choice.description}
         </button>`;
     }, '');
-    // playerChoices.setAttribute('choices', JSON.stringify(contents.choices));
-    // const playedScenes = JSON.parse(window.localStorage.getItem('playedScenes'));
-    // playedScenes.push(moveTo);
-    // window.localStorage.setItem('playedScenes', JSON.stringify(playedScenes));
   }
+
+  const choicesElement = document.getElementById('choices');
+
+  choicesElement.addEventListener('pointerup', event => {
+    const choice = event.target.closest('button');
+    if (JSON.parse(choice.dataset.getPoints)) Player.incrementPoints();
+    Player.inventory = choice.dataset.item;
+    Player.money = choice.dataset.cost ? JSON.parse(choice.dataset.cost) : null;
+    const moveTo = JSON.parse(choice.dataset.moveTo);
+    if (typeof moveTo === 'object')  renderScene(moveTo[Player.inventory]);
+    else renderScene(moveTo);
+    // Store the previous scene index. This allows us to re-create game-state
+    // on a browser refresh.
+    const playedScenes = JSON.parse(window.localStorage.getItem('playedScenes'));
+    playedScenes.push(moveTo);
+    window.localStorage.setItem('playedScenes', JSON.stringify(playedScenes));
+  }, {passive: true});
+
+  const stageElement = document.getElementById('stage');
 
   const playButtonElement = document.getElementById('play');
   if (!Player.name) {
@@ -1669,11 +1672,13 @@
   else {
     playButtonElement.hidden = true;
     stageElement.innerHTML = `<div><strong>Welcome, ${Player.name}!</strong></div>`;
-    renderScene(0);
+    const playedScenes = JSON.parse(window.localStorage.getItem('playedScenes'));
+    if (playedScenes.length) playedScenes.forEach(index => renderScene(index));
+    else renderScene(0);
   }
 
   if (!window.localStorage.getItem('playedScenes')) {
-    window.localStorage.setItem('playedScenes', JSON.stringify([]));
+    window.localStorage.setItem('playedScenes', JSON.stringify([0]));
   }
 
 })();
