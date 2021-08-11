@@ -1575,7 +1575,16 @@
   ]);
   // }}}
 
-  const Player = {
+  /**
+   * Layer over get and set operations for the Player's state.
+   * @namespace
+   * @property {string} name - Get or set the player's name.
+   * @property {number} points - Get the player's point total.
+   * @property {string} inventory - Get or set which album the player chose.
+   * @property {number} money - Get or set the player's money total.
+   * @property {function} incrementPoints - Increase the player's points by one.
+   */
+  const Player = { // {{{
     get name() {
       return window.localStorage.getItem('name');
     },
@@ -1603,19 +1612,27 @@
       }
     },
     get money() {
-      if (!window.localStorage.getItem('money')) return 60;
+      if (!window.localStorage.getItem('money')) window.localStorage.setItem('money', '60');
       return JSON.parse(window.localStorage.getItem('money'));
     },
     set money(cost) {
       if (cost) {
-        const newAmount = Number.parseFloat(this.money + cost).toPrecision(4);
+        const newAmount = Intl.NumberFormat(
+          'en-US', { maximumFractionDigits: 2 }
+        ).format(Number.parseFloat(this.money + cost));
         window.localStorage.setItem('money', newAmount);
         document.getElementById('money').textContent = newAmount;
       }
     },
   };
+  // }}}
 
-  function renderScene(index) {
+  /**
+   * Add scene content to the DOM.
+   * @param {number} index - Scene index to render.
+   * @return {void}
+   */
+  function renderScene(index) { // {{{
     // Append the scene text to the DOM.
     const wrapper = document.createElement('div');
     const contents = data.get(index);
@@ -1633,10 +1650,16 @@
         </button>`;
     }, '');
   }
+  // }}}
 
   const choicesElement = document.getElementById('choices');
 
-  choicesElement.addEventListener('pointerup', event => {
+  /**
+   * Listen for game choices from the player.
+   * @param {object} event - The pointerup event.
+   * @return {void}
+   */
+  choicesElement.addEventListener('pointerup', event => { // {{{
     const choice = event.target.closest('button');
     if (JSON.parse(choice.dataset.getPoints)) Player.incrementPoints();
     Player.inventory = choice.dataset.item;
@@ -1650,10 +1673,12 @@
     playedScenes.push(moveTo);
     window.localStorage.setItem('playedScenes', JSON.stringify(playedScenes));
   }, {passive: true});
+  // }}}
 
   const stageElement = document.getElementById('stage');
 
   const playButtonElement = document.getElementById('play');
+  // Ask the player for their name if one isn't saved.
   if (!Player.name) {
     playButtonElement.addEventListener('pointerup', function playEvent() {
       Player.name = window.prompt('Please enter your name');
@@ -1663,6 +1688,7 @@
       renderScene(0);
     });
   }
+  // If we have the player's name, render scenes.
   else {
     playButtonElement.hidden = true;
     stageElement.innerHTML = `<div><strong>Welcome, ${Player.name}!</strong></div>`;
@@ -1671,6 +1697,7 @@
     else renderScene(0);
   }
 
+  // Initialize storage for which scenes the player has experienced.
   if (!window.localStorage.getItem('playedScenes')) {
     window.localStorage.setItem('playedScenes', JSON.stringify([0]));
   }
