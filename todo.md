@@ -3,7 +3,6 @@
 - [ ] Convert songs to mp3.
 - [ ] Functional styles.
 - [ ] Inline comments.
-- [ ] No script message.
 - [ ] Other sound effects.
 - [ ] Reference songs in data.
 - [ ] Replay songs at appropriate events.
@@ -13,6 +12,7 @@
 - [x] Bug: the whole moveTo object is saved on a complex move, not the index chosen.
 - [x] Document functions.
 - [x] Migrate player set functions to set properties.
+- [x] No script message.
 - [x] Re-factor custom element updates to listen on `localStorage` changes.
 - [x] Re-factor player to simple object.
 - [x] Replay all choices on reload.
