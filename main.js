@@ -1619,7 +1619,7 @@
       if (cost) {
         const newAmount = Intl.NumberFormat(
           'en-US', { maximumFractionDigits: 2 }
-        ).format(Number.parseFloat(this.money + cost));
+        ).format(Number.parseFloat(this.money + JSON.parse(cost)));
         window.localStorage.setItem('money', newAmount);
         document.getElementById('money').textContent = newAmount;
       }
@@ -1663,7 +1663,7 @@
     const choice = event.target.closest('button');
     if (JSON.parse(choice.dataset.getPoints)) Player.incrementPoints();
     Player.inventory = choice.dataset.item;
-    Player.money = choice.dataset.cost ? JSON.parse(choice.dataset.cost) : null;
+    Player.money = choice.dataset.cost;
     const moveTo = JSON.parse(choice.dataset.moveTo);
     let index = moveTo;
     if (typeof moveTo === 'object') index = moveTo[Player.inventory];
