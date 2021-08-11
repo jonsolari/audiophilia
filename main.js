@@ -1578,6 +1578,9 @@
   const DEFAULT_POINTS = 0;
   const DEFAULT_MONEY = 60;
 
+  const pointsElement = document.getElementById('points');
+  const moneyElement = document.getElementById('money');
+
   const Player = {
     get name() {
       return window.localStorage.getItem('name');
@@ -1594,78 +1597,53 @@
       return JSON.parse(window.localStorage.getItem('money'));
     },
     setName(name) {
-      return window.localStorage.setItem(
+      window.localStorage.setItem(
         'name',
         name.charAt(0).toUpperCase() + name.slice(1, name.length)
       );
+      return this.name;
     },
     addPoints() {
-      playerInformation.setAttribute('points', this.points + 1);
-      return window.localStorage.setItem('points', this.points + 1);
+      window.localStorage.setItem('points', this.points + 1);
+      pointsElement.textContent = this.points;
+      return this.points;
     },
     setInventory(inventory) {
       if (!inventory) return false;
-      return window.localStorage.setItem('inventory', inventory);
+      window.localStorage.setItem('inventory', inventory);
+      return this.inventory;
     },
     adjustMoney(cost) {
       if (!cost) return false;
       const newAmount = Number.parseFloat(this.money + cost).toPrecision(4);
-      playerInformation.setAttribute('money', newAmount);
-      return window.localStorage.setItem('money', newAmount);
+      window.localStorage.setItem('money', newAmount);
+      moneyElement.textContent = newAmount;
+      return newAmount;
     },
   };
 
   const stage = document.getElementById('stage');
   const playButton = document.getElementById('play');
-  const playerInformation = document.getElementsByTagName('player-information')[0];
-  const playerChoices = document.getElementsByTagName('player-choices')[0];
 
-  class PlayerInformation extends HTMLElement {
-    constructor() {
-      super();
-      const shadow = this.attachShadow({mode: 'open'});
-      const points = Player.points ? Player.points : this.getAttribute('points');
-      const money = Player.money ? Player.money : this.getAttribute('money');
-      shadow.innerHTML = `
-        <div class="points-wrapper">Points: <span id="points">${points}</span></div>
-        <div class="money-wrapper">Money: $<span id="money">${money}</span></div>
-      `;
-    }
-    static get observedAttributes() {
-      return [
-        'points',
-        'money',
-      ];
-    }
-    attributeChangedCallback(name, oldValue, newValue) {
-      if (!newValue) { return; }
-      this.shadowRoot.getElementById(name).textContent = newValue;
-    }
-  }
-  customElements.define('player-information', PlayerInformation);
+  const choicesElement = document.getElementById('choices');
 
-  class PlayerChoices extends HTMLElement {
-    constructor() {
-      super();
-      const shadow = this.attachShadow({mode: 'open'});
-      shadow.addEventListener('pointerup', event => {
-        const choice = event.target.closest('button');
-        if (JSON.parse(choice.dataset.getPoints)) Player.addPoints();
-        Player.setInventory(choice.dataset.item);
-        Player.adjustMoney(choice.dataset.cost ? JSON.parse(choice.dataset.cost) : null);
-        const moveTo = JSON.parse(choice.dataset.moveTo);
-        if (typeof moveTo === 'object')  renderScene(moveTo[Player.inventory]);
-        else renderScene(moveTo);
-      }, {passive: true});
-    }
-    static get observedAttributes() { return ['choices']; }
-    attributeChangedCallback(name, oldValue, newValue) {
-      if (!newValue) {
-        this.shadowRoot.innerHTML = '';
-        return;
-      }
-      this.shadowRoot.innerHTML = JSON.parse(newValue).reduce((acc, choice) => {
-        return acc + `<button
+  choicesElement.addEventListener('pointerup', event => {
+    const choice = event.target.closest('button');
+    if (JSON.parse(choice.dataset.getPoints)) Player.addPoints();
+    Player.setInventory(choice.dataset.item);
+    Player.adjustMoney(choice.dataset.cost ? JSON.parse(choice.dataset.cost) : null);
+    const moveTo = JSON.parse(choice.dataset.moveTo);
+    if (typeof moveTo === 'object')  renderScene(moveTo[Player.inventory]);
+    else renderScene(moveTo);
+  }, {passive: true});
+
+  function renderScene(index) {
+    const wrapper = document.createElement('div');
+    const contents = data.get(index);
+    wrapper.innerHTML = contents.description;
+    stage.appendChild(wrapper);
+    choicesElement.innerHTML = contents.choices.reduce((acc, choice) => {
+      return acc + `<button
           data-move-to='${JSON.stringify(choice.moveTo)}'
           data-item="${choice.item ? choice.item : ''}"
           data-get-points="${choice.getPoints ? 'true' : 'false'}"
@@ -1673,24 +1651,15 @@
         >
           ${choice.description}
         </button>`;
-      }, '');
-    }
-  }
-  customElements.define('player-choices', PlayerChoices);
-
-  function renderScene(index) {
-    const wrapper = document.createElement('div');
-    const contents = data.get(index);
-    wrapper.innerHTML = contents.description;
-    stage.appendChild(wrapper);
-    playerChoices.setAttribute('choices', JSON.stringify(contents.choices));
+    }, '');
+    // playerChoices.setAttribute('choices', JSON.stringify(contents.choices));
     // const playedScenes = JSON.parse(window.localStorage.getItem('playedScenes'));
     // playedScenes.push(moveTo);
     // window.localStorage.setItem('playedScenes', JSON.stringify(playedScenes));
   }
 
   if (!window.localStorage.getItem('name')) {
-    playButton.addEventListener('pointerup', function playEvent(event) {
+    playButton.addEventListener('pointerup', function playEvent() {
       Player.setName(window.prompt('Please enter your name'));
       playButton.hidden = true;
       playButton.removeEventListener('pointerup', playEvent);

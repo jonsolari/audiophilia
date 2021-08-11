@@ -12,8 +12,12 @@
   <p>The game of hi-fi perfection!</p>
   <button id="play">Play the game</button>
   <div id="stage"></div>
+  <div id="choices"></div>
   <player-choices choices=''></player-choices>
-  <player-information points="0" money="60"></player-information>
+  <div class="player-information">
+    <div class="points-wrapper">Points: <span id="points">0</span></div>
+    <div class="money-wrapper">Money: $<span id="money">60</span></div>
+  </div>
   <script src="/main.js"></script>
 </body>
 </html>
