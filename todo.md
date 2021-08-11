@@ -1,22 +1,19 @@
 # TODO
 
-## JavaScript
-
-- [x] Document functions.
-- [ ] Inline comments.
-- [x] Re-factor player to simple object.
-- [x] Re-factor custom element updates to listen on `localStorage` changes.
-- [x] Save all chosen choices.
-- [x] Replay all choices on reload.
-- [x] Add folds.
-- [ ] Reset data on restart game.
-- [x] Migrate player set functions to set properties.
+- [ ] Bug: the whole moveTo object is saved on a complex move, not the index chosen.
 - [ ] Convert songs to mp3.
+- [ ] Functional styles.
+- [ ] Inline comments.
+- [ ] No script message.
+- [ ] Other sound effects.
 - [ ] Reference songs in data.
 - [ ] Replay songs at appropriate events.
-- [ ] Other sound effects.
-- [ ] Bug: the whole moveTo object is saved on a complex move, not the index chosen.
-
-## CSS
-
-- [ ] Basic styles
+- [ ] Reset data on restart game.
+- [ ] Slick styles.
+- [x] Add folds.
+- [x] Document functions.
+- [x] Migrate player set functions to set properties.
+- [x] Re-factor custom element updates to listen on `localStorage` changes.
+- [x] Re-factor player to simple object.
+- [x] Replay all choices on reload.
+- [x] Save all chosen choices.
