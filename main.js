@@ -18,7 +18,7 @@
     [
       1,
       {
-        description: `<p>There's a "Beatles" section that only ever has solo George and Ringo albums, and cover compilations like the 'All This and World War II' soundtrack. If you wanted to get down on your knees and crawl, a bunch of forgettable 78s wait for you under the main bins (never any rock n' roll, and definitely never any "race records"). The few times you've flipped through their decaying paper sleeves, you've worried about potential asbestos content. There is a wall of cassettes but that's a 50-50 shot at buying something that's melted into a warbly hell in somebody's backseat.nnDespite all this, the store usually has a few gems. You've narrowed it down to three titles.</p><p><em>WARNING:</em> Your decision will greatly determine your fate!</p>`,
+        description: `<p>There's a "Beatles" section that only ever has solo George and Ringo albums, and cover compilations like the 'All This and World War II' soundtrack. If you wanted to get down on your knees and crawl, a bunch of forgettable 78s wait for you under the main bins (never any rock n' roll, and definitely never any "race records"). The few times you've flipped through their decaying paper sleeves, you've worried about potential asbestos content. There is a wall of cassettes but that's a 50-50 shot at buying something that's melted into a warbly hell in somebody's backseat. Despite all this, the store usually has a few gems. You've narrowed it down to three titles.</p><p><em>WARNING:</em> Your decision will greatly determine your fate!</p>`,
         choices: [
           {
             description: 'Aja by Steely Dan',
@@ -80,7 +80,7 @@
     [
       5,
       {
-        description: `<p>There's a thread on the Steve Hoffman forums with over 650 posts in it, but you're not about to traipse through all that bullshit in full, on your smartphone, here at the store. People seem pretty over the moon about an original pressing with <em>AB-1006033</em> carved into the deadwax.</p>`,
+        description: `<p>There's a thread on the Steve Hoffman forums with over 650 posts in it, but you're not about to traipse through all that bullshit in full, on your smartphone, here at the store. People seem pretty over the moon about an original pressing with <em>AB-1006</em> carved into the deadwax.</p>`,
         choices: [
           {
             description: 'Check the deadwax',
@@ -1441,7 +1441,7 @@
             moveTo: 106,
           },
           {
-            description: '3) Take a swing at Phil.',
+            description: 'Take a swing at Phil.',
             moveTo: 107,
           },
         ],
@@ -1550,7 +1550,7 @@
     [
       112,
       {
-        description: `<p>You no longer possess a scratched record!</p><p>You decide to look around a bit more, and end up finding a copy of <em>Sync<em>hroni<em>city</em> by The Police that has the rare bronze/silver/gold cover variant! You can flip this on eBay even if the disc ends up being scratched, but you're pretty sure you'll just keep it since you almost never see these.</p>`,
+        description: `<p>You no longer possess a scratched record!</p><p>You decide to look around a bit more, and end up finding a copy of <em>Sync</em>hroni<em>city</em> by The Police that has the rare bronze/silver/gold cover variant! You can flip this on eBay even if the disc ends up being scratched, but you're pretty sure you'll just keep it since you almost never see these.</p>`,
         choices: [
           {
             description: `Whoa, and it's only priced at $20…?`,
