@@ -1636,15 +1636,27 @@
 
   /**
    * Add scene content to the DOM.
-   * @param {number} index - Scene index to render.
+   * @param {number} sceneNumber - Scene index to render.
    * @return {void}
    */
-  function renderScene(index) { // {{{
+  function renderScene(sceneNumber) { // {{{
+    // Add the player's choice that brought them here to the log.
+    if (sceneNumber > 0) {
+      const playedScenes = JSON.parse(window.localStorage.getItem('playedScenes'));
+      const previousScene = data.get(
+        playedScenes[playedScenes.indexOf(sceneNumber) - 1]
+      ).choices.find(choice => choice.moveTo === sceneNumber);
+      const previousChoiceElement = document.createElement('div');
+      previousChoiceElement.setAttribute('class', 'previous-choice');
+      previousChoiceElement.textContent = previousScene.description;
+      stageElement.appendChild(previousChoiceElement);
+    }
     // Append the scene text to the DOM.
-    const wrapper = document.createElement('div');
-    const contents = data.get(index);
-    wrapper.innerHTML = contents.description;
-    stageElement.appendChild(wrapper);
+    const contents = data.get(sceneNumber);
+    const sceneElement = document.createElement('div');
+    sceneElement.setAttribute('class', 'scene');
+    sceneElement.innerHTML = contents.description;
+    stageElement.appendChild(sceneElement);
     // Replace the previous player choices with the new ones.
     if (!contents.choices) return;
     choicesElement.innerHTML = contents.choices.reduce((acc, choice) => {
@@ -1687,12 +1699,12 @@
       renderScene('restart');
       playedScenes.push('restart');
     }
-    renderScene(index);
     // Store the previous scene index. This allows us to re-create game-state
     // on a browser refresh.
     playedScenes.push(index);
     window.localStorage.setItem('playedScenes', JSON.stringify(playedScenes));
-  }, {passive: true});
+    renderScene(index);
+  }, { passive: true });
   // }}}
 
   // Initialize storage for which scenes the player has experienced.

@@ -1,7 +1,7 @@
 # TODO
 
-- [ ] Add choices to scrollback.
 - [ ] Bug: Error on restart choice - `Uncaught TypeError: choiceElement is null`
+- [ ] Bug: Previous choice on object move to errors out.
 - [ ] Convert songs to mp3.
 - [ ] Functional styles.
 - [ ] Inline comments.
@@ -9,6 +9,7 @@
 - [ ] Reference songs in data.
 - [ ] Replay songs at appropriate events.
 - [ ] Slick styles.
+- [x] Add choices to scrollback.
 - [x] Add folds.
 - [x] Bug: Points and money display don't survive page refresh.
 - [x] Bug: the whole moveTo object is saved on a complex move, not the index chosen.
