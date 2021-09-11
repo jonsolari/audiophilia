@@ -1,11 +1,8 @@
-# Audiophilia v0.1α
-### An interactive story about the adventures of a veteran audiophile.
+# Audiophilia
 
-Requires:
-- Python3
-- PyGame (confirmed working version listed in requirements.txt)
-- MIDI playback capability in general 
+An interactive story about the adventures of a veteran audiophile.
 
-Runs in the terminal. Just clone this repo, cd into it, and run game.py. 
+This project has two versions.
 
-Feel free to let me know about any bugs!
+- [Web](./web)
+- [Command line](./cli)
