@@ -264,17 +264,17 @@ while True:
     if player.prog == 2:
         player.inv = 'aja'
         pygame.mixer.init()
-        pygame.mixer.music.load('multimedia/cow.mid')
+        pygame.mixer.music.load('../multimedia/cow.mid')
         
     if player.prog == 3:
         player.inv = 'rush'
         pygame.mixer.init()
-        pygame.mixer.music.load('multimedia/tom.mid')
+        pygame.mixer.music.load('../multimedia/tom.mid')
         
     if player.prog == 4:
         player.inv = 'lamb'
         pygame.mixer.init()
-        pygame.mixer.music.load('multimedia/lamb.mid')
+        pygame.mixer.music.load('../multimedia/lamb.mid')
 
     
     # for audio playback and delay of next-choices set in these specific places
